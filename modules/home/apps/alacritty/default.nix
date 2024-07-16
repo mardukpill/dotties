@@ -6,13 +6,14 @@
 	...
 }: let
 	inherit (lib) mkEnableOption mkIf;
+
 	cfg = config.${namespace}.apps.alacritty;
 in {
 	options.${namespace}.apps.alacritty = {
 		enable = mkEnableOption "alacritty.";
 	};
 
-	config = cfg.enable {
+	config = mkIf cfg.enable {
 		programs.alacritty = {
 			enable = true;
 			settings = {

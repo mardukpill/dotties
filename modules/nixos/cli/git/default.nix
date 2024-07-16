@@ -9,7 +9,7 @@
 
 	cfg = config.${namespace}.system.git;
 in {
-	options.${namespace}.system.git = {
+	option.${namespace}.system.git = {
 		enable = mkOpt lib.types.bool true "whether to manage git configuration";
 	};
 	
