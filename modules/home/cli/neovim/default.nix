@@ -29,10 +29,14 @@ in {
 	};
 
 	imports = [
-		#./keymaps.nix
-	]; # ++ lib.snowfall.fs.get-non-default-nix-files ./plugins;
+		./keymaps.nix
+	] ++ lib.snowfall.fs.get-non-default-nix-files ./plugins;
 
 	config = mkIf cfg.enable {
+		home.packages = with pkgs; [
+			ripgrep
+		];
+
 		programs.nixvim = {
 			enable = true;
 			defaultEditor = true;

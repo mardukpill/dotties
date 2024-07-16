@@ -23,6 +23,7 @@
   inherit (lib.${namespace}) enabled;
 	inherit (inputs) hyprland;
 	cfg = config.${namespace}.wms.hyprland;
+	grimblast = inputs.hyprland-contrib.packages.${pkgs.hostPlatform.system}.grimblast;
 
 in {
 	options.${namespace}.wms.hyprland = {
@@ -32,9 +33,9 @@ in {
 	imports = lib.snowfall.fs.get-non-default-nix-files ./.;
 
 	config = mkIf cfg.enable {
-
 		dotties.apps.rofi = enabled;
 		dotties.utility.mako = enabled;
+		dotties.utility.waybar = enabled;
 		dotties.services.swww = {
 			enable = true;
 			wallpaperPath = "/media/shared/pictures/wallpapers/bay.JPG";
@@ -48,7 +49,7 @@ in {
 
 				hyprpicker
 				
-				# grimblast TODO
+				grimblast
 				# hyprzoom
 
 				swappy
@@ -84,7 +85,5 @@ in {
 
 			plugins = [ ]; # TODO
 		};
-
-
 	};
 }

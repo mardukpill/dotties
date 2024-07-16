@@ -54,9 +54,9 @@ in
 					"$mod SHIFT, F, exec, ${pkgs.firefox}/bin/firefox"
 
 					# grimblast
-					", Print, exec, ${grimblast}/bin/grimblast --notify copy area"
-					"$mod SHIFT, S, exec, ${grimblast}/bin/grimblast --notify edit area"
-					"$mod CONTROL_SHIFT, S, exec, ${grimblast}/bin/grimblast --notify edit screen"
+					", Print, exec, grimblast --notify copy area"
+					"$mod SHIFT, S, exec, grimblast --notify edit area"
+					"$mod CONTROL_SHIFT, S, exec, grimblast --notify edit screen"
 					
 					# rofi
 					"$mod, D, exec, pkill rofi || ${pkgs.rofi-wayland}/bin/rofi -show drun"

@@ -36,20 +36,20 @@ in {
 			progressColor = "over #"+config.colorScheme.palette.base05+"AA";
 			
 			extraConfig = ''
-	outer-margin=25
+outer-margin=25
 
-	[app-name=Spotify]
-	border-color=#1DB954
-	font=JetBrainsMono bold 18
-	anchor=bottom-center
-	default-timeout=3000
-	ignore-timeout=1
-	padding=5,5,5
-	outer-margin=25
-	height=100
-	width=900
-	text-alignment=center
-	''; # TODO: can do more cool stuff here.
+[app-name=Spotify]
+border-color=#1DB954
+font=JetBrainsMono bold 18
+anchor=bottom-center
+default-timeout=3000
+ignore-timeout=1
+padding=5,5,5
+outer-margin=25
+height=100
+width=900
+text-alignment=center
+''; # TODO: can do more cool stuff here.
 		};
 
 	};

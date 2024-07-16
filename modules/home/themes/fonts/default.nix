@@ -6,16 +6,17 @@
 	lib,
 	...
 }: let 
-	inherit (lib) mkIf mkEnableOption;
+	inherit (lib) mkIf;
+	inherit (lib.${namespace}) mkOpt;
 
 	cfg = config.${namespace}.system.fonts;
 in {
 	options.${namespace}.system.fonts = {
-		enable = mkEnableOption "manage fonts.";
+		manage = mkOpt lib.types.bool true "whether to manage fonts.";
 	};
 
-	config = mkIf cfg.enable {
-		environment.systemPackages = with pkgs; [
+	config = mkIf cfg.manage {
+		home.packages = with pkgs; [
 			jetbrains-mono
 			nerdfonts
 

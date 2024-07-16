@@ -27,6 +27,8 @@ in {
 			curl
 			wget
 			unzip
+			fzf
+			zoxide
 		];
 	};
 }

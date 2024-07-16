@@ -8,7 +8,6 @@
 }:
 let
 	inherit (lib.${namespace}) enabled;
-	inherit (inputs) snowfall-flake;
 in {
 	snowfallorg.user = {
 		name = "mike";
@@ -17,6 +16,8 @@ in {
 	dotties = {
 		cli = {
 			neovim = enabled;
+			tools = enabled;
+			fish = enabled;
 		};
 		apps = {
 			spotify = {
@@ -29,10 +30,10 @@ in {
 		};
 
 		wms.hyprland = enabled;
-
 	};
 	
 	home.packages = with pkgs; [
+		vesktop
 		keepassxc
 
 		firefox
@@ -40,8 +41,7 @@ in {
 
 		playerctl
 
-
-		ffmpeg
+		ffmpeg # media management
 		yt-dlp
 		imagemagick
 
@@ -49,7 +49,7 @@ in {
 		viewnior
 		gobble
 
-		libreoffice-fresh
+		libreoffice-fresh 
 		godot_4
 	];
 

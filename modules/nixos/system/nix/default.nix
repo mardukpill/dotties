@@ -6,20 +6,26 @@
 	config,
 	...
 }: let 
-	inherit (lib) mkIf mkEnableOption;
+	inherit (lib) mkIf mkOption;
 
-	cfg = config.${namespace}.system.manageNix;
+	cfg = config.${namespace}.system.nix;
 in {
-	options.${namespace}.system.manageNix = mkEnableOption "Nix configuration management.";
+	options.${namespace}.system.nix = {
+		managed = mkOption {
+			type = lib.types.bool;
+			default = true;
+			description = "whether to manage nix configuration.";
+		};
+	};
 
-	config = mkIf cfg {
+	config = mkIf cfg.managed {
 		environment.systemPackages = with pkgs; [
-			git
 			home-manager
+			sqlite
+			alejandra
 			# TODO: add cachix
 		];
 		
-		/*
 		nix = let
 		flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
 		in {
@@ -41,6 +47,5 @@ in {
 				options = "--delete-older-than 7d";
 			};
 		};
-		*/
 	};
 }
