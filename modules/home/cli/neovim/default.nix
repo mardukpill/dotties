@@ -78,6 +78,10 @@ in {
 				};
 			};
 
+			extraPlugins = with pkgs.vimPlugins; [
+				# add regular vim plugins here
+			];
+
 			extraConfigLuaPost = ''
 				require("otter").activate({ "python", "bash", "fish" }, true, true, nil)
 				'';
