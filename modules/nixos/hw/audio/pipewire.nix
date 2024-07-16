@@ -2,14 +2,14 @@
 	lib,
 	pkgs,
 	...
-}: let
-	inherit (lib) enabled;
-in {
+}: {
 	hardware.pulseaudio.enable = false;
 
-	services.piepwire = {
+	services.pipewire = {
 		enable = true;
-		pulse = enabled;
+		pulse = {
+			enable = true;
+		};
 		alsa = {
 			enable = true;
 			support32Bit = true;

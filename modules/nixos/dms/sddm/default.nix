@@ -5,11 +5,11 @@
 	pkgs,
 	...
 }: let
-	inherit (lib) mkIf mkEnableOption mkOption;
+	inherit (lib) mkIf mkEnableOption mkOption nullOr;
 
 	cfg = config.${namespace}.dms.sddm;
 in {
-	option.${namespace}.dms.sddm = {
+	options.${namespace}.dms.sddm = {
 		enable = mkEnableOption "sddm";
 		theme.style = mkOption {
 			type = lib.types.enum [ "where-is-my-sddm-theme" ];
@@ -17,8 +17,8 @@ in {
 			description = "which sddm theme to use";
 		};
 		theme.background = mkOption {
-			type = lib.types.path;
-			default = "";
+			type = nullOr lib.types.path;
+			default = null;
 			description = "Path to the background of the sddm theme.";
 		};
 	};
@@ -32,7 +32,7 @@ in {
 			sddm = {
 				enable = true;
 				wayland.enable = true;
-				theme = "${import ./themes/where-is-my-sddm-theme { inherit pkgs config cfg; }}";
+				 # theme = "${import ./where-is-my-sddm-theme.nix { inherit pkgs config; }}";
 			};
 		};
 	};

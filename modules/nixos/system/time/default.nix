@@ -8,7 +8,7 @@
 
 	cfg = config.${namespace}.system.time;
 in {
-	option.${namespace}.system.time = {
+	options.${namespace}.system.time = {
 		managed = mkOption {
 			type = lib.types.bool;
 			default = true;

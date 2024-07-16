@@ -8,7 +8,7 @@
 	cfg = config.${namespace}.system.locale;
 	inherit (lib) mkIf mkOption;
 in {
-	option.${namespace}.system.locale = {
+	options.${namespace}.system.locale = {
 		managed = mkOption {
 			type = lib.types.bool;
 			default = true;

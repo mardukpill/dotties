@@ -1,16 +1,15 @@
 # https://github.com/Aman9das/zaneyos/blob/9deb3d0a7690f647b47b2ccd37a7028eae42d7e2/config/pkgs/where-is-my-sddm-theme.nix
 {
 	pkgs,
-	config,
-	lib,
-	namespace,
-	cfg,
 	...
 }: let
-	image = 
-		if (cfg.theme.background == "")
+	image = /media/shared/pictures/wallpapers/home.png;
+	#config.${namespace}.dms.sddm.theme.background; 
+	/*
+		if (config.${namespace}.dms.sddm.theme.background == null) 
 		then pkgs.nixos-artwork.wallpapers.nineish-dark-gray.gnomeFilePath
-		else cfg.sddm.background;
+		else config.${namespace}.dms.sddm.theme.background;
+		*/
 in
 pkgs.stdenvNoCC.mkDerivation {
   name = "where-is-my-sddm-theme";

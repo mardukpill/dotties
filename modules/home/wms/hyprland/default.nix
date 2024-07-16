@@ -23,14 +23,16 @@
   inherit (lib.${namespace}) enabled;
 	inherit (inputs) hyprland;
 	cfg = config.${namespace}.wms.hyprland;
+	grimblast = inputs.hyprland-contrib.packages.${pkgs.hostPlatform.system}.grimblast;
 
 in {
 	options.${namespace}.wms.hyprland = {
 		enable = mkEnableOption "hyprland."; 
 	};
 
+	imports = lib.snowfall.fs.get-non-default-nix-files ./.;
+
 	config = mkIf cfg.enable {
-		imports = lib.snowfall.fs.get-non-default-nix-files ./.;
 		dotties.apps.rofi = enabled;
 		dotties.utility.mako = enabled;
 		dotties.utility.waybar = enabled;
@@ -47,7 +49,7 @@ in {
 
 				hyprpicker
 				
-				# grimblast TODO
+				grimblast
 				# hyprzoom
 
 				swappy
@@ -59,7 +61,7 @@ in {
 				name = "phinger-cursors-dark";
 				package = pkgs.phinger-cursors;
 				gtk.enable = true;
-				size = 48;
+				size = 32;
 			};
 
 			sessionVariables = {

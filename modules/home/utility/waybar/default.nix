@@ -8,12 +8,13 @@
 
 	cfg = config.${namespace}.utility.waybar;
 in {
-	option.${namespace}.utility.waybar = {
+	options.${namespace}.utility.waybar = {
 		enable = mkEnableOption "waybar";
 	};
 
+	imports = lib.snowfall.fs.get-non-default-nix-files ./widgets;
+
 	config = mkIf cfg.enable {
-		# imports = lib.snowfall.fs.get-non-default-nix-files ./widgets;
 		programs.waybar = {
 			enable = true;
 			systemd = {

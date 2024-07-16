@@ -5,11 +5,12 @@
 	config,
 	...
 }: let
-	inherit (lib) mkIf mkOpt;
+	inherit (lib) mkIf;
+	inherit (lib.${namespace}) mkOpt;
 
 	cfg = config.${namespace}.system.git;
 in {
-	option.${namespace}.system.git = {
+	options.${namespace}.system.git = {
 		enable = mkOpt lib.types.bool true "whether to manage git configuration";
 	};
 	

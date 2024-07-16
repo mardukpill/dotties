@@ -16,6 +16,8 @@ in {
 	dotties = {
 		cli = {
 			neovim = enabled;
+			tools = enabled;
+			fish = enabled;
 		};
 		apps = {
 			spotify = {
@@ -31,6 +33,7 @@ in {
 	};
 	
 	home.packages = with pkgs; [
+		vesktop
 		keepassxc
 
 		firefox

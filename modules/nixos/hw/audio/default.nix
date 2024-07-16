@@ -8,7 +8,7 @@
 
 	cfg = config.${namespace}.hw.audio;
 in {
-	option.${namespace}.hw.audio = {
+	options.${namespace}.hw.audio = {
 		provider = mkOption {
 			type = lib.types.enum [ "pipewire" ];
 			default = "pipewire";
@@ -16,7 +16,8 @@ in {
 		};
 	};
 	
+	imports = [ ./pipewire.nix ];
 	config = mkIf (cfg.provider != "") {
-		imports = mkIf (cfg.provider == "pipewire") [ ./pipewire.nix ];
+		# mkIf (cfg.provider == "pipewire") [ ./pipewire.nix ];
 	};
 }

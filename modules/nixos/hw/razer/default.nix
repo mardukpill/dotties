@@ -4,12 +4,12 @@
 	config,
 	...
 }: let
-	inherit (lib) mkIf mkEnabledOption;
+	inherit (lib) mkIf mkEnableOption;
 
 	cfg = config.${namespace}.hw.razer;
 in {
-	option.${namespace}.hw.razer = {
-		enable = mkEnabledOption "razer blade tools."	;
+	options.${namespace}.hw.razer = {
+		enable = mkEnableOption "razer blade tools."	;
 	};
 	
 	config = mkIf cfg.enable {

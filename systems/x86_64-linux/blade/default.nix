@@ -49,7 +49,10 @@ in
 
 	networking = { # TODO: this should be automatically set based upon snowfall var
 		hostName = "blade";
+		networkmanager = enabled;
 	};
+
+
 
 	system.stateVersion = "23.05";
 }
