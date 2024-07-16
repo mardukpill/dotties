@@ -1,0 +1,164 @@
+/**
+* Global configuration for theme
+* */
+* {
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 18px;
+	font-weight: bold;
+  border-radius: 0.4em;
+	border: 0;
+}
+
+window#waybar {
+  border: 0;
+  background-color: transparent;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+window#waybar.hidden {
+  opacity: 0;
+}
+
+tooltip {
+  background: @background;
+  border: 1px solid @backgroundalt;
+}
+
+tooltip label {
+  color: @foreground;
+}
+
+label:focus {
+  background-color: #000000;
+}
+
+button {
+  /* Use box-shadow instead of border so the text isn't offset */
+  box-shadow: inset 0 -3px transparent;
+  /* Avoid rounded borders under each button name */
+  border: none;
+  border-radius: 0;
+}
+
+/* Remove border from parent waybar */
+box {
+  border: 0;
+}
+
+#network {
+	border: 3px solid @fourth;
+	background-color: @background;
+	color: @fifthalt;
+	padding-left: 9px;
+	padding-right: 9px;
+	margin: 0.2em;
+}
+
+#battery {
+	background-color: @background;
+	color: @secondalt;
+	border: 3px solid @backgroundalt;
+	margin: 0.2em;
+	padding-left: 9px;
+	padding-right: 15px;
+}
+
+#tray {
+	padding-left: 12px;
+	padding-right: 12px;
+	margin: 0.2em;
+	background-color: @background;
+	border: 3px solid @backgroundalt;
+}
+
+#clock {
+	background-color: @background;
+	color: @fifth;
+	padding-right: 9px;
+	padding-left: 9px;
+	margin: 0.2em;
+	font-weight: bold;
+  font-size: 18px;
+	border: 3px solid @fifthalt;
+}
+
+@keyframes blink {
+  to {
+    background-color: #ffffff;
+    color: #000000;
+  }
+}
+
+#window {
+	font-weight: bold;
+	color: @fifth;
+	margin: 0.2em;
+	background-color: @background;
+	border: 3px dotted @fourthalt;
+	padding-left: 6px;
+	padding-right: 9px;
+}
+
+#pulseaudio {
+	color: @sixth;
+	background-color: @background;
+	border: 3px solid @firstalt;
+	margin: 0.2em;
+	padding-left: 9px;
+	padding-right: 15px;
+}
+
+#cpu {
+	background-color: @background;
+	border: 3px solid @fourthalt;
+	margin: 0.2em;
+	padding-left: 9px;
+	padding-right: 12px;
+}
+
+#workspaces {
+  margin: 0.2em;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: @foreground;
+  font-weight: bold;
+	font-size: 20px;
+  background-color: @background;
+  border: 3px solid @fifthalt;
+}
+
+#workspaces label {
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 20px;
+}
+
+#workspaces button {
+  padding: 0 0.5em;
+  background-color: @background;
+  color: @fifthalt;
+  margin: 0.25em;
+}
+
+#workspaces button.empty {
+  /* background-color: @surface2; */
+  color: @overlay0;
+}
+
+#workspaces button.visible {
+  /* background-color: @surface2; */
+  color: @sixalt;
+}
+
+#workspaces button.active {
+  background-color: @second; 
+  color: @fifth;
+	border-radius: 0.4em;
+	border: 0;
+}
+
+#workspaces button.urgent {
+  box-shadow: 2px 2px 2px 2px;
+  border-radius: 1em;
+  color: @secondalt;
+}

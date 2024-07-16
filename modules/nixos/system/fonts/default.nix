@@ -6,12 +6,12 @@
 	lib,
 	...
 }: let 
-	inherit (lib) mkIf mkEnableOption;
+	inherit (lib) mkIf mkOpt;
 
 	cfg = config.${namespace}.system.fonts;
 in {
 	options.${namespace}.system.fonts = {
-		enable = mkEnableOption "manage fonts.";
+		manage = mkOpt lib.types.bool true "whether to manage fonts.";
 	};
 
 	config = mkIf cfg.enable {

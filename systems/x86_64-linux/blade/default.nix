@@ -16,14 +16,24 @@ in
 	];
 
 	dotties = {
-		hw.nvidia = {
-			enable = true;
-			version = "535";
+		hw = {
+			nvidia = {
+				enable = true;
+				version = "535";
+			};
+			razer = enabled;
 		};
 
-		system = {
-			fonts = enabled;
-			manageNix = true;
+		dms.sddm = {
+			enable = true;
+			theme = {
+				style = "where-is-my-sddm-theme";
+				background = "/media/shared/pictures/wallpapers/home.png";
+			};
+		};
+
+		cli = {
+			fish = enabled;
 		};
 
 		wms = {
@@ -31,25 +41,14 @@ in
 		};
 	};
 
-	nix = let
-	flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-  in {
-    settings = {
-      experimental-features = "nix-command flakes";
-      flake-registry = "";
-      # Workaround for https://github.com/NixOS/nix/issues/9574
-      nix-path = github:NixOS/nixpkgs/nixos-unstable;
-    };
-    channel.enable = false;
-
-    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
-    nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
-  };
-
 	nixpkgs = {
 		config = {
 			allowUnfree = true;
 		};
+	};
+
+	networking = { # TODO: this should be automatically set based upon snowfall var
+		hostName = "blade";
 	};
 
 	system.stateVersion = "23.05";

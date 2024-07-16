@@ -23,6 +23,10 @@ in {
 			];
 		};
 
+		services.gvfs.enable = true;
+		services.tumbler.enable = true;
+		programs.xfconf.enable = true;
+
 		environment.systemPackages = with pkgs; [
 			ark
 		];

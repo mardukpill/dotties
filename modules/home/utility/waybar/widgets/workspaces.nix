@@ -1,0 +1,71 @@
+{
+  programs.waybar.settings.mainBar = {
+    "hyprland/workspaces" = {
+      all-outputs = false;
+      active-only = false;
+      format = "{icon} {windows}";
+      format-icons = {
+        "1" = "󰎤";
+        "2" = "󰎧";
+        "3" = "󰎪";
+        "4" = "󰎭";
+        "5" = "󰎱";
+        "6" = "󰎳";
+        "7" = "󰎶";
+        "8" = "󰎹";
+        "9" = "󰎼";
+        "10" = "󰽽";
+        "urgent" = "󱨇";
+        "default" = "";
+        "empty" = "󱓼";
+      };
+      window-rewrite-default = "";
+      window-rewrite = {
+        "class<KeePassXC>" = "󰌾";
+        "class<Caprine>" = "󰈎";
+        "class<Github Desktop>" = "󰊤";
+        "class<Godot>" = "";
+        "class<Mysql-workbench-bin>" = "";
+        "class<Slack>" = "󰒱";
+        "class<code>" = "󰨞";
+        "code-url-handler" = "󰨞";
+        "class<discord>" = "󰙯";
+				"class<vesktop>" = "󰙯";
+        "class<firefox>" = "";
+        "class<firefox-beta>" = "";
+        "class<firefox-developer-edition>" = "";
+        "class<firefox> title<.*github.*>" = "";
+        "class<firefox> title<.*twitch|youtube|plex|tntdrama|bally sports.*>" = "";
+        "title<vim *>" = "";
+        "title<vi *>" = "";
+        "class<kodi>" = "󰌔";
+        "class<Alacritty>" = "";
+        "class<kitty>" = "";
+        "class<org.wezfurlong.wezterm>" = "";
+        "class<foot>" = "";
+        "class<mediainfo-gui>" = "󱂷";
+        "class<org.kde.digikam>" = "󰄄";
+        "class<org.telegram.desktop>" = "";
+        "class<.pitivi-wrapped>" = "󱄢";
+        "class<steam>" = "";
+        "title<Steam>" = "";
+        "class<thunderbird>" = "";
+        "class<bluemail>" = "";
+        "class<virt-manager>" = "󰢹";
+        "class<vlc>" = "󰕼";
+        "class<thunar>" = "󰉋";
+        "class<org.gnome.Nautilus>" = "󰉋";
+        "class<Spotify>" = "";
+        "title<Spotify Free>" = "";
+        "class<libreoffice-draw>" = "󰽉";
+        "class<libreoffice-writer>" = "";
+        "class<libreoffice-calc>" = "󱎏";
+        "class<libreoffice-impress>" = "󱎐";
+        "class<teams-for-linux>" = "󰊻";
+        "class<org.prismlauncher.PrismLauncher>" = "󰍳";
+        "class<minecraft-launcher>" = "󰍳";
+        "class<Postman>" = "󰛮";
+      };
+    };
+  };
+}

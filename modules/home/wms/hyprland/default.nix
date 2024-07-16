@@ -29,12 +29,11 @@ in {
 		enable = mkEnableOption "hyprland."; 
 	};
 
-	imports = lib.snowfall.fs.get-non-default-nix-files ./.;
-
 	config = mkIf cfg.enable {
-
+		imports = lib.snowfall.fs.get-non-default-nix-files ./.;
 		dotties.apps.rofi = enabled;
 		dotties.utility.mako = enabled;
+		dotties.utility.waybar = enabled;
 		dotties.services.swww = {
 			enable = true;
 			wallpaperPath = "/media/shared/pictures/wallpapers/bay.JPG";
@@ -60,7 +59,7 @@ in {
 				name = "phinger-cursors-dark";
 				package = pkgs.phinger-cursors;
 				gtk.enable = true;
-				size = 32;
+				size = 48;
 			};
 
 			sessionVariables = {
@@ -84,7 +83,5 @@ in {
 
 			plugins = [ ]; # TODO
 		};
-
-
 	};
 }
