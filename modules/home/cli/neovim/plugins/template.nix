@@ -1,4 +1,1 @@
-_: {
-  programs.nixvim.plugins = {
-  };
-}
+_: { programs.nixvim.plugins = { }; }

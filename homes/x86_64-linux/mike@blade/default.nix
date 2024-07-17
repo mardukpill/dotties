@@ -1,62 +1,63 @@
 {
-	config,
-	lib,
-	namespace,
-	inputs,
-	pkgs,
-	...
+  config,
+  lib,
+  namespace,
+  inputs,
+  pkgs,
+  ...
 }:
 let
-	inherit (lib.${namespace}) enabled;
-in {
-	snowfallorg.user = {
-		name = "mike";
-		enable = true;
-	};
-	dotties = {
-		cli = {
-			neovim = enabled;
-			tools = enabled;
-			fish = enabled;
-		};
-		apps = {
-			spotify = {
-				enable = true;
-				spicetify = true;
-			};
-			alacritty = enabled;
-			imv = enabled;
-			mpv = enabled;
-		};
+  inherit (lib.${namespace}) enabled;
+in
+{
+  snowfallorg.user = {
+    name = "mike";
+    enable = true;
+  };
+  dotties = {
+    cli = {
+      neovim = enabled;
+      tools = enabled;
+      fish = enabled;
+    };
+    apps = {
+      spotify = {
+        enable = true;
+        spicetify = true;
+      };
+      alacritty = enabled;
+      imv = enabled;
+      mpv = enabled;
+    };
 
-		wms.hyprland = enabled;
-	};
-	
-	home.packages = with pkgs; [
-		vesktop
-		keepassxc
+    wms.hyprland = enabled;
+  };
 
-		firefox
-		thunderbird
+  home.packages = with pkgs; [
+    vesktop
+    keepassxc
 
-		playerctl
+    firefox
+    thunderbird
 
-		ffmpeg # media management
-		yt-dlp
-		imagemagick
+    playerctl
 
-		zathura
-		viewnior
-		gobble
+    ffmpeg # media management
+    yt-dlp
+    imagemagick
 
-		libreoffice-fresh 
-		godot_4
-	];
+    zathura
+    viewnior
+    gobble
 
-	services.syncthing.enable = true;
+    libreoffice-fresh
+    godot_4
+  ];
+
+  services.syncthing.enable = true;
   services.playerctld.enable = true;
 
-	services.ssh-agent.enable = true;
+  services.ssh-agent.enable = true;
   programs.ssh = {
     matchBlocks = {
       "github.com-mardukpill" = {
@@ -67,5 +68,5 @@ in {
     };
   };
 
-	home.stateVersion = "23.05";
+  home.stateVersion = "23.05";
 }

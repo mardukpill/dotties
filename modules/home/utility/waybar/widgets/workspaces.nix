@@ -30,7 +30,7 @@
         "class<code>" = "󰨞";
         "code-url-handler" = "󰨞";
         "class<discord>" = "󰙯";
-				"class<vesktop>" = "󰙯";
+        "class<vesktop>" = "󰙯";
         "class<firefox>" = "";
         "class<firefox-beta>" = "";
         "class<firefox-developer-edition>" = "";

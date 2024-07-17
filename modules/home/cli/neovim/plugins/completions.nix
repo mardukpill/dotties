@@ -1,20 +1,21 @@
-{ pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nixvim.plugins = {
     luasnip = {
-			enable = true;
-			extraConfig = {
-				enable_autosnippets = true;
-				store_selection_keys = "<Tab>";
-			};
-			fromVscode = [
-				{
-					lazyLoad = true;
-					paths = "${pkgs.vimPlugins.friendly-snippets}";
-				}
-			];
-		};
+      enable = true;
+      extraConfig = {
+        enable_autosnippets = true;
+        store_selection_keys = "<Tab>";
+      };
+      fromVscode = [
+        {
+          lazyLoad = true;
+          paths = "${pkgs.vimPlugins.friendly-snippets}";
+        }
+      ];
+    };
 
-		nvim-autopairs.enable = true;
+    nvim-autopairs.enable = true;
 
     cmp = {
       enable = true;
@@ -22,11 +23,11 @@
         snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
 
         sources = [
-          {name = "luasnip";}
-          {name = "path";}
-          {name = "buffer";}
-          {name = "nvim_lsp";}
-					{name = "otter";}
+          { name = "luasnip"; }
+          { name = "path"; }
+          { name = "buffer"; }
+          { name = "nvim_lsp"; }
+          { name = "otter"; }
         ];
         mapping = {
           "<C-d>" =
