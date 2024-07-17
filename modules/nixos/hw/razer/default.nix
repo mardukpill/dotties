@@ -21,5 +21,7 @@ in
         KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="plugdev"
       ''; # needed for correct permissions for razer-laptop-control
     };
+
+    dotties.user.extraGroups = [ "plugdev" ];
   };
 }

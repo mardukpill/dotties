@@ -14,6 +14,7 @@ in
     name = "mike";
     enable = true;
   };
+
   dotties = {
     cli = {
       neovim = enabled;

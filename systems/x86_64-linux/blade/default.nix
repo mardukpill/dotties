@@ -17,6 +17,14 @@ in
   ];
 
   dotties = {
+    user = {
+      extraGroups = [
+        "wheel"
+        "video"
+        "input"
+      ];
+    };
+
     hw = {
       nvidia = {
         enable = true;
