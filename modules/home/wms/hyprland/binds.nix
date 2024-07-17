@@ -8,7 +8,6 @@
 }:
 let
   inherit (lib) mkIf;
-  grimblast = inputs.hyprland-contrib.packages.${pkgs.hostPlatform.system}.grimblast;
 
   cfg = config.${namespace}.wms.hyprland;
 in

@@ -23,9 +23,8 @@ let
   inherit (lib) mkIf mkEnableOption;
   inherit (lib.${namespace}) enabled;
   inherit (inputs) hyprland;
-  cfg = config.${namespace}.wms.hyprland;
-  grimblast = inputs.hyprland-contrib.packages.${pkgs.hostPlatform.system}.grimblast;
 
+  cfg = config.${namespace}.wms.hyprland;
 in
 {
   options.${namespace}.wms.hyprland = {
@@ -52,7 +51,7 @@ in
         hyprpicker
 
         grimblast
-        # hyprzoom
+        dotties.hyprzoom
 
         swappy
         gtk-engine-murrine # TODO: move to dedicated file
