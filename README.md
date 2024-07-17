@@ -52,5 +52,6 @@
   Inspiration & Thanks
 </h2>
 
+- [ok-nick/dotfiles](https://github.com/ok-nick/dotfiles)
 - [JakeHamilton/config](https://github.com/jakehamilton/config)
 - [khaneliman/khanelinix](https://github.com/khaneliman/khanelinix)
