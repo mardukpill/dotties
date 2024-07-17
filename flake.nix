@@ -66,7 +66,7 @@
 				spicetify-nix.homeManagerModules.default
 				nix-colors.homeManagerModules.default
 			];
-			
+				
       systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager
       ];

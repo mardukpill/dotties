@@ -1,0 +1,4 @@
+_: {
+  programs.nixvim.plugins = {
+  };
+}
