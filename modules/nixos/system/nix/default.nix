@@ -6,7 +6,7 @@
 	config,
 	...
 }: let 
-	inherit (lib) mkIf mkOption;
+	inherit (lib) mkIf mkOption mkEnableOption;
 
 	cfg = config.${namespace}.system.nix;
 in {
@@ -16,6 +16,7 @@ in {
 			default = true;
 			description = "whether to manage nix configuration.";
 		};
+    useHelper = mkEnableOption "whether to use nix helper.";
 	};
 
 	config = mkIf cfg.managed {
@@ -25,6 +26,10 @@ in {
 			alejandra
 			# TODO: add cachix
 		];
+
+    programs.nh = mkIf cfg.useHelper {
+      enable = true;
+    };
 		
 		nix = let
 		flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;

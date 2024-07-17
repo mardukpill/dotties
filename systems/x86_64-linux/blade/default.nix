@@ -24,6 +24,10 @@ in
 			razer = enabled;
 		};
 
+    apps = {
+      thunar = enabled;
+    };
+
 		dms.sddm = {
 			enable = true;
 			theme = {
@@ -31,6 +35,11 @@ in
 				background = "/media/shared/pictures/wallpapers/home.png";
 			};
 		};
+
+    system.nix = {
+      managed = true;
+      useHelper = true;
+    };
 
 		cli = {
 			fish = enabled;
