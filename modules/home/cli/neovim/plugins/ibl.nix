@@ -1,27 +1,35 @@
 {inputs, ...}:  let
-	inherit (inputs) nixvim;
+inherit (inputs) nixvim;
 in {
-  programs.nixvim = {
-    plugins.indent-blankline = {
-      enable = true;
-      settings.indent.highlight = [
-        "RainbowRed"
-        "RainbowYellow"
-        "RainbowBlue"
-        "RainbowOrange"
-        "RainbowGreen"
-        "RainbowViolet"
-        "RainbowCyan"
-      ];
-    };
-    highlight = {
-      RainbowRed.fg = "#E06C75";
-      RainbowYellow.fg = "#E5C07B";
-      RainbowBlue.fg = "#61AFEF";
-      RainbowOrange.fg = "#D19A66";
-      RainbowGreen.fg = "#98C379";
-      RainbowViolet.fg = "#C678DD";
-      RainbowCyan.fg = "#56B6C2";
-    };
-  };
+	programs.nixvim = {
+		plugins.indent-blankline = {
+			enable = true;
+			settings = {
+				exclude = {
+					buftypes = [
+						"terminal"
+							"quickfix"
+					];
+					filetypes = [
+						""
+							"checkhealth"
+							"help"
+							"lspinfo"
+							"packer"
+							"TelescopePrompt"
+							"TelescopeResults"
+							"yaml"
+					];
+				};
+				indent = {
+					char = "│";
+				};
+				scope = {
+					show_end = true;
+					show_exact_scope = true;
+					show_start = true;
+				};
+			};
+		};
+	};
 }

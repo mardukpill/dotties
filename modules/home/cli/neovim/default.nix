@@ -20,7 +20,6 @@
     ...
 }: let
 	inherit (lib) mkIf mkEnableOption;
-  inherit (lib.${namespace}) enabled;
 	cfg = config.${namespace}.cli.neovim;
 
 in {
@@ -44,13 +43,18 @@ in {
 			viAlias = true;
 			vimAlias = true;
 
-			# rice rice rice
-			colorschemes.rose-pine.enable = true;
+			colorscheme = "challenger_deep";
 			plugins.transparent.enable = true;
 
 			opts = {
 				number = true;
 				relativenumber = true;
+        spell = true;
+        spelllang = "en_us";
+				expandtab = true;
+        cursorline = true;
+        undofile = true;
+        mouse = "";
 
 				shiftwidth = 2;
 				tabstop = 2;
@@ -78,9 +82,14 @@ in {
 				};
 			};
 
-			extraConfigLuaPost = ''
+			extraPlugins = with pkgs.vimPlugins; [
+				# add regular vim plugins here
+			];
+
+			extraConfigLuaPost = # lua
+			'' 
 				require("otter").activate({ "python", "bash", "fish" }, true, true, nil)
-				'';
+			'';
 		};
 	};
 }

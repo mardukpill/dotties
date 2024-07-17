@@ -46,7 +46,7 @@ in {
 				options.desc = "Yank into clipboard";
       }
 			{
-				key = "<jk>";
+				key = "<jk>"; # FIXME: binding does not work
 				action = "<Esc>";
 				mode = "i";
 				options.desc = "Emergency exit for insert mode";
