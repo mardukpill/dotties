@@ -38,9 +38,7 @@ in
     vesktop
     keepassxc
 
-    dotties.bluemail-with-gpu
     firefox
-    thunderbird
 
     playerctl
 

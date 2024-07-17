@@ -35,6 +35,7 @@ in
 
     apps = {
       thunar = enabled;
+      thunderbird = enabled;
     };
 
     dms.sddm = {
