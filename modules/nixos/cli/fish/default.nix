@@ -7,7 +7,7 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption enabled mkIf;
+  inherit (lib) mkEnableOption mkIf;
 
   cfg = config.${namespace}.cli.fish;
 in
@@ -26,7 +26,8 @@ in
       enable = true;
     };
 
-    programs.bash = {
+    programs.bash = mkIf false {
+      # TODO: hacky solution to be removed.
       interactiveShellInit = ''
         if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
         	then

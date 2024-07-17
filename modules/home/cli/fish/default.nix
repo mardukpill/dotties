@@ -32,6 +32,8 @@ in
         if command -q nix-your-shell
         	nix-your-shell fish | source
         end
+
+        set fish_greeting
       '';
       plugins = [
         {

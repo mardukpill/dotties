@@ -8,6 +8,10 @@
 }:
 with lib;
 with lib.${namespace};
+
+let
+  cfg = config.${namespace}.user;
+in
 {
   options.${namespace}.user = with types; {
     name = mkOpt str "mike" "The name to use for the user account.";
@@ -28,7 +32,7 @@ with lib.${namespace};
       home = "/home/${cfg.name}";
       group = "users";
 
-      shell = pkgs.zsh;
+      shell = pkgs.fish;
 
       # Arbitrary user ID to use for the user. Since I only
       # have a single user on my machines this won't ever collide.
