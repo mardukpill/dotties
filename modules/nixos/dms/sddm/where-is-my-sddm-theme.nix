@@ -1,15 +1,14 @@
 # https://github.com/Aman9das/zaneyos/blob/9deb3d0a7690f647b47b2ccd37a7028eae42d7e2/config/pkgs/where-is-my-sddm-theme.nix
 {
 	pkgs,
+  namespace,
+  config,
 	...
 }: let
-	image = /media/shared/pictures/wallpapers/home.png;
-	#config.${namespace}.dms.sddm.theme.background; 
-	/*
+	image =
 		if (config.${namespace}.dms.sddm.theme.background == null) 
 		then pkgs.nixos-artwork.wallpapers.nineish-dark-gray.gnomeFilePath
 		else config.${namespace}.dms.sddm.theme.background;
-		*/
 in
 pkgs.stdenvNoCC.mkDerivation {
   name = "where-is-my-sddm-theme";
@@ -19,7 +18,8 @@ pkgs.stdenvNoCC.mkDerivation {
     rev = "4e55b6a549b559e1d7d21b84e301e427d5b8d005";
     sha256 = "sha256-lxdtlNdMxBwCRL7c1Uw/TY6Yv9ycSdQz4BE1w19tzog=";
   };
-	  installPhase = ''
+	  installPhase = # bash
+    ''
     mkdir -p $out
     ls . -a
     cp -R ./where_is_my_sddm_theme_qt5/* $out/
