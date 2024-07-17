@@ -3,6 +3,7 @@
 	lib,
 	namespace,
 	inputs,
+  pkgs,
 	...
 }:
 let
@@ -24,13 +25,25 @@ in
 			razer = enabled;
 		};
 
+    apps = {
+      thunar = enabled;
+    };
+
 		dms.sddm = {
 			enable = true;
 			theme = {
 				style = "where-is-my-sddm-theme";
-				background = "/media/shared/pictures/wallpapers/home.png";
+				background = pkgs.fetchurl {
+          url = "https://ploop.city/home.png";
+          sha256 = "ca39463acd764102888c8cb859b856fd6fb8f974d8bc527827da3017c9210d18";
+        }; 
 			};
 		};
+
+    system.nix = {
+      managed = true;
+      useHelper = true;
+    };
 
 		cli = {
 			fish = enabled;
@@ -47,8 +60,8 @@ in
 		};
 	};
 
-	networking = { # TODO: this should be automatically set based upon snowfall var
-		hostName = "blade";
+	networking = { 
+		hostName = lib.snowfall.system.get-inferred-system-name ./.;
 		networkmanager = enabled;
 	};
 
