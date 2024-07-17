@@ -6,8 +6,8 @@
       separate-outputs = true;
       rewrite = {
         "" = "  ";
-				"org.keepassxc.KeePassXC" = " 󰟵";
-				"firefox" = "󰈹 firefox";
+        "org.keepassxc.KeePassXC" = " 󰟵";
+        "firefox" = "󰈹 firefox";
       };
     };
   };

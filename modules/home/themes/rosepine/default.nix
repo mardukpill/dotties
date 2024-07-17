@@ -1,3 +1,4 @@
-{pkgs, inputs, ...}: {
-	colorScheme = inputs.nix-colors.colorSchemes.rose-pine;
+{ pkgs, inputs, ... }:
+{
+  colorScheme = inputs.nix-colors.colorSchemes.rose-pine;
 }

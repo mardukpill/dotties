@@ -1,9 +1,11 @@
-{inputs, ...}: let
-	inherit (inputs) nixvim;
-in {
+{ inputs, ... }:
+let
+  inherit (inputs) nixvim;
+in
+{
   programs.nixvim.plugins.lualine = {
     enable = true;
     iconsEnabled = true;
-    extensions = ["nvim-tree"];
+    extensions = [ "nvim-tree" ];
   };
 }

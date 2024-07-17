@@ -7,7 +7,13 @@
         critical = 15;
       };
       format = "{capacity}% {icon}";
-      format-icons = ["" "" "" "" ""];
+      format-icons = [
+        ""
+        ""
+        ""
+        ""
+        ""
+      ];
       max-length = 25;
     };
   };
