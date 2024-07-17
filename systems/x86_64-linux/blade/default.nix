@@ -56,8 +56,8 @@ in
 		};
 	};
 
-	networking = { # TODO: this should be automatically set based upon snowfall var
-		hostName = "blade";
+	networking = { 
+		hostName = lib.snowfall.system.get-inferred-system-name;
 		networkmanager = enabled;
 	};
 
