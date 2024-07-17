@@ -25,7 +25,6 @@
       inputs.hyprland.follows = "hyprland";
     };
     hyprland-contrib.url = "github:hyprwm/contrib";
-    # TODO
 
     # spicetify
     spicetify-nix = {

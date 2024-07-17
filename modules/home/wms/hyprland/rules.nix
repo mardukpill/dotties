@@ -21,6 +21,8 @@ in
           "${externalDisplay},1920x1080@60,2560x0,1"
         ];
 
+        "debug:disable_logs" = false; # FIXME: remove after debugging
+
         windowrulev2 = [
           "float,class:float"
           "pin, title:^(Picture-in-Picture)$"
