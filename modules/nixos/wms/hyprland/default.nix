@@ -16,9 +16,8 @@ in
   };
 
   config = mkIf cfg.enable {
-    
-    environment.systemPackages = with pkgs; [
-    ];
+
+    environment.systemPackages = with pkgs; [ ];
 
     programs.hyprland.enable = true;
     programs.hyprland.portalPackage = pkgs.xdg-desktop-portal-gtk;

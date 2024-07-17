@@ -3,7 +3,7 @@
   lib,
   namespace,
   ...
-}: 
+}:
 pkgs.writeShellScriptBin "hyprzoom" ''
 
     if [ "$#" -ne 1 ]; then
