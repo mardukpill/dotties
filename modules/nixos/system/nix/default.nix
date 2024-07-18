@@ -26,6 +26,7 @@ in
       home-manager
       sqlite
       alejandra
+      comma
       # TODO: add cachix
     ];
 
