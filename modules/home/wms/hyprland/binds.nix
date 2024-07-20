@@ -116,7 +116,7 @@ in
                 [
                   "$mod, ${ws}, workspace, ${toString (x + 1)}"
                   "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
-                  "$mod CTRL, ${ws}, workspace, ${toString ((x + 11))}" # FUCK IT, WHATS ANOTHER 10 WORKSPACES?
+                  "$mod CTRL, ${ws}, workspace, ${toString ((x + 11))}"
                   "$mod CONTROL_SHIFT, ${ws}, movetoworkspace, ${toString ((x + 11))}"
                 ]
               ) 10
