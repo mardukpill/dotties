@@ -8,6 +8,7 @@
 }:
 let
   inherit (lib) mkIf mkOption mkEnableOption;
+  inherit (lib.${namespace}) enabled;
 
   cfg = config.${namespace}.system.nix;
 in
@@ -19,6 +20,7 @@ in
       description = "whether to manage nix configuration.";
     };
     useHelper = mkEnableOption "whether to use nix helper.";
+    comma = mkEnableOption "comma.";
   };
 
   config = mkIf cfg.managed {
@@ -26,11 +28,12 @@ in
       home-manager
       sqlite
       alejandra
-      comma
       # TODO: add cachix
     ];
 
-    programs.nh = mkIf cfg.useHelper { enable = true; };
+    programs.nix-index-database.comma.enable = cfg.comma;
+
+    programs.nh = mkIf cfg.useHelper enabled;
 
     nix =
       let

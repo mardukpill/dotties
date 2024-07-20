@@ -52,6 +52,7 @@ in
     system.nix = {
       managed = true;
       useHelper = true;
+      comma = true;
     };
 
     cli = {

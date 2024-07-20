@@ -2,6 +2,12 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+
+    };
+
     # Home manager
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -74,7 +80,10 @@
         hardware.nixosModules.common-cpu-intel
         hardware.nixosModules.common-pc-laptop
         hardware.nixosModules.common-pc-laptop-ssd
+
         razer-laptop-control.nixosModules.default
+
+        nix-index-database.nixosModules.nix-index
       ];
 
       deploy = lib.mkDeploy { inherit (inputs) self; };
