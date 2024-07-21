@@ -34,7 +34,6 @@ in
   imports = lib.snowfall.fs.get-non-default-nix-files ./.;
 
   config = mkIf cfg.enable {
-    dotties.apps.rofi = enabled;
     dotties.utility.mako = enabled;
     dotties.utility.waybar = enabled;
     dotties.services.swww = {
