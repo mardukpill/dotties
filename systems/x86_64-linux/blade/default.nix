@@ -36,6 +36,7 @@ in
     apps = {
       thunar = enabled;
       thunderbird = enabled;
+      wireshark = enabled;
     };
 
     dms.sddm = {
