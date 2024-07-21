@@ -94,9 +94,7 @@ in
             "$mod SHIFT, K, movewindow, u"
             "$mod SHIFT, L, movewindow, r"
 
-            "$mod, Space, togglegroup,"
-            "$mod SHIFT, N, changegroupactive, f"
-            "$mod SHIFT, P, changegroupactive, b"
+            "$mod, Space, pseudo,"
 
             "$mod SHIFT, Z, exec, hyprctl keyword cursor:zoom_factor 1"
           ]
