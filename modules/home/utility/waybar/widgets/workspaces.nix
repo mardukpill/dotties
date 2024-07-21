@@ -36,8 +36,8 @@
         "class<firefox-developer-edition>" = "";
         "class<firefox> title<.*github.*>" = "";
         "class<firefox> title<.*twitch|youtube|plex|tntdrama|bally sports.*>" = "";
+        "title<nvim*>" = "";
         "title<vim *>" = "";
-        "title<vi *>" = "";
         "class<kodi>" = "󰌔";
         "class<Alacritty>" = "";
         "class<kitty>" = "";
@@ -55,7 +55,7 @@
         "class<vlc>" = "󰕼";
         "class<thunar>" = "󰉋";
         "class<org.gnome.Nautilus>" = "󰉋";
-        "class<Spotify>" = "";
+        "class<Spotify>" = ""; # FIXME: spotify resets its class.
         "title<Spotify Free>" = "";
         "class<libreoffice-draw>" = "󰽉";
         "class<libreoffice-writer>" = "";

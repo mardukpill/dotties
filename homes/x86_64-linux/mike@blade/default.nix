@@ -14,6 +14,7 @@ in
     name = "mike";
     enable = true;
   };
+
   dotties = {
     cli = {
       neovim = enabled;
@@ -38,7 +39,6 @@ in
     keepassxc
 
     firefox
-    thunderbird
 
     playerctl
 

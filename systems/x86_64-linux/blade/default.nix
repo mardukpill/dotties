@@ -17,6 +17,14 @@ in
   ];
 
   dotties = {
+    user = {
+      extraGroups = [
+        "wheel"
+        "video"
+        "input"
+      ];
+    };
+
     hw = {
       nvidia = {
         enable = true;
@@ -27,6 +35,8 @@ in
 
     apps = {
       thunar = enabled;
+      thunderbird = enabled;
+      wireshark = enabled;
     };
 
     dms.sddm = {
@@ -43,6 +53,7 @@ in
     system.nix = {
       managed = true;
       useHelper = true;
+      comma = true;
     };
 
     cli = {

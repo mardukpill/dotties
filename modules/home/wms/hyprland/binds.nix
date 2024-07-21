@@ -8,11 +8,14 @@
 }:
 let
   inherit (lib) mkIf;
+  inherit (lib.${namespace}) enabled;
 
   cfg = config.${namespace}.wms.hyprland;
 in
 {
   config = mkIf cfg.enable {
+    dotties.utility.anyrun = enabled;
+
     wayland.windowManager.hyprland = {
       settings = {
         "$mod" = "SUPER";
@@ -58,8 +61,7 @@ in
             "$mod CONTROL_SHIFT, S, exec, grimblast --notify edit screen"
 
             # rofi
-            "$mod, D, exec, pkill rofi || ${pkgs.rofi-wayland}/bin/rofi -show drun"
-            "$mod, Period, exec, pkill rofi || ${pkgs.bemoji}/bin/bemoji"
+            "$mod, D, exec, ${pkgs.anyrun}/bin/anyrun"
 
             # client controls
             "$mod, M, fullscreen, 1"
@@ -94,9 +96,7 @@ in
             "$mod SHIFT, K, movewindow, u"
             "$mod SHIFT, L, movewindow, r"
 
-            "$mod, Space, togglegroup,"
-            "$mod SHIFT, N, changegroupactive, f"
-            "$mod SHIFT, P, changegroupactive, b"
+            "$mod, Space, pseudo,"
 
             "$mod SHIFT, Z, exec, hyprctl keyword cursor:zoom_factor 1"
           ]
@@ -116,7 +116,7 @@ in
                 [
                   "$mod, ${ws}, workspace, ${toString (x + 1)}"
                   "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
-                  "$mod CTRL, ${ws}, workspace, ${toString ((x + 11))}" # FUCK IT, WHATS ANOTHER 10 WORKSPACES?
+                  "$mod CTRL, ${ws}, workspace, ${toString ((x + 11))}"
                   "$mod CONTROL_SHIFT, ${ws}, movetoworkspace, ${toString ((x + 11))}"
                 ]
               ) 10
