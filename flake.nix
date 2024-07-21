@@ -38,6 +38,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    anyrun = {
+      url = "github:anyrun-org/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hardware.url = "github:nixos/nixos-hardware";
     razer-laptop-control.url = "github:Razer-Linux/razer-laptop-control-no-dkms";
 
@@ -72,6 +77,7 @@
         nixvim.homeManagerModules.nixvim
         spicetify-nix.homeManagerModules.default
         nix-colors.homeManagerModules.default
+        anyrun.homeManagerModules.default
       ];
 
       systems.modules.nixos = with inputs; [ home-manager.nixosModules.home-manager ];
