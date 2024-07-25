@@ -37,6 +37,7 @@ in
       thunar = enabled;
       thunderbird = enabled;
       wireshark = enabled;
+      steam = enabled;
     };
 
     dms.sddm = {

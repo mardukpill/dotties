@@ -11,6 +11,7 @@ _: {
         "locale=en_US.UTF-8"
         "dmask=027"
         "fmask=137"
+        "exec"
       ];
     };
 
