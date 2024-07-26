@@ -27,8 +27,6 @@ in
     environment.systemPackages = with pkgs; [
       home-manager
       sqlite
-      # alejandra
-      # TODO: add cachix
     ];
 
     programs.nix-index-database.comma.enable = cfg.comma;
@@ -45,13 +43,16 @@ in
           flake-registry = "";
           # Workaround for https://github.com/NixOS/nix/issues/9574
           nix-path = "https://github.com/NixOS/nixpkgs";
+          substituters = [
+            "https://nix-community.cachix.org"
+            "https://cache.nixos.org/"
+          ];
+          trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
         };
-        # Opinionated: disable channels
         channel.enable = false;
 
-        # Opinionated: make flake registry and nix path match flake inputs
-        registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
-        nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+        registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs; # nix3
+        nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs; # nix2
 
         gc = {
           automatic = true;
