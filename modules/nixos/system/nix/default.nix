@@ -27,7 +27,7 @@ in
     environment.systemPackages = with pkgs; [
       home-manager
       sqlite
-      alejandra
+      # alejandra
       # TODO: add cachix
     ];
 
@@ -58,5 +58,10 @@ in
           options = "--delete-older-than 7d";
         };
       };
+    nixpkgs = {
+      config = {
+        allowUnfree = true;
+      };
+    };
   };
 }
