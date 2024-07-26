@@ -34,8 +34,6 @@ in
 
   home.packages = with pkgs; [
     playerctl
-    zathura
-    libreoffice-fresh
     godot_4
   ];
 
