@@ -18,4 +18,6 @@ rec {
   disabled = {
     enable = false;
   };
+
+  mkEnumType = enums: with types; nullOr (enum enums);
 }

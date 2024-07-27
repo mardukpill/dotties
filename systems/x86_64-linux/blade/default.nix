@@ -65,13 +65,6 @@ in
       hyprland = enabled;
     };
   };
-
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-    };
-  };
-
   networking = {
     hostName = lib.snowfall.system.get-inferred-system-name ./.;
     networkmanager = enabled;

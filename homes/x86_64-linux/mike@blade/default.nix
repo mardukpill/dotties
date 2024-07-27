@@ -10,12 +10,12 @@ let
   inherit (lib.${namespace}) enabled;
 in
 {
-  snowfallorg.user = {
-    name = "mike";
-    enable = true;
-  };
-
   dotties = {
+    suites = {
+      office = enabled;
+      personal = enabled;
+      av = enabled;
+    };
     cli = {
       neovim = enabled;
       tools = enabled;
@@ -27,34 +27,16 @@ in
         spicetify = true;
       };
       alacritty = enabled;
-      imv = enabled;
-      mpv = enabled;
     };
 
     wms.hyprland = enabled;
   };
 
   home.packages = with pkgs; [
-    vesktop
-    keepassxc
-
-    firefox
-
     playerctl
-
-    ffmpeg # media management
-    yt-dlp
-    imagemagick
-
-    zathura
-    viewnior
-    gobble
-
-    libreoffice-fresh
     godot_4
   ];
 
-  services.syncthing.enable = true;
   services.playerctld.enable = true;
 
   services.ssh-agent.enable = true;
@@ -66,6 +48,11 @@ in
         identityFile = "~/.ssh/id_ed25519";
       };
     };
+  };
+
+  snowfallorg.user = {
+    name = "mike";
+    enable = true;
   };
 
   home.stateVersion = "23.05";
