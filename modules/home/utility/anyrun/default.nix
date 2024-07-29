@@ -10,6 +10,7 @@ let
   inherit (lib) mkEnableOption mkIf;
 
   cfg = config.${namespace}.utility.anyrun;
+  anyrun = inputs.anyrun;
 in
 {
   options.${namespace}.utility.anyrun = {
@@ -20,13 +21,13 @@ in
     programs.anyrun = {
       enable = true;
       config = {
-        plugins = with inputs.anyrun.packages.${pkgs.system}; [
+        plugins = with anyrun.packages.${pkgs.system}; [
           applications
           # kidex
           rink
           symbols
           shell
-          # dictionary
+          dictionary
           # randr
         ];
         width.fraction = 0.2;
