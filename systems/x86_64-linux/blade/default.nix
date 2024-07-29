@@ -34,6 +34,7 @@ in
     };
 
     apps = {
+      bottles = enabled;
       thunar = enabled;
       thunderbird = enabled;
       wireshark = enabled;
