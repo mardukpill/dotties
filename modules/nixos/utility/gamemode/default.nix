@@ -41,6 +41,8 @@ in
           pkgs.writeShellScript "gamemode-end" cfg.endscript;
     in
     mkIf cfg.enable {
+      dotties.user.extraGroups = [ "gamemode" ];
+
       programs.gamemode = {
         enable = true;
         enableRenice = true;
