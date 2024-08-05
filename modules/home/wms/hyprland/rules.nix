@@ -23,6 +23,9 @@ in
         ];
 
         "debug:disable_logs" = false; # FIXME: remove after debugging
+        general = {
+          allow_tearing = true;
+        };
 
         windowrulev2 = [
           "float,class:float"
@@ -31,6 +34,7 @@ in
 
           "workspace 10 silent, class:KeePassXC"
           "workspace 10 silent, class:^(gnome-connections)$"
+          "immediate class:^(cs2)$"
         ];
 
         workspace = builtins.concatLists [

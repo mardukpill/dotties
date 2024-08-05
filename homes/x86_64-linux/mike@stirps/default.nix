@@ -24,7 +24,6 @@ in
     apps = {
       spotify = {
         enable = true;
-        spicetify = true;
       };
       alacritty = enabled;
     };
@@ -32,10 +31,7 @@ in
     wms.hyprland = enabled;
   };
 
-  home.packages = with pkgs; [
-    playerctl
-    godot_4
-  ];
+  home.packages = with pkgs; [ playerctl ];
 
   services.playerctld.enable = true;
 

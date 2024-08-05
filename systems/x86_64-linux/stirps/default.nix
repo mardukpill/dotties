@@ -12,7 +12,6 @@ in
 {
   imports = [
     ./boot.nix
-    ./disks.nix
     ./hardware-configuration.nix
   ];
 
@@ -20,7 +19,6 @@ in
     user = {
       extraGroups = [
         "wheel"
-        "video"
         "input"
       ];
     };
@@ -30,14 +28,11 @@ in
         enable = true;
         version = "535";
       };
-      razer = enabled;
     };
 
     apps = {
-      bottles = enabled;
       thunar = enabled;
       thunderbird = enabled;
-      wireshark = enabled;
       steam = enabled;
     };
 
