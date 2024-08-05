@@ -87,10 +87,16 @@
         hardware.nixosModules.common-pc-laptop
         hardware.nixosModules.common-pc-laptop-ssd
 
+        nix-index-database.nixosModules.nix-index
         razer-laptop-control.nixosModules.default
+      ];
+
+      systems.hosts.stirps.modules = with inputs; [
+        hardware.nixosModules.common-pc-laptop
 
         nix-index-database.nixosModules.nix-index
-      ];
+        razer-laptop-control.nixosModules.default
+	];
 
       deploy = lib.mkDeploy { inherit (inputs) self; };
       outputs-builder = channels: { formatter = channels.nixpkgs.nixfmt-rfc-style; };
