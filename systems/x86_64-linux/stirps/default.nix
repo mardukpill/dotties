@@ -33,7 +33,6 @@ in
     apps = {
       thunar = enabled;
       thunderbird = enabled;
-      wireshark = enabled;
       steam = enabled;
     };
 

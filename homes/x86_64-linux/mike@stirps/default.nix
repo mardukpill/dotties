@@ -31,9 +31,7 @@ in
     wms.hyprland = enabled;
   };
 
-  home.packages = with pkgs; [
-    playerctl
-  ];
+  home.packages = with pkgs; [ playerctl ];
 
   services.playerctld.enable = true;
 

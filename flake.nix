@@ -80,23 +80,19 @@
         anyrun.homeManagerModules.default
       ];
 
-      systems.modules.nixos = with inputs; [ home-manager.nixosModules.home-manager ];
+      systems.modules.nixos = with inputs; [
+        home-manager.nixosModules.home-manager
+        razer-laptop-control.nixosModules.default
+        nix-index-database.nixosModules.nix-index
+      ];
 
       systems.hosts.blade.modules = with inputs; [
         hardware.nixosModules.common-cpu-intel
         hardware.nixosModules.common-pc-laptop
         hardware.nixosModules.common-pc-laptop-ssd
-
-        nix-index-database.nixosModules.nix-index
-        razer-laptop-control.nixosModules.default
       ];
 
-      systems.hosts.stirps.modules = with inputs; [
-        hardware.nixosModules.common-pc-laptop
-
-        nix-index-database.nixosModules.nix-index
-        razer-laptop-control.nixosModules.default
-	];
+      systems.hosts.stirps.modules = with inputs; [ hardware.nixosModules.common-pc-laptop ];
 
       deploy = lib.mkDeploy { inherit (inputs) self; };
       outputs-builder = channels: { formatter = channels.nixpkgs.nixfmt-rfc-style; };
