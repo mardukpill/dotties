@@ -1,8 +1,4 @@
-{ inputs, ... }:
-let
-  inherit (inputs) nixvim;
-in
-{
+_: {
   programs.nixvim.plugins.lualine = {
     enable = true;
     iconsEnabled = true;
