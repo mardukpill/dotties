@@ -7,7 +7,8 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkEnableOption;
+  inherit (lib) mkIf mkEnableOption types;
+  inherit (lib.${namespace}) mkOpt;
 
   cfg = config.${namespace}.cli.fish;
 in
@@ -29,9 +30,6 @@ in
       shellInit = ''
         set -g fish_greeting
         zoxide init fish | source
-        if command -q nix-your-shell
-        	nix-your-shell fish | source
-        end
 
         set fish_greeting
       '';
