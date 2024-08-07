@@ -1,8 +1,4 @@
-{ inputs, ... }:
-let
-  inherit (inputs) nixvim;
-in
-{
+_: {
   programs.nixvim = {
     globals = {
       mapleader = " ";
@@ -70,7 +66,15 @@ in
         mode = "n";
         key = "<leader>pm";
         action = ":Glow<CR>";
-        options.desc = "Preview current document in Glow";
+        options.desc = "Preview current markdown document in Glow";
+      }
+      {
+        mode = "n";
+        key = "<leader>ff";
+        action = {
+          __raw = ''function() require("oil").open_float() end'';
+        };
+        options.desc = "Open a floating oil instance";
       }
     ];
   };

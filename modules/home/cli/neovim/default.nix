@@ -43,10 +43,6 @@ in
       };
 
       plugins = {
-        oil = {
-          enable = true;
-        };
-
         fidget = {
           enable = true;
         };
