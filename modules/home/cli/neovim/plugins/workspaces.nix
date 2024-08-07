@@ -16,7 +16,11 @@ in
 
     extraConfigLua = # lua
       ''
-        require("workspaces").setup()
+        require("workspaces").setup({
+          hooks = {
+            open = "e ."
+          }
+        })
       '';
   };
 }
