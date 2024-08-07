@@ -38,6 +38,7 @@
         "class<firefox> title<.*twitch|youtube|plex|tntdrama|bally sports.*>" = "";
         "title<nvim*>" = "";
         "title<vim *>" = "";
+        "class<neovide>" = "";
         "class<kodi>" = "󰌔";
         "class<Alacritty>" = "";
         "class<kitty>" = "";
