@@ -68,6 +68,7 @@ in
       extraConfigLuaPre = # Lua
         ''
           require("otter").activate({ "python", "bash", "fish", "lua" }, true, true, nil)
+          vim.g.neovide_scale_factor = 1.5
         '';
     };
   };
