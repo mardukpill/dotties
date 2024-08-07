@@ -27,7 +27,7 @@ in
       }
       # nvim-tree
       {
-        key = "<leader>bt";
+        key = "<leader>t";
         action = ":NvimTreeToggle<CR>";
         options.desc = "NvimTreeToggle";
       }
@@ -48,17 +48,23 @@ in
         options.desc = "Yank into clipboard";
       }
       {
-        key = "<jk>"; # FIXME: binding does not work
-        action = "<Esc>";
-        mode = "i";
-        options.desc = "Emergency exit for insert mode";
+        key = "<esc>";
+        action = ":noh<CR>";
       }
-      {
-        key = "<C-Esc>";
-        mode = "t";
-        action = "<C-\\><C-n>";
-        options.desc = "Exit terminal mode";
-      }
+      /*
+        {
+          key = "<jk>"; # FIXME: binding does not work
+          action = "<Esc>";
+          mode = "i";
+          options.desc = "Emergency exit for insert mode";
+        }
+          {
+            key = "<C-Esc>";
+            mode = "t";
+            action = "<C-\\><C-n>";
+            options.desc = "Exit terminal mode";
+          }
+      */
     ];
   };
 }
