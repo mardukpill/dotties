@@ -48,6 +48,7 @@ in
         options.desc = "Yank into clipboard";
       }
       {
+        mode = "n";
         key = "<esc>";
         action = ":noh<CR>";
       }
@@ -65,6 +66,12 @@ in
             options.desc = "Exit terminal mode";
           }
       */
+      {
+        mode = "n";
+        key = "<leader>pm";
+        action = ":Glow<CR>";
+        options.desc = "Preview current document in Glow";
+      }
     ];
   };
 }
