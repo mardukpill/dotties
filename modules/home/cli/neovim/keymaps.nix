@@ -21,6 +21,12 @@ _: {
         key = "<leader><leader>";
         options.desc = "Telescope buffers";
       }
+      {
+        action = "<cmd>Telescope workspaces<CR>";
+        key = "<leader>ws";
+        options.desc = "Telescope workspaces";
+      }
+
       # nvim-tree
       {
         key = "<leader>t";
@@ -66,7 +72,7 @@ _: {
       {
         mode = "n";
         key = "<leader>pm";
-        action = ":Glow<CR>";
+        action = "<cmd>Glow<CR>";
         options.desc = "Preview current markdown document in Glow";
       }
       {

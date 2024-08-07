@@ -55,10 +55,6 @@ in
           enable = true;
         };
 
-        otter = {
-          # TODO
-          enable = true;
-        };
       };
 
       extraPlugins = with pkgs.vimPlugins; [
@@ -67,7 +63,6 @@ in
 
       extraConfigLuaPre = # Lua
         ''
-          require("otter").activate({ "python", "bash", "fish", "lua" }, true, true, nil)
           vim.g.neovide_scale_factor = 1.5
         '';
     };
