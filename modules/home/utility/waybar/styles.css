@@ -47,9 +47,9 @@ box {
 }
 
 #network {
-	border: 3px solid @fourth;
+	border: 3px solid @base04;
 	background-color: @background;
-	color: @fifthalt;
+	color: @base0D;
 	padding-left: 9px;
 	padding-right: 9px;
 	margin: 0.2em;
@@ -57,7 +57,7 @@ box {
 
 #battery {
 	background-color: @background;
-	color: @secondalt;
+	color: @base0A;
 	border: 3px solid @backgroundalt;
 	margin: 0.2em;
 	padding-left: 9px;
@@ -74,13 +74,13 @@ box {
 
 #clock {
 	background-color: @background;
-	color: @fifth;
+	color: @base05;
 	padding-right: 9px;
 	padding-left: 9px;
 	margin: 0.2em;
 	font-weight: bold;
   font-size: 18px;
-	border: 3px solid @fifthalt;
+	border: 3px solid @base0D;
 }
 
 @keyframes blink {
@@ -92,18 +92,18 @@ box {
 
 #window {
 	font-weight: bold;
-	color: @fifth;
+	color: @base05;
 	margin: 0.2em;
 	background-color: @background;
-	border: 3px dotted @fourthalt;
+	border: 3px dotted @base0C;
 	padding-left: 6px;
 	padding-right: 9px;
 }
 
 #pulseaudio {
-	color: @sixth;
+	color: @base06;
 	background-color: @background;
-	border: 3px solid @firstalt;
+	border: 3px solid @base09;
 	margin: 0.2em;
 	padding-left: 9px;
 	padding-right: 15px;
@@ -111,7 +111,7 @@ box {
 
 #cpu {
 	background-color: @background;
-	border: 3px solid @fourthalt;
+	border: 3px solid @base0C;
 	margin: 0.2em;
 	padding-left: 9px;
 	padding-right: 12px;
@@ -125,7 +125,7 @@ box {
   font-weight: bold;
 	font-size: 20px;
   background-color: @background;
-  border: 3px solid @fifthalt;
+  border: 3px solid @base0D;
 }
 
 #workspaces label {
@@ -136,7 +136,7 @@ box {
 #workspaces button {
   padding: 0 0.5em;
   background-color: @background;
-  color: @fifthalt;
+  color: @base0D;
   margin: 0.25em;
 }
 
@@ -151,8 +151,8 @@ box {
 }
 
 #workspaces button.active {
-  background-color: @second; 
-  color: @fifth;
+  background-color: @base02; 
+  color: @base05;
 	border-radius: 0.4em;
 	border: 0;
 }
@@ -160,5 +160,5 @@ box {
 #workspaces button.urgent {
   box-shadow: 2px 2px 2px 2px;
   border-radius: 1em;
-  color: @secondalt;
+  color: @base0A;
 }
