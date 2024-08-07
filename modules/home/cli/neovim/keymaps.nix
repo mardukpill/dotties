@@ -29,7 +29,7 @@ _: {
 
       # nvim-tree
       {
-        key = "<leader>t";
+        key = "<leader>bt";
         action = ":NvimTreeToggle<CR>";
         options.desc = "NvimTreeToggle";
       }
@@ -79,9 +79,21 @@ _: {
         mode = "n";
         key = "<leader>ff";
         action = {
-          __raw = ''function() require("oil").open_float() end'';
+          __raw = # Lua
+            ''
+              function() require("oil").open_float() end
+            '';
         };
         options.desc = "Open a floating oil instance";
+      }
+      {
+        mode = "n";
+        key = "<leader>tt";
+        action = "<cmd>ToggleTerm<CR>";
+        options = {
+          desc = "Open a floating terminal.";
+          silent = true;
+        };
       }
     ];
   };
