@@ -44,6 +44,9 @@ in
         }
       ];
       functions = {
+        fish_prompt = ./prompt.nix;
+        fish_mode_prompt = ./fish_mode.nix;
+
         __fish_command_not_found_handler = {
           body = "__fish_default_command_not_found_handler $argv[1]";
           onEvent = "fish_command_not_found";
