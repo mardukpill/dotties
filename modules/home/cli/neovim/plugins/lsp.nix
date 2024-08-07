@@ -1,6 +1,11 @@
-{ inputs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
-  inherit (inputs) nixvim;
+  inherit (lib) getExe;
 in
 {
   programs.nixvim.plugins = {
@@ -17,9 +22,28 @@ in
             telemetry.enable = false;
           };
         };
+
         nixd = {
           enable = true;
           filetypes = [ "nix" ];
+          settings = {
+            formatting = {
+              command = [ "${getExe pkgs.nixfmt-rfc-style}" ];
+            };
+          };
+        };
+
+        bashls = {
+          enable = true;
+          filetypes = [
+            "sh"
+            "bash"
+          ];
+        };
+
+        marksman = {
+          enable = true;
+          filetypes = [ "markdown" ];
         };
       };
       keymaps = {
