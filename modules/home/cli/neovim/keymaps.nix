@@ -47,6 +47,7 @@ _: {
         mode = "n";
         key = "<esc>";
         action = ":noh<CR>";
+        options.silent = true;
       }
       /*
         {
