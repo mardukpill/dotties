@@ -5,7 +5,6 @@
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
-
     };
 
     # Home manager
@@ -31,6 +30,14 @@
       inputs.hyprland.follows = "hyprland";
     };
     hyprland-contrib.url = "github:hyprwm/contrib";
+    hyprlock = {
+      url = "github:hyprwm/Hyprlock";
+      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+    };
+    hypridle = {
+      url = "github:hyprwm/Hypridle";
+      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+    };
 
     # spicetify
     spicetify-nix = {
