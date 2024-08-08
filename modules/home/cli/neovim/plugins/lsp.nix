@@ -1,6 +1,8 @@
 {
   pkgs,
   lib,
+  inputs,
+  system,
   config,
   ...
 }:
@@ -9,6 +11,7 @@ let
 in
 {
   programs.nixvim.plugins = {
+    nix.enable = true;
     lsp-format = {
       enable = true;
     };
@@ -23,12 +26,17 @@ in
           };
         };
 
-        nixd = {
+        nil-ls = {
           enable = true;
           filetypes = [ "nix" ];
           settings = {
             formatting = {
               command = [ "${getExe pkgs.nixfmt-rfc-style}" ];
+            };
+          };
+          nix = {
+            flake = {
+              autoArchive = true;
             };
           };
         };
