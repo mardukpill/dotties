@@ -6,8 +6,8 @@
   config,
   ...
 }:
+with lib;
 let
-  inherit (lib) mkIf mkOption mkEnableOption;
   inherit (lib.${namespace}) enabled;
 
   cfg = config.${namespace}.system.nix;
@@ -51,8 +51,12 @@ in
         };
         channel.enable = false;
 
-        registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs; # nix3
-        nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs; # nix2
+        generateRegistryFromInputs = true;
+        generateNixPathFromInputs = true;
+        linkInputs = true;
+
+        # registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs; # nix3
+        # nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs; # nix2
 
         gc = {
           automatic = true;
