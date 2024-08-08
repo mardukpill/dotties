@@ -7,6 +7,7 @@
         "" = "  ";
         "org.keepassxc.KeePassXC" = " 󰟵 ";
         "firefox" = "󰈹 firefox";
+        "neovide" = " nvimized";
         # FIXME: spotify resets its class.
       };
     };

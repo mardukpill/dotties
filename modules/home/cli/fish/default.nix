@@ -7,7 +7,8 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkEnableOption;
+  inherit (lib) mkIf mkEnableOption types;
+  inherit (lib.${namespace}) mkOpt;
 
   cfg = config.${namespace}.cli.fish;
 in
@@ -29,9 +30,6 @@ in
       shellInit = ''
         set -g fish_greeting
         zoxide init fish | source
-        if command -q nix-your-shell
-        	nix-your-shell fish | source
-        end
 
         set fish_greeting
       '';
@@ -46,6 +44,9 @@ in
         }
       ];
       functions = {
+        fish_prompt = ./prompt.nix;
+        fish_mode_prompt = ./fish_mode.nix;
+
         __fish_command_not_found_handler = {
           body = "__fish_default_command_not_found_handler $argv[1]";
           onEvent = "fish_command_not_found";

@@ -13,25 +13,6 @@ let
 in
 {
   config = mkIf cfg.enable {
-    gtk = {
-      # TODO: make separate theme module
-      enable = true;
-      theme = {
-        name = "rose-pine";
-        package = pkgs.rose-pine-gtk-theme;
-      };
-
-      iconTheme = {
-        package = pkgs.rose-pine-icon-theme;
-        name = "Rose-Pine-Icon-Theme";
-      };
-
-      font = {
-        name = "Sans";
-        size = 11;
-      };
-    };
-
     wayland.windowManager.hyprland = {
       settings = {
         "$dim" = "decoration:dim_inactive";

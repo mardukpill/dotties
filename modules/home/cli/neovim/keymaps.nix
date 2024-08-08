@@ -1,8 +1,4 @@
-{ inputs, ... }:
-let
-  inherit (inputs) nixvim;
-in
-{
+_: {
   programs.nixvim = {
     globals = {
       mapleader = " ";
@@ -25,6 +21,12 @@ in
         key = "<leader><leader>";
         options.desc = "Telescope buffers";
       }
+      {
+        action = "<cmd>Telescope workspaces<CR>";
+        key = "<leader>ws";
+        options.desc = "Telescope workspaces";
+      }
+
       # nvim-tree
       {
         key = "<leader>bt";
@@ -48,16 +50,50 @@ in
         options.desc = "Yank into clipboard";
       }
       {
-        key = "<jk>"; # FIXME: binding does not work
-        action = "<Esc>";
-        mode = "i";
-        options.desc = "Emergency exit for insert mode";
+        mode = "n";
+        key = "<esc>";
+        action = ":noh<CR>";
+        options.silent = true;
+      }
+      /*
+        {
+          key = "<jk>"; # FIXME: binding does not work
+          action = "<Esc>";
+          mode = "i";
+          options.desc = "Emergency exit for insert mode";
+        }
+          {
+            key = "<C-Esc>";
+            mode = "t";
+            action = "<C-\\><C-n>";
+            options.desc = "Exit terminal mode";
+          }
+      */
+      {
+        mode = "n";
+        key = "<leader>pm";
+        action = "<cmd>Glow<CR>";
+        options.desc = "Preview current markdown document in Glow";
       }
       {
-        key = "<C-Esc>";
-        mode = "t";
-        action = "<C-\\><C-n>";
-        options.desc = "Exit terminal mode";
+        mode = "n";
+        key = "<leader>ff";
+        action = {
+          __raw = # Lua
+            ''
+              function() require("oil").open_float() end
+            '';
+        };
+        options.desc = "Open a floating oil instance";
+      }
+      {
+        mode = "n";
+        key = "<leader>tt";
+        action = "<cmd>ToggleTerm<CR>";
+        options = {
+          desc = "Open a floating terminal.";
+          silent = true;
+        };
       }
     ];
   };
