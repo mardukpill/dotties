@@ -77,6 +77,11 @@ in
       systemd = {
         variables = [ "--all" ];
         enableXdgAutostart = true;
+        extraCommands = [
+          "systemctl --user stop hyprland-session.target"
+          "systemctl --user reset-failed"
+          "systemctl --user start hyprland-session.target"
+        ];
       };
 
       xwayland.enable = true;
