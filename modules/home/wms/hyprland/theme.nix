@@ -25,6 +25,9 @@ in
         "general:col.inactive_border" = "rgba(${config.colorScheme.palette.base00}FF)";
         "decoration:rounding" = 7;
 
+        # disable anime girl
+        "misc:force_default_wallpaper" = 0;
+
         animations = {
           enabled = "yes";
           first_launch_animation = true;
