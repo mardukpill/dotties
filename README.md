@@ -16,14 +16,34 @@
 
 
 <h2 align="center">
-  Screenshots
+  About
 </h2>
- <img alt="neovim" src="https://ploop.city/rosecandy/rosecandy-neovim.png">
- <img alt="busy" src="https://ploop.city/rosecandy/rosecandy-busy.png">
- <img alt="anyrun" src="https://ploop.city/rosecandy/rosecandy-anyrun.png">
- 
+Soon after starting my NixOS journey it  dawned on me that there is no standardized way of creating nix configurations, which is great for small projects, but can become a nightmare for larger ones. This is when I discovered Snowfall-lib. It provides a structured, but flexible way to create NixOS flakes that ensures my multi-system configuration stays (fairly) organized.
 
+<p>
 
+Snowfall-lib also automatically exports packages. You can try running a simple package from this repository on a Nix system using the following command.
+  
+ ```bash
+nix run github:mardukpill/dotties#hi
+```
+
+<h2 align="center">
+  Systems
+</h2>
+
+<div align="center">
+  
+| Host| CPU | GPU | RAM | STORAGE | 
+| --------------- | --------------- | --------------- | --------------- | --------------- |
+| blade | i7-12800h | RTX 3070Ti| 32GB DDR5 | 1+2TB |
+| stirps | i5-10300h | GTX 1650 | 16GB DDR4 | 256+500GB |
+| lantern | migration needed | -| - | - |
+| jawbone | migration needed | -| - | - |
+| splinter | planned | - | - | - |
+| wsl | planned | - | - | - |
+
+</div>
 
 <h2 align="center">
   Structure
@@ -33,15 +53,17 @@
 .
 ├── homes
 │   └── x86_64-linux
-│       └── mike@blade
+│       ├── mike@blade
+│       └── mike@stirps
 ├── lib
+│   ├── colorschemes
 │   └── module
 ├── modules
 │   ├── home
 │   │   ├── apps
 │   │   ├── cli
-│   │   ├── home
 │   │   ├── services
+│   │   ├── suites
 │   │   ├── themes
 │   │   ├── utility
 │   │   └── wms
@@ -51,13 +73,33 @@
 │       ├── dms
 │       ├── hw
 │       ├── system
+│       ├── user
+│       ├── utility
 │       └── wms
 ├── overlays
 ├── packages
 └── systems
     └── x86_64-linux
-        └── blade
+        ├── blade
+        └── stirps
 ```
+
+<h2 align="center">
+  Screenshots
+</h2>
+ <img alt="neovim" src="https://ploop.city/rosecandy/rosecandy-neovim.png">
+ <img alt="busy" src="https://ploop.city/rosecandy/rosecandy-busy.png">
+ <img alt="anyrun" src="https://ploop.city/rosecandy/rosecandy-anyrun.png">
+
+<h2 align="center">
+  Planned
+</h2>
+
+- [ ] lantern system configuration for homelab
+- [ ] wsl system configuration
+- [ ] multiple rices (acrylic theme)
+- [ ] templates for creating new projects
+- [ ] sops-nix for managing secrets
 
 <h2 align="center">
   Inspiration & Thanks
