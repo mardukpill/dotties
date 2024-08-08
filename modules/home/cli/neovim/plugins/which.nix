@@ -13,6 +13,34 @@ _: {
         "<bs>" = "BACKSPACE";
         "<BS>" = "BACKSPACE";
       };
+      /*
+        settings.spec = [
+          {
+            __unkeyed = "<leader>b";
+            group = " Tree";
+          }
+          {
+            __unkeyed = "<leader>g";
+            group = "󰊢 Git";
+          }
+          {
+            __unkeyed = "<leader>s";
+            group = " Search";
+          }
+          {
+            __unkeyed = "<leader>r";
+            group = " Rename";
+          }
+          {
+            __unkeyed = "<leader>t";
+            group = " Terminal";
+          }
+          {
+            __unkeyed = "<leader>w";
+            group = "Workspaces";
+          }
+        ];
+      */
     };
   };
 }
