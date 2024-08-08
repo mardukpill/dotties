@@ -50,6 +50,11 @@ _: {
         options.desc = "Yank into clipboard";
       }
       {
+        key = "<leader>p";
+        action = "\"+y";
+        options.desc = "Paste from clipboard";
+      }
+      {
         mode = "n";
         key = "<esc>";
         action = ":noh<CR>";
