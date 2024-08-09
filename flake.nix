@@ -40,10 +40,10 @@
     };
 
     # spicetify
-    spicetify-nix = {
-      url = "github:the-argus/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # spicetify-nix = {
+    #   url = "github:the-argus/spicetify-nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     anyrun = {
       url = "github:anyrun-org/anyrun";
@@ -82,7 +82,7 @@
       };
       homes.modules = with inputs; [
         nixvim.homeManagerModules.nixvim
-        spicetify-nix.homeManagerModules.default
+        # spicetify-nix.homeManagerModules.default
         nix-colors.homeManagerModules.default
         anyrun.homeManagerModules.default
       ];
