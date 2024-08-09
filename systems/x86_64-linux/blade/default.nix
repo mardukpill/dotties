@@ -53,10 +53,13 @@ in
       };
     };
 
-    system.nix = {
-      managed = true;
-      comma = true;
-      nixHelper = true;
+    system = {
+      nix = {
+        managed = true;
+        comma = true;
+        nixHelper = true;
+      };
+      security.polkit = enabled;
     };
 
     cli = {
