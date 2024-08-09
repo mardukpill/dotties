@@ -19,5 +19,5 @@ rec {
     enable = false;
   };
 
-  mkEnumType = enums: with types; nullOr (enum enums);
+  nullOrEnums = enums: with types; nullOr (enum enums);
 }
