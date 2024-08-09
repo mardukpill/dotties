@@ -8,8 +8,6 @@
 }:
 with lib;
 let
-  inherit (lib.${namespace}) enabled;
-
   cfg = config.${namespace}.system.nix;
 in
 {
@@ -19,7 +17,7 @@ in
       default = true;
       description = "whether to manage nix configuration.";
     };
-    useHelper = mkEnableOption "whether to use nix helper.";
+    nixHelper = mkEnableOption "nix helper.";
     comma = mkEnableOption "comma.";
   };
 
@@ -31,7 +29,7 @@ in
 
     programs.nix-index-database.comma.enable = cfg.comma;
 
-    programs.nh = mkIf cfg.useHelper enabled;
+    programs.nh = mkIf cfg.nixHelper { enable = true; };
 
     nix =
       let
@@ -51,12 +49,12 @@ in
         };
         channel.enable = false;
 
-        generateRegistryFromInputs = true;
-        generateNixPathFromInputs = true;
-        linkInputs = true;
+        # generateRegistryFromInputs = true;
+        # generateNixPathFromInputs = true;
+        # linkInputs = true;
 
-        # registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs; # nix3
-        # nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs; # nix2
+        registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs; # nix3
+        nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs; # nix2
 
         gc = {
           automatic = true;
