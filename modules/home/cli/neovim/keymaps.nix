@@ -50,8 +50,8 @@ _: {
         options.desc = "Yank into clipboard";
       }
       {
-        key = "<leader>p";
-        action = "\"+y";
+        key = "<leader>v";
+        action = "\"+p";
         options.desc = "Paste from clipboard";
       }
       {
@@ -76,7 +76,7 @@ _: {
       */
       {
         mode = "n";
-        key = "<leader>pm";
+        key = "<leader>pg";
         action = "<cmd>Glow<CR>";
         options.desc = "Preview current markdown document in Glow";
       }

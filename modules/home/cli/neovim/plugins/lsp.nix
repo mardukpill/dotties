@@ -34,11 +34,6 @@ in
               command = [ "${getExe pkgs.nixfmt-rfc-style}" ];
             };
           };
-          nix = {
-            flake = {
-              autoArchive = true;
-            };
-          };
         };
 
         bashls = {
