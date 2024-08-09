@@ -18,7 +18,7 @@
 <h2 align="center">
   About
 </h2>
-Soon after starting my NixOS journey, it dawned on me that there is no standardized way of creating nix configurations, which is great for small projects, but can become a nightmare for larger ones. This is when I discovered Snowfall-lib. It provides a structured, but flexible way to create NixOS flakes that ensures my multi-system configuration stays (fairly) organized.
+My dotfiles are built with Snowfall-lib. It provides a structured, but flexible way to create NixOS flakes that ensures my multi-system configuration stays (fairly) organized.
 
 <p>
 
