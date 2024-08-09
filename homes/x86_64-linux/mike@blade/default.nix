@@ -24,7 +24,6 @@ in
     apps = {
       spotify = {
         enable = true;
-        spicetify = true;
       };
       alacritty = enabled;
     };

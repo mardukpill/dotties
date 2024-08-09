@@ -37,6 +37,7 @@ in
         expandtab = true;
         cursorline = true;
         undofile = true;
+        foldmethod = "manual";
 
         shiftwidth = 2;
         tabstop = 2;

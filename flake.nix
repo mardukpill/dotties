@@ -5,7 +5,6 @@
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
-
     };
 
     # Home manager
@@ -31,12 +30,20 @@
       inputs.hyprland.follows = "hyprland";
     };
     hyprland-contrib.url = "github:hyprwm/contrib";
+    hyprlock = {
+      url = "github:hyprwm/Hyprlock";
+      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+    };
+    hypridle = {
+      url = "github:hyprwm/Hypridle";
+      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+    };
 
     # spicetify
-    spicetify-nix = {
-      url = "github:the-argus/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # spicetify-nix = {
+    #   url = "github:the-argus/spicetify-nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     anyrun = {
       url = "github:anyrun-org/anyrun";
@@ -75,7 +82,7 @@
       };
       homes.modules = with inputs; [
         nixvim.homeManagerModules.nixvim
-        spicetify-nix.homeManagerModules.default
+        # spicetify-nix.homeManagerModules.default
         nix-colors.homeManagerModules.default
         anyrun.homeManagerModules.default
       ];

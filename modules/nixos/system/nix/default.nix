@@ -6,10 +6,8 @@
   config,
   ...
 }:
+with lib;
 let
-  inherit (lib) mkIf mkOption mkEnableOption;
-  inherit (lib.${namespace}) enabled;
-
   cfg = config.${namespace}.system.nix;
 in
 {
@@ -19,7 +17,7 @@ in
       default = true;
       description = "whether to manage nix configuration.";
     };
-    useHelper = mkEnableOption "whether to use nix helper.";
+    nixHelper = mkEnableOption "nix helper.";
     comma = mkEnableOption "comma.";
   };
 
@@ -31,7 +29,7 @@ in
 
     programs.nix-index-database.comma.enable = cfg.comma;
 
-    programs.nh = mkIf cfg.useHelper enabled;
+    programs.nh = mkIf cfg.nixHelper { enable = true; };
 
     nix =
       let
@@ -50,6 +48,10 @@ in
           trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
         };
         channel.enable = false;
+
+        # generateRegistryFromInputs = true;
+        # generateNixPathFromInputs = true;
+        # linkInputs = true;
 
         registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs; # nix3
         nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs; # nix2

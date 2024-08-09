@@ -3,7 +3,7 @@
   programs.nixvim.plugins = {
     luasnip = {
       enable = true;
-      extraConfig = {
+      settings = {
         enable_autosnippets = true;
         store_selection_keys = "<Tab>";
       };
@@ -19,6 +19,7 @@
 
     cmp = {
       enable = true;
+      autoEnableSources = true;
       settings = {
         snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
 
