@@ -76,5 +76,7 @@ in
     networkmanager = enabled;
   };
 
+  environment.systemPackages = with pkgs; [ ];
+
   system.stateVersion = "23.05";
 }
