@@ -46,7 +46,7 @@ in
 
         bind =
           [
-            # "$mod,Tab, hyperexpo:expo, toggle"
+            "$mod,Tab, hyprexpo:expo, toggle"
 
             # applications
             "$mod, Return, exec, ${pkgs.alacritty}/bin/alacritty"

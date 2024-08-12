@@ -10,7 +10,7 @@ pkgs.stdenv.mkDerivation {
   name = "bluemail-with-gpu";
   phases = [ "installPhase" ];
   buildInputs = [ pkgs.makeWrapper ];
-  src = lib.mkIf false fetchurl {
+  src = fetchurl {
     # use updated version of bluemail
     url = "https://download.bluemail.me/BlueMail/deb/BlueMail.deb";
     hash = "sha256-dnYOb3Q/9vSDssHGS2ywC/Q24Oq96/mvKF+eqd/4dVw=";

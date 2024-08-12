@@ -53,10 +53,13 @@ in
       };
     };
 
-    system.nix = {
-      managed = true;
-      comma = true;
-      nixHelper = true;
+    system = {
+      nix = {
+        managed = true;
+        comma = true;
+        nixHelper = true;
+      };
+      security.polkit = enabled;
     };
 
     cli = {
@@ -72,6 +75,8 @@ in
     hostName = lib.snowfall.system.get-inferred-system-name ./.;
     networkmanager = enabled;
   };
+
+  environment.systemPackages = with pkgs; [ ];
 
   system.stateVersion = "23.05";
 }

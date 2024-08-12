@@ -20,18 +20,26 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkEnableOption;
-  inherit (lib.${namespace}) enabled;
+  inherit (lib) mkIf mkEnableOption types;
+  inherit (lib.${namespace}) mkOpt enabled;
   inherit (inputs) hyprland;
 
+  hyprland-plugins = inputs.hyprland-plugins.packages.${pkgs.system};
   cfg = config.${namespace}.wms.hyprland;
 in
 {
   options.${namespace}.wms.hyprland = {
     enable = mkEnableOption "hyprland.";
+    theme = mkOpt (types.enum [ "rose-pine" ]) "rose-pine" "The theme to use with Hyprland."; # TODO: currently doesn't effect theming
+    idleDelay =
+      mkOpt types.ints.unsigned 300
+        "The delay blanking before the screen turns off due to idling. Setting to 0 will disable screen idle blanking.";
+    lockDelay =
+      mkOpt types.ints.unsigned 240
+        "The delay before the screen locks due to idling. Setting to 0 will disable idle locking.";
   };
 
-  imports = lib.snowfall.fs.get-non-default-nix-files ./.;
+  imports = lib.snowfall.fs.get-non-default-nix-files-recursive ./.;
 
   config = mkIf cfg.enable {
     dotties.utility.mako = enabled;
@@ -88,7 +96,7 @@ in
 
       package = hyprland.packages.${system}.hyprland;
 
-      plugins = [ ]; # TODO
+      plugins = with hyprland-plugins; [ hyprexpo ];
     };
   };
 }

@@ -17,6 +17,10 @@ in
   };
 
   config = mkIf cfg.manage {
+    programs.lazygit = {
+      enable = true;
+    };
+
     programs.git = {
       enable = true;
 

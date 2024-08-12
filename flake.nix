@@ -101,7 +101,7 @@
 
       systems.hosts.stirps.modules = with inputs; [ hardware.nixosModules.common-pc-laptop ];
 
-      deploy = lib.mkDeploy { inherit (inputs) self; };
+      # deploy = lib.mkDeploy { inherit (inputs) self; };
       outputs-builder = channels: { formatter = channels.nixpkgs.nixfmt-rfc-style; };
     };
 }
