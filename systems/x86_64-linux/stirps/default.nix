@@ -20,6 +20,8 @@ in
     ./hardware-configuration.nix
   ];
 
+  networking.firewall.checkReversePath = false;
+
   dotties = {
     user = {
       extraGroups = [
