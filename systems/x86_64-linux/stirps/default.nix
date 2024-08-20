@@ -30,6 +30,11 @@ in
       ];
     };
 
+    services.plex = {
+      enable = true;
+      zurg = true;
+    };
+
     hw = {
       nvidia = {
         enable = true;

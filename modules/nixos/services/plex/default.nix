@@ -1,15 +1,12 @@
 {
-  pkgs,
   namespace,
   lib,
-  inputs,
   config,
   ...
 }:
-with lib;
 let
-  inherit (lib) namespace;
-  cfg = config.${namespace}.system.nix;
+  inherit (lib) mkEnableOption mkIf;
+  cfg = config.${namespace}.services.plex;
 in
 {
   options.${namespace}.services.plex = {
