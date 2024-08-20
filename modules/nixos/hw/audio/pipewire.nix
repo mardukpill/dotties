@@ -14,7 +14,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    pavucontrol
+    pwvucontrol
     pulsemixer
     helvum
   ];
