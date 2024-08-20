@@ -14,6 +14,8 @@ let
   inherit (lib.${namespace}) enabled;
 in
 {
+  networking.firewall.checkReversePath = false;
+
   imports = [
     ./boot.nix
     ./disks.nix
