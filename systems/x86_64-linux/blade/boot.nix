@@ -1,5 +1,6 @@
 _: {
   boot = {
+    kernelParams = [ "acpi_osi=" ];
     plymouth = {
       enable = true;
     };
