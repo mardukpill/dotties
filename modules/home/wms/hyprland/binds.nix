@@ -7,7 +7,7 @@
   ...
 }:
 let
-  inherit (lib) mkIf;
+  inherit (lib) mkIf getExe;
   inherit (lib.${namespace}) enabled;
 
   cfg = config.${namespace}.wms.hyprland;
@@ -15,6 +15,7 @@ in
 {
   config = mkIf cfg.enable {
     dotties.utility.anyrun = enabled;
+    dotties.utility.brillo = enabled;
 
     wayland.windowManager.hyprland = {
       settings = {
@@ -34,8 +35,8 @@ in
           ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
           ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
           ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-          ", XF86MonBrightnessDown, exec, brillo -U 5 -u 100000"
-          ", XF86MonBrightnessUp, exec, brillo -A 5 -u 100000"
+          ", XF86MonBrightnessDown, exec, ${getExe pkgs.brillo} -U 5 -u 100000"
+          ", XF86MonBrightnessUp, exec, ${getExe pkgs.brillo} -A 5 -u 100000"
         ];
 
         bindl = [

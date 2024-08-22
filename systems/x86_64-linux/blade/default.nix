@@ -45,6 +45,8 @@ in
       steam = enabled;
     };
 
+    utility.brillo = enabled;
+
     dms.sddm = {
       enable = true;
       theme = {
