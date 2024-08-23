@@ -60,6 +60,9 @@ in
         nixHelper = true;
       };
       security.polkit = enabled;
+      firewall = {
+        wireguard = enabled;
+      };
     };
 
     cli = {
