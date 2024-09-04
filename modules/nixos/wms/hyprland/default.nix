@@ -7,6 +7,7 @@
 }:
 let
   inherit (lib) mkIf mkEnableOption;
+  inherit (lib.${namespace}) enabled;
 
   cfg = config.${namespace}.wms.hyprland;
 in
@@ -16,8 +17,6 @@ in
   };
 
   config = mkIf cfg.enable {
-
-    environment.systemPackages = with pkgs; [ ];
 
     programs.hyprland.enable = true;
     programs.hyprland.portalPackage = pkgs.xdg-desktop-portal-gtk;

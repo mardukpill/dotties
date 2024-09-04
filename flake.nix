@@ -51,7 +51,7 @@
     };
 
     hardware.url = "github:nixos/nixos-hardware";
-    razer-laptop-control.url = "github:Razer-Linux/razer-laptop-control-no-dkms";
+    razer-laptop-control.url = "github:mardukpill/razer-laptop-control-no-dkms/app";
 
     nixvim.url = "github:nix-community/nixvim";
     swww.url = "github:LGFae/swww";
