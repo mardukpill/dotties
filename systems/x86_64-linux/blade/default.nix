@@ -54,6 +54,7 @@ in
     };
 
     system = {
+      adb = enabled;
       nix = {
         managed = true;
         comma = true;
