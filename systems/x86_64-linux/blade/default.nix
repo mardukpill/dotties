@@ -55,6 +55,7 @@ in
 
     system = {
       adb = enabled;
+      nix-alien = enabled;
       nix = {
         managed = true;
         comma = true;

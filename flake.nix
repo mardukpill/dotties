@@ -7,6 +7,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-alien = {
+      url = "github:thiagokokada/nix-alien";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Home manager
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -87,6 +92,8 @@
         anyrun.homeManagerModules.default
       ];
 
+      overlays = with inputs; [ nix-alien.overlays.default ];
+
       systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager
         razer-laptop-control.nixosModules.default
@@ -102,6 +109,6 @@
       systems.hosts.stirps.modules = with inputs; [ hardware.nixosModules.common-pc-laptop ];
 
       # deploy = lib.mkDeploy { inherit (inputs) self; };
-      outputs-builder = channels: { formatter = channels.nixpkgs.nixfmt-rfc-style; };
+      formatter = inputs.nixpkgs.pkgs.nixfmt-rfc-style;
     };
 }
