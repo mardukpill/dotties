@@ -18,9 +18,9 @@ in
   config = mkIf cfg.enable {
     services = {
       razer-laptop-control.enable = true;
-      # udev.extraRules = ''
-      #   KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="plugdev"
-      # ''; # needed for correct permissions for razer-laptop-control
+      udev.extraRules = ''
+        KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="plugdev"
+      ''; # needed for correct permissions for razer-laptop-control
     };
 
     environment.systemPackages = with pkgs; [ polychromatic ];
