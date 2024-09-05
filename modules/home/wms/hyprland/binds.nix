@@ -4,11 +4,13 @@
   pkgs,
   namespace,
   inputs,
+  system,
   ...
 }:
 let
-  inherit (lib) mkIf;
+  inherit (lib) mkIf getExe;
   inherit (lib.${namespace}) enabled;
+  inherit (inputs) hyprlock;
 
   cfg = config.${namespace}.wms.hyprland;
 in
@@ -46,6 +48,7 @@ in
 
         bind =
           [
+            "$mod SHIFT, L, exec, ${getExe hyprlock.packages.${system}.hyprlock} --immediate"
             "$mod,Tab, hyprexpo:expo, toggle"
 
             # applications
