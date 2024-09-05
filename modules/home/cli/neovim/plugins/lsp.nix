@@ -26,6 +26,11 @@ in
           };
         };
 
+        pyright = {
+          enable = true;
+          filetypes = [ "python" ];
+        };
+
         nil-ls = {
           enable = true;
           filetypes = [ "nix" ];
