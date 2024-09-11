@@ -54,12 +54,14 @@ in
         };
         channel.enable = false;
 
-        # generateRegistryFromInputs = true;
+        generateRegistryFromInputs = true;
         # generateNixPathFromInputs = true;
-        # linkInputs = true;
+        linkInputs = true;
 
-        registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs; # nix3
-        nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs; # nix2
+        nixPath = [ "nixpkgs=/nix/var/nix/profiles/per-user/root/channels-1-link/nixos" ];
+
+        # registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs; # nix3
+        # nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs; # nix2
 
         gc = {
           automatic = true;
