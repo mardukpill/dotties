@@ -54,6 +54,7 @@ in
     };
 
     system = {
+      docker = enabled;
       adb = enabled;
       nix-alien = enabled;
       nix = {
