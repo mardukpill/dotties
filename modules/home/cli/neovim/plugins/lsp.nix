@@ -1,20 +1,18 @@
 {
   pkgs,
   lib,
-  inputs,
-  system,
-  config,
+  namespace,
   ...
 }:
 let
   inherit (lib) getExe;
+  inherit (lib.${namespace}) enabled;
 in
 {
   programs.nixvim.plugins = {
-    nix.enable = true;
-    lsp-format = {
-      enable = true;
-    };
+    nix = enabled;
+    otter = enabled;
+    lsp-format = enabled;
     lsp = {
       enable = true;
       servers = {
@@ -25,6 +23,11 @@ in
             telemetry.enable = false;
           };
         };
+
+        # cssls = {
+        #   enable = true;
+        #   filetypes = [ "css" ];
+        # };
 
         pyright = {
           enable = true;
@@ -39,6 +42,14 @@ in
               command = [ "${getExe pkgs.nixfmt-rfc-style}" ];
             };
           };
+        };
+
+        ltex = {
+          enable = true;
+          filetypes = [
+            "latex"
+            "tex"
+          ];
         };
 
         bashls = {

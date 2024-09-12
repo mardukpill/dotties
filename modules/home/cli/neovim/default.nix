@@ -6,12 +6,16 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkEnableOption;
+  inherit (lib) mkIf mkEnableOption types;
+  inherit (lib.${namespace}) mkOpt;
   cfg = config.${namespace}.cli.neovim;
 in
 {
   options.${namespace}.cli.neovim = {
     enable = mkEnableOption "neovim.";
+    latex = {
+      enable = mkOpt types.bool true "LaTeX support for Neovim.";
+    };
   };
 
   imports = [ ./keymaps.nix ] ++ lib.snowfall.fs.get-non-default-nix-files ./plugins;
