@@ -49,6 +49,7 @@ in
         bind =
           [
             "$mod SHIFT, L, exec, ${getExe hyprlock.packages.${system}.hyprlock} --immediate"
+            "$mod CONTROL_SHIFT, X, exec, ${getExe pkgs.wlogout}"
             "$mod,Tab, hyprexpo:expo, toggle"
 
             # applications

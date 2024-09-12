@@ -44,6 +44,7 @@ in
   config = mkIf cfg.enable {
     dotties.utility.mako = enabled;
     dotties.utility.waybar = enabled;
+    dotties.utility.wlogout = enabled;
     dotties.services.swww = {
       enable = true;
       wallpaperPath = "/media/shared/pictures/wallpapers/bay.JPG";
