@@ -2,12 +2,14 @@ _: {
   programs.nixvim.plugins = {
     navic = {
       enable = true;
-      lsp = {
-        autoAttach = true;
+      settings = {
+        lsp = {
+          autoAttach = true;
+        };
       };
     };
     lualine = {
-      winbar = {
+      settings.winbar = {
         lualine_a = [ "navic" ];
       };
     };
