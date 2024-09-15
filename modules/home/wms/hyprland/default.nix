@@ -45,6 +45,8 @@ in
     dotties.utility.mako = enabled;
     dotties.utility.waybar = enabled;
     dotties.utility.wlogout = enabled;
+    dotties.utility.swappy = enabled;
+
     dotties.services.swww = {
       enable = true;
       wallpaperPath = "/media/shared/pictures/wallpapers/bay.JPG";
@@ -63,7 +65,6 @@ in
         grimblast
         dotties.hyprzoom
 
-        swappy
         gtk-engine-murrine # TODO: move to dedicated file
 
         playerctl
