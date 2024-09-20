@@ -1045,16 +1045,15 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1725510584,
-        "narHash": "sha256-n/JQuhlc5eTyS6TCJSvHLaRiB2j/sa5FFbaakwLLO4A=",
+        "lastModified": 1726490431,
+        "narHash": "sha256-ehDlNRTlL2Jn7FEsL4SJhqzGkMOfJy4poZMr2nb7j94=",
         "owner": "mardukpill",
         "repo": "razer-laptop-control-no-dkms",
-        "rev": "70c6192623f610a6dbeb6fa4eb68c292b4b015eb",
+        "rev": "ac733cd21ddd29d0f37b17736e62c0b24bf6e6d8",
         "type": "github"
       },
       "original": {
         "owner": "mardukpill",
-        "ref": "systemd",
         "repo": "razer-laptop-control-no-dkms",
         "type": "github"
       }

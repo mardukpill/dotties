@@ -56,7 +56,7 @@
     };
 
     hardware.url = "github:nixos/nixos-hardware";
-    razer-laptop-control.url = "github:mardukpill/razer-laptop-control-no-dkms/systemd";
+    razer-laptop-control.url = "github:mardukpill/razer-laptop-control-no-dkms";
 
     nixvim.url = "github:nix-community/nixvim";
     swww.url = "github:LGFae/swww";
@@ -109,6 +109,6 @@
       systems.hosts.stirps.modules = with inputs; [ hardware.nixosModules.common-pc-laptop ];
 
       # deploy = lib.mkDeploy { inherit (inputs) self; };
-      formatter = inputs.nixpkgs.pkgs.nixfmt-rfc-style;
+      outputs-builder = channels: { formatter = channels.nixpkgs.nixfmt-rfc-style; };
     };
 }
