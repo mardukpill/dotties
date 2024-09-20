@@ -20,6 +20,6 @@ in
     virtualisation.docker = {
       enable = true;
     };
-    dotties.user.extraGroups = [ "docker " ];
+    dotties.user.extraGroups = [ "docker" ];
   };
 }
