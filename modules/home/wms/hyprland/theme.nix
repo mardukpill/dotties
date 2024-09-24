@@ -17,6 +17,11 @@ in
       settings = {
         "$dim" = "decoration:dim_inactive";
 
+        # window swallowing
+        "misc:enable_swallow" = true;
+        "misc:swallow_regex" = "Alacritty";
+        "misc:swallow_exception_regex" = "wev";
+
         # decorations
         "general:gaps_out" = 4;
         "general:gaps_in" = 3;
