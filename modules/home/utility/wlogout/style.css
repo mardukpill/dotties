@@ -1,0 +1,16 @@
+window {
+  border: 0;
+  background-color: rgba(19,17,24,0.7);
+}
+
+button {
+  border: 3px solid @backgroundalt;
+  border-radius: 15px;
+  margin: 10px;
+}
+
+button:focus,
+button:hover,
+button:active {
+  border: 2px solid @base0C;
+}
