@@ -82,7 +82,7 @@ in
     networkmanager = enabled;
   };
 
-  environment.systemPackages = with pkgs; [ ];
+  environment.systemPackages = with pkgs; [ openconnect ];
 
   system.stateVersion = "23.05";
 }
