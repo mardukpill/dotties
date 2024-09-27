@@ -53,19 +53,25 @@ in
         };
 
         nxsh = {
-          body = ''
-            if test (count $argv) -eq 1
-            	nix shell nixpkgs#$argv[1]
-            else
-            	echo "Usage: nxsh <package-name>"
-            end
-          '';
+          body = # fish
+            ''
+              if test (count $argv) -ge 1
+                  set pkgs ""
+                  for arg in $argv
+                    set pkgs "$pkgs nixpkgs#$arg"
+                  end
+                  nix shell $pkgs
+              else
+                  echo "Usage: nxsh <package-name> [<package-name>...]"
+                  end          
+            '';
         };
 
       };
-      interactiveShellInit = ''
-        fish_vi_key_bindings
-      '';
+      interactiveShellInit = # fish
+        ''
+          fish_vi_key_bindings
+        '';
     };
   };
 }
