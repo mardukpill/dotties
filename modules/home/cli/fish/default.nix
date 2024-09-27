@@ -66,7 +66,12 @@ in
                   end          
             '';
         };
-
+        tmp = {
+          body = # fish
+            ''
+              cd (mktemp -d)
+            '';
+        };
       };
       interactiveShellInit = # fish
         ''
