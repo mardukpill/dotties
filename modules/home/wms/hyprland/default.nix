@@ -49,6 +49,8 @@ in
       wallpaperPath = "/media/shared/pictures/wallpapers/bay.JPG";
     };
 
+    services.playerctld.enable = true;
+
     home = {
       packages = with pkgs; [
         wl-mirror
@@ -62,7 +64,8 @@ in
 
         swappy
         gtk-engine-murrine # TODO: move to dedicated file
-        # gnomes-themes-extra
+
+        playerctl
       ];
 
       pointerCursor = {
@@ -96,7 +99,9 @@ in
 
       package = hyprland.packages.${system}.hyprland;
 
-      plugins = with hyprland-plugins; [ hyprexpo ];
+      plugins = with hyprland-plugins; [
+        hyprexpo
+      ];
     };
   };
 }
