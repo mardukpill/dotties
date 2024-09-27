@@ -37,7 +37,6 @@ in
 
     apps = {
       thunar = enabled;
-      thunderbird = enabled;
       steam = enabled;
     };
 
@@ -52,7 +51,6 @@ in
     system.nix = {
       managed = true;
       nixHelper = true;
-      comma = true;
     };
 
     cli = {

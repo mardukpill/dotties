@@ -24,9 +24,6 @@ in
 
     programs.fish = {
       enable = true;
-      shellInit = mkIf config.${namespace}.system.nix.comma ''
-        set -gx NIX_PATH github:NixOS/nixpkgs-unstable
-      '';
       interactiveShellInit = ''
         nix-your-shell fish | source
       '';

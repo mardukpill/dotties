@@ -78,7 +78,16 @@ _: {
         mode = "n";
         key = "<leader>pg";
         action = "<cmd>Glow<CR>";
-        options.desc = "Preview current markdown document in Glow";
+        options.desc = "Preview current markdown document in Glow.";
+      }
+      {
+        mode = "n";
+        key = "<leader>pp";
+        action = "<cmd>VimtexCompile<CR>";
+        options = {
+          silent = true;
+          desc = "Live preview current LaTeX document in Zathura.";
+        };
       }
       {
         mode = "n";

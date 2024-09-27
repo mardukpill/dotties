@@ -1,8 +1,6 @@
 {
-  config,
   lib,
   namespace,
-  inputs,
   pkgs,
   ...
 }:
@@ -22,9 +20,8 @@ in
       fish = enabled;
     };
     apps = {
-      spotify = {
-        enable = true;
-      };
+      kodi = enabled;
+      spotify = enabled;
       alacritty = enabled;
     };
 
@@ -32,11 +29,10 @@ in
   };
 
   home.packages = with pkgs; [
-    playerctl
     godot_4
+    tetrio-desktop
+    bitwig-studio
   ];
-
-  services.playerctld.enable = true;
 
   services.ssh-agent.enable = true;
   programs.ssh = {

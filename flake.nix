@@ -7,6 +7,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-alien = {
+      url = "github:thiagokokada/nix-alien";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Home manager
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -51,7 +56,7 @@
     };
 
     hardware.url = "github:nixos/nixos-hardware";
-    razer-laptop-control.url = "github:mardukpill/razer-laptop-control-no-dkms/app";
+    razer-laptop-control.url = "github:mardukpill/razer-laptop-control-no-dkms";
 
     nixvim.url = "github:nix-community/nixvim";
     swww.url = "github:LGFae/swww";
@@ -86,6 +91,8 @@
         nix-colors.homeManagerModules.default
         anyrun.homeManagerModules.default
       ];
+
+      overlays = with inputs; [ nix-alien.overlays.default ];
 
       systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager
