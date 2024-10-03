@@ -18,6 +18,8 @@ in
 
   config = mkIf cfg.enable {
 
+    hardware.brillo = enabled;
+
     programs.hyprland.enable = true;
     programs.hyprland.portalPackage = pkgs.xdg-desktop-portal-gtk;
 
