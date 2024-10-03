@@ -22,8 +22,8 @@
       window-rewrite-default = "";
       window-rewrite = {
         "class<ticktick>" = "";
-        "class<zathura*>" = "󰈦";
-        "class<KeePassXC>" = "󰌾";
+        "class<*zathura*>" = "󰈦";
+        "class<org.keepassxc.KeePassXC>" = "󰌾";
         "class<Caprine>" = "󰈎";
         "class<Github Desktop>" = "󰊤";
         "class<Godot>" = "";
