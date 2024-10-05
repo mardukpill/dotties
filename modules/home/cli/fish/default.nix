@@ -56,20 +56,27 @@ in
           body = # fish
             ''
               if test (count $argv) -ge 1
-                  set pkgs ""
+                  set -l pkgs
                   for arg in $argv
-                    set pkgs "$pkgs nixpkgs#$arg"
+                      set -a pkgs "nixpkgs#$arg"
                   end
                   nix shell $pkgs
               else
                   echo "Usage: nxsh <package-name> [<package-name>...]"
-                  end          
+              end
             '';
         };
         tmp = {
           body = # fish
             ''
               cd (mktemp -d)
+            '';
+        };
+
+        qz = {
+          body = # fish
+            ''
+              zoxide query $argv[1]
             '';
         };
       };
