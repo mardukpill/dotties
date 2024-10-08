@@ -20,7 +20,7 @@ in
     ./hardware-configuration.nix
   ];
 
-  dotties = {
+  ${namespace} = {
     user = {
       extraGroups = [
         "wheel"
@@ -54,15 +54,16 @@ in
     };
 
     system = {
+      openconnect = enabled;
       docker = enabled;
       adb = enabled;
       nix-alien = enabled;
       nix = {
         managed = true;
-        comma = true;
         nixHelper = true;
       };
       security.polkit = enabled;
+
       firewall = {
         wireguard = enabled;
       };
@@ -81,8 +82,6 @@ in
     hostName = lib.snowfall.system.get-inferred-system-name ./.;
     networkmanager = enabled;
   };
-
-  environment.systemPackages = with pkgs; [ openconnect ];
 
   system.stateVersion = "23.05";
 }
