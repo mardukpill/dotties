@@ -23,6 +23,12 @@ in
             telemetry.enable = false;
           };
         };
+        phpactor = {
+          enable = true;
+          filetypes = [
+            "php"
+          ];
+        };
 
         # cssls = {
         #   enable = true;
