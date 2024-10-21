@@ -54,6 +54,7 @@ in
     };
 
     system = {
+      bluetooth = enabled;
       openconnect = enabled;
       docker = enabled;
       adb = enabled;
