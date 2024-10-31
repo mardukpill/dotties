@@ -29,6 +29,31 @@ in
             "php"
           ];
         };
+        ts-ls = {
+          enable = true;
+          filetypes = [
+            "javascript"
+            "javascriptreact"
+            "typescript"
+            "typescriptreact"
+          ];
+        };
+
+        ccls = {
+          enable = true;
+          filetypes = [
+            "c"
+            "cpp"
+          ];
+        };
+
+        texlab = {
+          enable = true;
+          filetypes = [
+            "latex"
+            "tex"
+          ];
+        };
 
         # cssls = {
         #   enable = true;
@@ -44,9 +69,9 @@ in
           enable = true;
           filetypes = [ "nix" ];
           settings = {
-            formatting = {
-              command = [ "${getExe pkgs.nixfmt-rfc-style}" ];
-            };
+            # formatting = {
+            #   command = [ "${getExe pkgs.nixfmt-rfc-style}" ];
+            # };
           };
         };
 
