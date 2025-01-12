@@ -1,4 +1,5 @@
-_: {
+{ config, ... }:
+{
   boot = {
     plymouth = {
       enable = true;
