@@ -40,5 +40,5 @@ in
       ];
     };
   };
-  systemd.user.services.hypridle.Install.WantedBy = mkIf enableModule [ "hyprland-session.target" ];
+  systemd.user.services.hypridle.Install.WantedBy = mkIf enableModule [ "graphical-session.target" ];
 }

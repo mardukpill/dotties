@@ -28,7 +28,7 @@
           { name = "path"; }
           { name = "buffer"; }
           { name = "nvim_lsp"; }
-          { name = "otter"; }
+          { name = "cmp-nvim-lsp"; }
         ];
         mapping = {
           "<C-d>" =

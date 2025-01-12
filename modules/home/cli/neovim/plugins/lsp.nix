@@ -16,7 +16,7 @@ in
     lsp = {
       enable = true;
       servers = {
-        lua-ls = {
+        lua_ls = {
           enable = true;
           filetypes = [ "lua" ];
           settings = {
@@ -29,7 +29,7 @@ in
             "php"
           ];
         };
-        ts-ls = {
+        ts_ls = {
           enable = true;
           filetypes = [
             "javascript"
@@ -65,7 +65,7 @@ in
           filetypes = [ "python" ];
         };
 
-        nil-ls = {
+        nil_ls = {
           enable = true;
           filetypes = [ "nix" ];
           settings = {

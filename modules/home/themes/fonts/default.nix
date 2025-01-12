@@ -20,7 +20,7 @@ in
   config = mkIf cfg.manage {
     home.packages = with pkgs; [
       jetbrains-mono
-      nerdfonts
+      nerd-fonts.jetbrains-mono
 
       material-icons
       material-design-icons

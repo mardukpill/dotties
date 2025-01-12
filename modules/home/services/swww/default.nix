@@ -26,7 +26,7 @@ in
         Description = "swww daemon";
       };
       Install = {
-        WantedBy = [ "hyprland-session.target" ];
+        WantedBy = [ "graphical-session.target" ];
       };
       Service = {
         Restart = "always";

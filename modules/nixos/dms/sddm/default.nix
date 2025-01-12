@@ -33,7 +33,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ libsForQt5.qt5.qtgraphicaleffects ];
     services.displayManager = {
-      defaultSession = "hyprland"; # FIXME: should be dynamically set
+      defaultSession = "hyprland-uwsm"; # FIXME: should be dynamically set
       sddm = {
         enable = true;
         wayland.enable = true;

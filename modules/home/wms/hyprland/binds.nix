@@ -50,22 +50,22 @@ in
           [
             # "$mod SHIFT, L, exec, ${getExe hyprlock.packages.${system}.hyprlock} --immediate"
             "$mod, X, exec, ${getExe pkgs.wlogout}"
-            "$mod,Tab, hyprexpo:expo, toggle"
+            # "$mod,Tab, hyprexpo:expo, toggle"
 
             # applications
-            "$mod, Return, exec, ${pkgs.alacritty}/bin/alacritty"
-            "$mod SHIFT, Return, exec, [floating] ${pkgs.alacritty}/bin/alacritty"
-            "$mod, E, exec, thunar"
-            "$mod SHIFT, E, exec, [floating] thunar"
-            "$mod SHIFT, F, exec, ${pkgs.firefox}/bin/firefox"
+            "$mod, Return, exec, uwsm app -- ${pkgs.alacritty}/bin/alacritty"
+            # "$mod SHIFT, Return, exec, [floating] uwsm app -- ${pkgs.alacritty}/bin/alacritty"
+            "$mod, E, exec, uwsm app -- thunar"
+            # "$mod SHIFT, E, exec, [floating] uwsm app -- thunar"
+            "$mod SHIFT, F, exec, uwsm app -- ${pkgs.firefox}/bin/firefox"
 
             # grimblast
             ", Print, exec, grimblast --notify copy area"
             "$mod SHIFT, S, exec, grimblast --notify edit area"
             "$mod CONTROL_SHIFT, S, exec, grimblast --notify edit screen"
 
-            # rofi
-            "$mod, D, exec, ${pkgs.anyrun}/bin/anyrun"
+            # anyrun
+            "$mod, D, exec, uwsm app -- ${pkgs.anyrun}/bin/anyrun"
 
             # client controls
             "$mod, M, fullscreen, 1"

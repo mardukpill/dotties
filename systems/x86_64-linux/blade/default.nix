@@ -7,10 +7,10 @@
   ...
 }:
 let
-  sddm-wallpaper = pkgs.fetchurl {
-    url = "https://ploop.city/home.png";
-    sha256 = "ca39463acd764102888c8cb859b856fd6fb8f974d8bc527827da3017c9210d18";
-  };
+  # sddm-wallpaper = pkgs.fetchurl {
+  #   url = "https://ploop.city/home.png";
+  #   sha256 = "ca39463acd764102888c8cb859b856fd6fb8f974d8bc527827da3017c9210d18";
+  # };
   inherit (lib.${namespace}) enabled;
 in
 {
@@ -32,7 +32,7 @@ in
     hw = {
       nvidia = {
         enable = true;
-        version = "535";
+        version = "default";
       };
       razer = enabled;
     };
@@ -43,13 +43,14 @@ in
       thunderbird = enabled;
       wireshark = enabled;
       steam = enabled;
+      obs = enabled;
     };
 
     dms.sddm = {
       enable = true;
       theme = {
         style = "where-is-my-sddm-theme";
-        background = sddm-wallpaper;
+        # background = sddm-wallpaper;
       };
     };
 

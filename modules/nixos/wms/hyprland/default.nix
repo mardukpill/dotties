@@ -21,6 +21,7 @@ in
     hardware.brillo = enabled;
 
     programs.hyprland.enable = true;
+    programs.hyprland.withUWSM = true;
     programs.hyprland.portalPackage = pkgs.xdg-desktop-portal-gtk;
 
     xdg.portal = {

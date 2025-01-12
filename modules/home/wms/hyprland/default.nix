@@ -81,28 +81,18 @@ in
         MOZ_ENABLE_WAYLAND = 1;
         QT_QPA_PLATFORM = "wayland";
         NIXOS_OZONE_WL = 1;
-        GRIMBLAST_EDITOR = "swappy --file";
       };
     };
 
     wayland.windowManager.hyprland = {
       enable = true;
-      systemd = {
-        variables = [ "--all" ];
-        enableXdgAutostart = true;
-        extraCommands = [
-          "systemctl --user stop hyprland-session.target"
-          "systemctl --user reset-failed"
-          "systemctl --user start hyprland-session.target"
-        ];
-      };
+      systemd.enable = false;
 
       xwayland.enable = true;
 
       package = hyprland.packages.${system}.hyprland;
 
       plugins = with hyprland-plugins; [
-        hyprexpo
       ];
     };
   };
