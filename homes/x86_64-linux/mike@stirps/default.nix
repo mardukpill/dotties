@@ -10,7 +10,7 @@ let
   inherit (lib.${namespace}) enabled;
 in
 {
-  dotties = {
+  "${namespace}" = {
     suites = {
       office = enabled;
       personal = enabled;

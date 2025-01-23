@@ -29,9 +29,9 @@ _: {
       set -l statusb_color (set_color $bold_flag $fish_color_status)
       set -l prompt_status (__fish_print_pipestatus "[" "]" "|" "$status_color" "$statusb_color" $last_pipestatus)
 
-      # this doesn't really represent the nix shell, but I don't really use nested shells besides 'nix shell'
+      # this doesn't really represent the nix shell (instead the shell level), but I don't really use nested shells besides 'nix shell'
       function level_string
-        if test $SHLVL -le 2
+        if test $SHLVL -le 1
           echo -n -s
         else
           echo -n -s (set_color --bold grey)\[(set_color --bold brcyan)󱄅 " " (math $SHLVL - 2)(set_color --bold grey)\]

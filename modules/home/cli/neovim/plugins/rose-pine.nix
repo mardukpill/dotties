@@ -1,10 +1,11 @@
-_: {
+{
+  lib,
+  config,
+  namespace,
+  ...
+}:
+
+{
   programs.nixvim = {
-    colorschemes.rose-pine = {
-      enable = true;
-      settings = {
-        variant = "main";
-      };
-    };
   };
 }

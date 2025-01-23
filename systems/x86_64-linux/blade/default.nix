@@ -18,6 +18,7 @@ in
     ./boot.nix
     ./disks.nix
     ./hardware-configuration.nix
+    ./power.nix
   ];
 
   ${namespace} = {
@@ -56,7 +57,7 @@ in
 
     system = {
       bluetooth = enabled;
-      openconnect = enabled;
+      networking = enabled;
       docker = enabled;
       adb = enabled;
       nix-alien = enabled;
@@ -80,10 +81,8 @@ in
     };
 
   };
+
   networking = {
     hostName = lib.snowfall.system.get-inferred-system-name ./.;
-    networkmanager = enabled;
   };
-
-  system.stateVersion = "23.05";
 }

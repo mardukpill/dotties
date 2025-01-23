@@ -79,6 +79,13 @@ in
               zoxide query $argv[1]
             '';
         };
+
+        nsfind = {
+          body = # fish
+            ''
+              nix-store -q --graph /run/current-system/ | grep $argv[1]
+            '';
+        };
       };
       interactiveShellInit = # fish
         ''

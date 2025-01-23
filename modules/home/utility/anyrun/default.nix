@@ -8,9 +8,26 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf;
+  inherit (lib.${namespace}) defineCssColors;
+
+  theme = config.${namespace}.wms.hyprland.theme;
+  palette = config.colorScheme.palette;
 
   cfg = config.${namespace}.utility.anyrun;
   anyrun = inputs.anyrun;
+
+  themes = {
+    "rose-pine" = {
+      width.fraction = 0.2;
+      y.fraction = 0.2;
+    };
+    "acrylic" = {
+      x.fraction = 0.125;
+      y.fraction = 0.5;
+      height.fraction = 1.0;
+      width.fraction = 0.25;
+    };
+  };
 in
 {
   options.${namespace}.utility.anyrun = {
@@ -23,20 +40,16 @@ in
       config = {
         plugins = with anyrun.packages.${pkgs.system}; [
           applications
-          # kidex
           rink
           symbols
           shell
           dictionary
-          # randr
+          randr
         ];
-        width.fraction = 0.2;
-        # x.fraction = 0.1;
-        y.fraction = 0.2;
         hidePluginInfo = true;
         closeOnClick = true;
-      };
-      extraCss = builtins.readFile ./theme.css; # TODO: don't use static colors
+      } // themes.${theme};
+      extraCss = (defineCssColors palette) + builtins.readFile ./themes/${theme}.css;
     };
   };
 }

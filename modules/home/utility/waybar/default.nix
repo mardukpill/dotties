@@ -9,6 +9,7 @@ let
   inherit (lib.${namespace}) defineCssColors;
 
   palette = config.colorScheme.palette;
+  theme = config.${namespace}.wms.hyprland.theme;
 
   cfg = config.${namespace}.utility.waybar;
 in
@@ -26,7 +27,7 @@ in
         enable = true;
         target = "graphical-session.target";
       };
-      style = (defineCssColors palette) + (builtins.readFile ./styles.css);
+      style = (defineCssColors palette) + (builtins.readFile ./${theme}.css);
 
       settings = {
         mainBar = {

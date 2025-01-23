@@ -11,12 +11,20 @@ let
 
   cfg = config.${namespace}.wms.hyprland;
   primaryDisplay = "eDP-1";
-  secondaryDisplay = "HDMI-A-1"; # FIXME: this is really dumb
+  secondaryDisplay = "DP-4";
 in
 {
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       settings = {
+        # window swallowing
+        "misc:enable_swallow" = true;
+        "misc:swallow_regex" = "^(Alacritty)$";
+        "misc:swallow_exception_regex" = "^(wev)$";
+
+        # disable anime girl
+        "misc:force_default_wallpaper" = 0;
+
         exec-once = [
           "uwsm finalize"
         ];
@@ -26,7 +34,7 @@ in
           "${secondaryDisplay},1920x1080@60,2560x0,1"
         ];
 
-        "debug:disable_logs" = false; # FIXME: remove after debugging
+        "debug:disable_logs" = false;
         general = {
           allow_tearing = true;
         };
@@ -35,8 +43,9 @@ in
           "float,class:float"
           "pin, title:^(Picture-in-Picture)$"
           "float, title:^(Picture-in-Picture)$"
+          "float, class:^(floating)$"
 
-          "workspace 10 silent, class:KeePassXC"
+          "workspace 10 silent, class:^(KeePassXC)$"
           "workspace 10 silent, class:^(gnome-connections)$"
           "immediate class:^(cs2)$"
         ];
@@ -57,7 +66,7 @@ in
           (builtins.genList (
             x:
             let
-              ws = builtins.toString (x + 11);
+              ws = builtins.toString (x + 10);
             in
             "${ws}, monitor:${secondaryDisplay}"
           ) 10)

@@ -12,26 +12,18 @@ let
   cfg = config.${namespace}.wms.hyprland;
 in
 {
-  config = mkIf cfg.enable {
+  config = mkIf (cfg.theme == "rose-pine") {
     wayland.windowManager.hyprland = {
       settings = {
         "$dim" = "decoration:dim_inactive";
-
-        # window swallowing
-        "misc:enable_swallow" = true;
-        "misc:swallow_regex" = "Alacritty";
-        "misc:swallow_exception_regex" = "wev";
 
         # decorations
         "general:gaps_out" = 4;
         "general:gaps_in" = 3;
         "general:border_size" = 3;
-        "general:col.active_border" = "rgba(${config.colorScheme.palette.base08}AA)";
-        "general:col.inactive_border" = "rgba(${config.colorScheme.palette.base00}FF)";
+        "general:col.active_border" = "rgba(${config.colorScheme.palette.base00}FF)";
+        "general:col.inactive_border" = "rgba(${config.colorScheme.palette.base01}FF)";
         "decoration:rounding" = 7;
-
-        # disable anime girl
-        "misc:force_default_wallpaper" = 0;
 
         animations = {
           enabled = "yes";

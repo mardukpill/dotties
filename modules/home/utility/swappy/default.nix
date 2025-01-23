@@ -22,7 +22,7 @@ in
       ];
 
       sessionVariables = {
-        GRIMBLAST_EDITOR = "uwsm app -- swappy --file";
+        GRIMBLAST_EDITOR = "swappy --file";
       };
     };
     xdg.configFile.swappy = {

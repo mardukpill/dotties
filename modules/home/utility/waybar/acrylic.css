@@ -1,0 +1,62 @@
+
+* {
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+window#waybar {
+  background-color: rgba(0, 0, 0, 0.2); /* Transparent neutral background */
+  color: @background; /* Consistent text color */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+tooltip {
+  background-color: rgba(0, 0, 0, 0.7); /* Slightly darker for contrast */
+  color: @background;
+}
+
+tooltip label {
+  color: @background;
+}
+
+label:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+button {
+  background: transparent;
+  color: @background;
+}
+
+#network,
+#battery,
+#tray,
+#clock,
+#window,
+#pulseaudio,
+#cpu,
+#workspaces {
+  background-color: transparent; /* Keep sections clean and unified */
+  color: @background;
+  padding: 0.5em 1em; /* Add slight spacing for readability */
+}
+
+#workspaces button {
+  background: transparent;
+  color: @base01;
+  padding: 0.2em 0.5em;
+  margin: 0 0.2em;
+}
+
+#workspaces button.active {
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle highlight for active */
+}
+
+#workspaces button.urgent {
+  background-color: rgba(255, 0, 0, 0.2); /* Subtle urgent highlight */
+}
+

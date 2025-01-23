@@ -1,6 +1,32 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  namespace,
+  ...
+}:
+let
+  inherit (lib) mkIf;
+  theme = config.${namespace}.wms.hyprland.theme;
+in
 {
   programs.nixvim = {
+    colorschemes = {
+      rose-pine = mkIf (theme == "rose-pine") {
+        enable = true;
+        settings = {
+          variant = "main";
+        };
+      };
+      gruvbox = mkIf (theme == "acrylic") {
+        enable = true;
+        settings = {
+          variant = "light";
+        };
+      };
+    };
+
+    # Extra themes
     extraPlugins = with pkgs.vimUtils; [
       (buildVimPlugin {
         pname = "challenger-deep-theme";

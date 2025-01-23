@@ -18,6 +18,11 @@ in
 
   config = mkIf cfg.enable {
 
+    environment.systemPackages = with pkgs; [
+      wdisplays
+      hyprpaper
+    ];
+
     hardware.brillo = enabled;
 
     programs.hyprland.enable = true;

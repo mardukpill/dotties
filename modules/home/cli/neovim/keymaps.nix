@@ -98,7 +98,47 @@ _: {
               function() require("oil").open_float() end
             '';
         };
-        options.desc = "Open a floating oil instance";
+        options.desc = "Open a floating Oil instance";
+      }
+      {
+        mode = "n";
+        key = "<leader>fhp";
+        action = {
+          __raw = # Lua
+            ''
+              function() require("oil").open_preview({horizontal=true}) end
+            '';
+        };
+        options.desc = "Open a preview of the file selected in Oil (horizontal split)";
+      }
+      {
+        mode = "n";
+        key = "<leader>fp";
+        action = {
+          __raw = # Lua
+            ''
+              function() require("oil").open_preview() end
+            '';
+        };
+        options.desc = "Open a preview of the file selected in Oil.";
+      }
+      {
+        mode = "n";
+        key = "<leader>fe";
+        action = "<cmd>e %:h<CR>";
+        options = {
+          silent = true;
+          desc = "Open the current file's parent directory in Oil.";
+        };
+      }
+      {
+        mode = "n";
+        key = "<leader>fE";
+        action = "<cmd>vs | vertical resize 40 | e %:h<CR>";
+        options = {
+          silent = true;
+          desc = "Open the current file's parent directory in Oil (new vertical split).";
+        };
       }
       {
         mode = "n";

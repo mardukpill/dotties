@@ -25,7 +25,10 @@ in
       alacritty = enabled;
     };
 
-    wms.hyprland = enabled;
+    wms.hyprland = {
+      enable = true;
+      theme = "acrylic";
+    };
   };
 
   home.packages = with pkgs; [
