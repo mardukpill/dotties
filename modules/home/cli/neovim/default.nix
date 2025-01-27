@@ -52,7 +52,7 @@ in
           enable = true;
         };
 
-        nvim-colorizer = {
+        colorizer = {
           enable = true;
         };
 
@@ -60,6 +60,9 @@ in
           enable = true;
         };
 
+        web-devicons = {
+          enable = true;
+        };
       };
 
       extraPlugins = with pkgs.vimPlugins; [

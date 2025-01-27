@@ -30,7 +30,10 @@ in
 {
   options.${namespace}.wms.hyprland = {
     enable = mkEnableOption "hyprland.";
-    theme = mkOpt (types.enum [ "rose-pine" ]) "rose-pine" "The theme to use with Hyprland."; # TODO: currently doesn't effect theming
+    theme = mkOpt (types.enum [
+      "rose-pine"
+      "acrylic"
+    ]) "rose-pine" "The theme to use with Hyprland.";
     idleDelay =
       mkOpt types.ints.unsigned 300
         "The delay blanking before the screen turns off due to idling. Setting to 0 will disable screen idle blanking.";
@@ -49,7 +52,12 @@ in
 
     dotties.services.swww = {
       enable = true;
-      wallpaperPath = "/media/shared/pictures/wallpapers/bay.JPG";
+      wallpaperPath =
+        {
+          "rose-pine" = "/media/shared/pictures/wallpapers/bay.JPG";
+          "acrylic" = "/media/shared/pictures/wallpapers/vim.png";
+        }
+        ."${cfg.theme}";
     };
 
     services.playerctld.enable = true;
@@ -81,28 +89,18 @@ in
         MOZ_ENABLE_WAYLAND = 1;
         QT_QPA_PLATFORM = "wayland";
         NIXOS_OZONE_WL = 1;
-        GRIMBLAST_EDITOR = "swappy --file";
       };
     };
 
     wayland.windowManager.hyprland = {
       enable = true;
-      systemd = {
-        variables = [ "--all" ];
-        enableXdgAutostart = true;
-        extraCommands = [
-          "systemctl --user stop hyprland-session.target"
-          "systemctl --user reset-failed"
-          "systemctl --user start hyprland-session.target"
-        ];
-      };
+      systemd.enable = false;
 
       xwayland.enable = true;
 
       package = hyprland.packages.${system}.hyprland;
 
       plugins = with hyprland-plugins; [
-        hyprexpo
       ];
     };
   };

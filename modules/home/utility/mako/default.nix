@@ -6,7 +6,26 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption enabled mkIf;
+  inherit (lib) mkEnableOption mkIf;
+
+  theme = config.${namespace}.wms.hyprland.theme;
+  themes = {
+    "rose-pine" = {
+      borderColor = "#" + config.colorScheme.palette.base04;
+      borderSize = 3;
+      borderRadius = 5;
+      backgroundColor = "#" + config.colorScheme.palette.base07;
+      progressColor = "over #" + config.colorScheme.palette.base0F + "FF";
+    };
+    "acrylic" = {
+      textColor = "#" + config.colorScheme.palette.base00;
+      borderColor = "#" + config.colorScheme.palette.base04;
+      borderSize = 3;
+      borderRadius = 2;
+      backgroundColor = "#" + config.colorScheme.palette.base07;
+      progressColor = "over #" + config.colorScheme.palette.base0F + "AA";
+    };
+  };
 
   cfg = config.${namespace}.utility.mako;
 in
@@ -21,7 +40,7 @@ in
       mako
     ];
 
-    services.mako = {
+    services.mako = themes.${theme} // {
       enable = true;
       icons = true;
       defaultTimeout = 5000;
@@ -31,11 +50,6 @@ in
       width = 500;
       padding = "10,15,20";
       layer = "overlay";
-      borderColor = "#" + config.colorScheme.palette.base08;
-      borderSize = 3;
-      borderRadius = 5;
-      backgroundColor = "#" + config.colorScheme.palette.base00;
-      progressColor = "over #" + config.colorScheme.palette.base05 + "AA";
 
       extraConfig = ''
         outer-margin=25
@@ -51,7 +65,7 @@ in
         height=100
         width=900
         text-alignment=center
-      ''; # TODO: can do more cool stuff here.
+      '';
     };
 
   };

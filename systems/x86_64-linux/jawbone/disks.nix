@@ -10,7 +10,7 @@ _: {
         "windows_names"
         "locale=en_US.UTF-8"
         "dmask=027"
-        "fmask=037"
+        "fmask=137"
         "exec"
       ];
     };

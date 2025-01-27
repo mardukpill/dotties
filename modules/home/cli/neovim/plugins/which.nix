@@ -63,19 +63,19 @@ _: {
           }
           {
             __unkeyed = "<leader>w";
-            group = "Workspaces";
+            group = " Workspaces";
           }
           {
             __unkeyed = "<leader>p";
-            group = "Previews";
+            group = " Previews";
           }
           {
             __unkeyed = "<leader>h";
-            group = "Hints";
+            group = " Hints";
           }
           {
             __unkeyed = "<leader>f";
-            group = "File explorers";
+            group = " File Explorer";
           }
 
         ];

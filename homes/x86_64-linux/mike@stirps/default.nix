@@ -1,9 +1,6 @@
 {
-  config,
   lib,
   namespace,
-  inputs,
-  pkgs,
   ...
 }:
 let
@@ -28,12 +25,14 @@ in
       alacritty = enabled;
     };
 
-    wms.hyprland = enabled;
+    wms = {
+      hyprland = {
+        enable = true;
+        idleDelay = 180;
+        lockDelay = 0;
+      };
+    };
   };
-
-  home.packages = with pkgs; [ playerctl ];
-
-  services.playerctld.enable = true;
 
   services.ssh-agent.enable = true;
   programs.ssh = {

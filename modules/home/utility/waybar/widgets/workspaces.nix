@@ -21,7 +21,9 @@
       };
       window-rewrite-default = "";
       window-rewrite = {
-        "class<KeePassXC>" = "󰌾";
+        "class<ticktick>" = "";
+        "class<*zathura*>" = "󰈦";
+        "class<org.keepassxc.KeePassXC>" = "󰌾";
         "class<Caprine>" = "󰈎";
         "class<Github Desktop>" = "󰊤";
         "class<Godot>" = "";

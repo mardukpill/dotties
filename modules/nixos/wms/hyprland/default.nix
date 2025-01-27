@@ -18,7 +18,15 @@ in
 
   config = mkIf cfg.enable {
 
+    environment.systemPackages = with pkgs; [
+      wdisplays
+      hyprpaper
+    ];
+
+    hardware.brillo = enabled;
+
     programs.hyprland.enable = true;
+    programs.hyprland.withUWSM = true;
     programs.hyprland.portalPackage = pkgs.xdg-desktop-portal-gtk;
 
     xdg.portal = {

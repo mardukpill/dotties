@@ -21,6 +21,10 @@ in
       enable = true;
     };
 
+    home.packages = with pkgs; [
+      meld
+    ];
+
     programs.git = {
       enable = true;
 

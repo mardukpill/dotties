@@ -19,9 +19,9 @@ in
     programs.alacritty = {
       enable = true;
       settings = {
-        shell.program = mkIf config.${namespace}.cli.fish.enable "${pkgs.fish}/bin/fish";
+        terminal.shell.program = mkIf config.${namespace}.cli.fish.enable "${pkgs.fish}/bin/fish";
 
-        live_config_reload = true;
+        general.live_config_reload = true;
 
         window.decorations = "none";
         window.dynamic_title = true;

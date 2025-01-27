@@ -53,19 +53,44 @@ in
         };
 
         nxsh = {
-          body = ''
-            if test (count $argv) -eq 1
-            	nix shell nixpkgs#$argv[1]
-            else
-            	echo "Usage: nxsh <package-name>"
-            end
-          '';
+          body = # fish
+            ''
+              if test (count $argv) -ge 1
+                  set -l pkgs
+                  for arg in $argv
+                      set -a pkgs "nixpkgs#$arg"
+                  end
+                  nix shell $pkgs
+              else
+                  echo "Usage: nxsh <package-name> [<package-name>...]"
+              end
+            '';
+        };
+        tmp = {
+          body = # fish
+            ''
+              cd (mktemp -d)
+            '';
         };
 
+        qz = {
+          body = # fish
+            ''
+              zoxide query $argv[1]
+            '';
+        };
+
+        nsfind = {
+          body = # fish
+            ''
+              nix-store -q --graph /run/current-system/ | grep $argv[1]
+            '';
+        };
       };
-      interactiveShellInit = ''
-        fish_vi_key_bindings
-      '';
+      interactiveShellInit = # fish
+        ''
+          fish_vi_key_bindings
+        '';
     };
   };
 }

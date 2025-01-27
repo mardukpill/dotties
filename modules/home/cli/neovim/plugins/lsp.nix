@@ -16,12 +16,43 @@ in
     lsp = {
       enable = true;
       servers = {
-        lua-ls = {
+        lua_ls = {
           enable = true;
           filetypes = [ "lua" ];
           settings = {
             telemetry.enable = false;
           };
+        };
+        phpactor = {
+          enable = true;
+          filetypes = [
+            "php"
+          ];
+        };
+        ts_ls = {
+          enable = true;
+          filetypes = [
+            "javascript"
+            "javascriptreact"
+            "typescript"
+            "typescriptreact"
+          ];
+        };
+
+        ccls = {
+          enable = true;
+          filetypes = [
+            "c"
+            "cpp"
+          ];
+        };
+
+        texlab = {
+          enable = true;
+          filetypes = [
+            "latex"
+            "tex"
+          ];
         };
 
         # cssls = {
@@ -34,13 +65,13 @@ in
           filetypes = [ "python" ];
         };
 
-        nil-ls = {
+        nil_ls = {
           enable = true;
           filetypes = [ "nix" ];
           settings = {
-            formatting = {
-              command = [ "${getExe pkgs.nixfmt-rfc-style}" ];
-            };
+            # formatting = {
+            #   command = [ "${getExe pkgs.nixfmt-rfc-style}" ];
+            # };
           };
         };
 
