@@ -1,16 +1,13 @@
 {
-  config,
   lib,
   namespace,
-  inputs,
-  pkgs,
   ...
 }:
 let
   inherit (lib.${namespace}) enabled;
 in
 {
-  "${namespace}" = {
+  dotties = {
     suites = {
       office = enabled;
       personal = enabled;

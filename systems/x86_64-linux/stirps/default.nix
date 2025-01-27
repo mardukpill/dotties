@@ -19,6 +19,9 @@ in
     ./boot.nix
     ./hardware-configuration.nix
   ];
+  networking = {
+    hostName = lib.snowfall.system.get-inferred-system-name ./.;
+  };
 
   dotties = {
     user = {
@@ -48,9 +51,12 @@ in
       };
     };
 
-    system.nix = {
-      managed = true;
-      nixHelper = true;
+    system = {
+      nix = {
+        managed = true;
+        nixHelper = true;
+      };
+      networking = enabled;
     };
 
     cli = {
@@ -61,11 +67,4 @@ in
       hyprland = enabled;
     };
   };
-
-  networking = {
-    hostName = lib.snowfall.system.get-inferred-system-name ./.;
-    networkmanager = enabled;
-  };
-
-  system.stateVersion = "23.05";
 }
