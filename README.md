@@ -84,12 +84,6 @@ nix run github:mardukpill/dotties#hi
         └── stirps
 ```
 
-<h2 align="center">
-  Screenshots
-</h2>
- <img alt="neovim" src="https://ploop.city/rosecandy/rosecandy-neovim.png">
- <img alt="busy" src="https://ploop.city/rosecandy/rosecandy-busy.png">
- <img alt="anyrun" src="https://ploop.city/rosecandy/rosecandy-anyrun.png">
 
 <h2 align="center">
   Planned
