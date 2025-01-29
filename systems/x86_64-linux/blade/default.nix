@@ -38,6 +38,10 @@ in
       razer = enabled;
     };
 
+    ai = {
+      ollama = enabled;
+    };
+
     apps = {
       bottles = enabled;
       thunar = enabled;
@@ -68,7 +72,10 @@ in
       security.polkit = enabled;
 
       firewall = {
-        wireguard = enabled;
+        wireguard = {
+          enable = true;
+          ports = [ 49094 ];
+        };
       };
     };
 

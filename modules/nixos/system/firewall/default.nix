@@ -23,6 +23,8 @@ in
   };
 
   config = mkIf cfg.wireguard.enable {
+
+    environment.systemPackages = with pkgs; [ reaction ];
     networking.firewall = {
       logReversePathDrops = true;
       extraCommands = lib.concatStringsSep "\n" (
