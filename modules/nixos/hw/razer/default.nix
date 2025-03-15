@@ -23,8 +23,10 @@ in
       ''; # needed for correct permissions for razer-laptop-control
     };
 
-    environment.systemPackages = with pkgs; [ polychromatic ];
+    boot.kernelParams = [
+      "mem_sleep_default=s2idle" # deep doesn't work..?
+    ];
 
-    # dotties.user.extraGroups = [ "plugdev" ];
+    environment.systemPackages = with pkgs; [ polychromatic ];
   };
 }

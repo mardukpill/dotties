@@ -1,5 +1,21 @@
-{ ... }:
 {
+  namespace,
+  lib,
+  pkgs,
+  ...
+}:
+
+let
+  inherit (lib.${namespace}) enabled;
+in
+{
+  environment.systemPackages = with pkgs; [
+    powertop
+  ];
+  powerManagement = {
+    enable = true; # seems to only add systemd services..?
+    powertop = enabled;
+  };
   services.tlp = {
     enable = true;
     settings = {

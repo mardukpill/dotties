@@ -67,13 +67,13 @@ _: {
           mode = "i";
           options.desc = "Emergency exit for insert mode";
         }
-          {
-            key = "<C-Esc>";
-            mode = "t";
-            action = "<C-\\><C-n>";
-            options.desc = "Exit terminal mode";
-          }
       */
+      {
+        key = "<C-Space>";
+        mode = "t";
+        action = "<C-\\><C-n>";
+        options.desc = "Exit terminal mode";
+      }
       {
         mode = "n";
         key = "<leader>pg";
@@ -138,6 +138,14 @@ _: {
         options = {
           silent = true;
           desc = "Open the current file's parent directory in Oil (new vertical split).";
+        };
+      }
+      {
+        mode = "n";
+        key = "<leader>,";
+        action = ":%s/\(.*\)";
+        options = {
+          desc = "Start a find and replace command.";
         };
       }
       {

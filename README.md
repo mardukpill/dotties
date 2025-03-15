@@ -14,7 +14,6 @@
 </a>
 </p>
 
-
 <h2 align="center">
   About
 </h2>
@@ -22,9 +21,10 @@ My dotfiles are built with Snowfall-lib. It provides a structured, but flexible 
 
 <p>
 
-Snowfall-lib also automatically exports packages. You can try running a simple package from this repository on a Nix system using the following command.
-  
- ```bash
+Snowfall-lib also automatically exports packages. You can try running a simple
+package from this repository on a Nix system using the following command.
+
+```bash
 nix run github:mardukpill/dotties#hi
 ```
 
@@ -33,15 +33,15 @@ nix run github:mardukpill/dotties#hi
 </h2>
 
 <div align="center">
-  
-| Host| CPU | GPU | RAM | STORAGE | 
-| --------------- | --------------- | --------------- | --------------- | --------------- |
-| blade | i7-12800h | RTX 3070Ti| 32GB DDR5 | 1+2TB |
-| stirps | i5-10300h | GTX 1650 | 16GB DDR4 | 256+500GB |
-| lantern | migration needed | -| - | - |
-| jawbone | migration needed | -| - | - |
-| splinter | planned | - | - | - |
-| wsl | planned | - | - | - |
+
+| Host     | CPU              | GPU        | RAM       | STORAGE   |
+| -------- | ---------------- | ---------- | --------- | --------- |
+| blade    | i7-12800h        | RTX 3070Ti | 32GB DDR5 | 1+2TB     |
+| stirps   | i5-10300h        | GTX 1650   | 16GB DDR4 | 256+500GB |
+| lantern  | migration needed | -          | -         | -         |
+| jawbone  | migration needed | -          | -         | -         |
+| splinter | planned          | -          | -         | -         |
+| wsl      | planned          | -          | -         | -         |
 
 </div>
 

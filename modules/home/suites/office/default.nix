@@ -2,7 +2,6 @@
   lib,
   pkgs,
   namespace,
-  system,
   config,
   ...
 }:
@@ -21,6 +20,7 @@ in
       zathura
       ticktick
       libreoffice-fresh
+      slack
     ];
   };
 }

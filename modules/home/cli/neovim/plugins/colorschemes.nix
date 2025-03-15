@@ -7,7 +7,7 @@
 }:
 let
   inherit (lib) mkIf;
-  theme = config.${namespace}.wms.hyprland.theme;
+  theme = config.${namespace}.wms.theme;
 in
 {
   programs.nixvim = {

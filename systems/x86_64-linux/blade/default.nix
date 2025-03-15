@@ -16,10 +16,18 @@ in
 {
   imports = [
     ./boot.nix
+    ./specialisations.nix
     ./disks.nix
     ./hardware-configuration.nix
     ./power.nix
   ];
+
+  environment.systemPackages = with pkgs; [
+    arduino-ide
+    arduino-core
+  ];
+
+  programs.file-roller = enabled;
 
   ${namespace} = {
     user = {
@@ -27,6 +35,8 @@ in
         "wheel"
         "video"
         "input"
+        "tty"
+        "dialout"
       ];
     };
 
@@ -84,7 +94,7 @@ in
     };
 
     wms = {
-      hyprland = enabled;
+      niri = enabled;
     };
 
   };

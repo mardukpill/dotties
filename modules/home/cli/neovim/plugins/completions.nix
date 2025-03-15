@@ -29,6 +29,7 @@
           { name = "buffer"; }
           { name = "nvim_lsp"; }
           { name = "cmp-nvim-lsp"; }
+          { name = "codecompanion"; }
         ];
         mapping = {
           "<C-d>" =

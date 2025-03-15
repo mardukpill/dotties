@@ -16,7 +16,6 @@ in
     enable = mkEnableOption "nvidia hardware support.";
     version = mkOption {
       type = lib.types.enum [
-        "535"
         "default"
         "open"
       ];
@@ -26,60 +25,77 @@ in
   };
 
   config = mkIf cfg.enable {
-    hardware.graphics = {
-      enable = true;
-    };
+    boot.kernelParams = [
+      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+      "nvidia.NVreg_RegistryDwords=RMErrorEnable=0x0"
+      "nvidia.NVreg_EnablePCIeGen3=1"
+      "nvidia-drm.modeset=1"
+    ];
+
+    # boot.extraModprobeConfig = ''
+    #   options nvidia NVreg_RegistryDwords="RmMsg=0x0" NVreg_DeviceFileUID=0 NVreg_DeviceFileGID=0 NVreg_DeviceFileMode=0666 NVreg_ResourceReserved=0x10000
+    #   options nvidia NVreg_TemporaryFilePath=/var/tmp
+    #   options nvidia-modeset modeset=1
+    #   options nvidia NVreg_ReqEudyptBreakdown=1
+    #   options nvidia NVreg_EnableStreamMemOPs=1
+    #   options nvidia NVreg_EnableBacklightHandler=1
+    #   options nvidia NVreg_InitializeSystemMemoryAllocations=1
+    #   options nvidia NVreg_UsePageAttributeTable=1
+    #   options nvidia NVreg_RegisterForACPIEvents=1
+    #   options nvidia NVreg_MapRegistersEarly=1
+    #   options nvidia NVreg_SurfaceWriteEviction=1
+    #   options nvidia NVreg_EnableS0ixPowerManagement=0
+    #   options nvidia NVreg_DynamicPowerManagement=0x02
+    #   options nvidia-drm modeset=1
+    # '';
+
+    boot.blacklistedKernelModules = [ "nouveau" ];
+
+    boot.initrd.kernelModules = [
+      "i915"
+      "nvidia"
+    ];
+
+    environment.systemPackages = with pkgs; [
+      nvfancontrol
+      nvtopPackages.nvidia
+
+      vulkan-tools
+      vulkan-loader
+    ];
 
     # Load nvidia driver for Xorg and Wayland
     services.xserver.videoDrivers = [ "nvidia" ];
 
-    hardware.nvidia = {
-      package = mkIf (cfg.version == "535") (
-        let
-          rcu_patch = pkgs.fetchpatch {
-            url = "https://github.com/gentoo/gentoo/raw/c64caf53/x11-drivers/nvidia-drivers/files/nvidia-drivers-470.223.02-gpl-pfn_valid.patch";
-            hash = "sha256-eZiQQp2S/asE7MfGvfe6dA/kdCvek9SYa/FFGp24dVg=";
-          };
-        in
-        config.boot.kernelPackages.nvidiaPackages.mkDriver {
-          version = "535.154.05";
-          sha256_64bit = "sha256-fpUGXKprgt6SYRDxSCemGXLrEsIA6GOinp+0eGbqqJg=";
-          sha256_aarch64 = "sha256-G0/GiObf/BZMkzzET8HQjdIcvCSqB1uhsinro2HLK9k=";
-          openSha256 = "sha256-wvRdHguGLxS0mR06P5Qi++pDJBCF8pJ8hr4T8O6TJIo=";
-          settingsSha256 = "sha256-9wqoDEWY4I7weWW05F4igj1Gj9wjHsREFMztfEmqm10=";
-          persistencedSha256 = "sha256-d0Q3Lk80JqkS1B54Mahu2yY/WocOqFFbZVBh+ToGhaE=";
-          patches = [ rcu_patch ];
-        }
-      );
-      # Modesetting is required.
-      modesetting.enable = true;
+    hardware = {
+      graphics = {
+        enable = true;
+        extraPackages = with pkgs; [
+          nvidia-vaapi-driver
+        ];
+      };
+      nvidia = {
+        modesetting.enable = true;
+        nvidiaSettings = true;
 
-      # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-      # Enable this if you have graphical corruption issues or application crashes after waking
-      # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
-      # of just the bare essentials.
-      powerManagement.enable = false;
-      powerManagement.finegrained = false;
+        open = true;
 
-      open = (cfg.version == "open");
+        powerManagement.enable = true;
+        powerManagement.finegrained = false;
 
-      # Enable the Nvidia settings menu,
-      # accessible via `nvidia-settings`.
-      nvidiaSettings = true;
+        prime = {
+          sync.enable = true;
+          intelBusId = "PCI:0:2:0";
+          nvidiaBusId = "PCI:1:0:0";
 
-      # Optionally, you may need to select the appropriate driver version for your specific GPU.
-      # package = config.boot.kernelPackages.nvidiaPackages.stable;
-      prime = {
-        intelBusId = "PCI:0:2:0";
-        nvidiaBusId = "PCI:1:0:0";
-
-        sync.enable = true;
-        # this mode may lower power consumption
-        # offload = {
-        #	 enable = true;
-        #	 enableOffloadCmd = true;
-        # };
+          # offload = {
+          #   enable = true;
+          #   enableOffloadCmd = true;
+          # };
+        };
       };
     };
+
+    nixpkgs.config.cudaSupport = true;
   };
 }

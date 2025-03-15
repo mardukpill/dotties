@@ -9,7 +9,7 @@ let
   inherit (lib.${namespace}) defineCssColors;
 
   palette = config.colorScheme.palette;
-  theme = config.${namespace}.wms.hyprland.theme;
+  theme = config.${namespace}.wms.theme;
 
   cfg = config.${namespace}.utility.waybar;
 in

@@ -6,7 +6,12 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkEnableOption types;
+  inherit (lib)
+    mkIf
+    mkEnableOption
+    types
+    getExe
+    ;
   inherit (lib.${namespace}) mkOpt;
   cfg = config.${namespace}.cli.neovim;
 in
@@ -71,8 +76,18 @@ in
 
       extraConfigLuaPre = # Lua
         ''
+          vim.o.shell = "${getExe pkgs.fish}"
           vim.g.neovide_scale_factor = 1.5
         '';
+
+      performance = {
+        byteCompileLua = {
+          enable = true;
+          nvimRuntime = true;
+          configs = true;
+          plugins = true;
+        };
+      };
     };
   };
 }
