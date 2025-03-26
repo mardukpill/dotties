@@ -10,7 +10,7 @@ let
   inherit (lib) mkEnableOption mkIf;
   inherit (lib.${namespace}) defineCssColors;
 
-  theme = config.${namespace}.wms.hyprland.theme;
+  theme = config.${namespace}.wms.theme;
   palette = config.colorScheme.palette;
 
   cfg = config.${namespace}.utility.anyrun;

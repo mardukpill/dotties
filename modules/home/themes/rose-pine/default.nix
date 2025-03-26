@@ -7,7 +7,7 @@
   ...
 }:
 let
-  enabled = (config.${namespace}.wms.hyprland.theme == "rose-pine");
+  enabled = (config.${namespace}.wms.theme == "rose-pine");
 in
 {
   config = lib.mkIf enabled {

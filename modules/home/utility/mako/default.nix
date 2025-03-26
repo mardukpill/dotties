@@ -8,7 +8,7 @@
 let
   inherit (lib) mkEnableOption mkIf;
 
-  theme = config.${namespace}.wms.hyprland.theme;
+  theme = config.${namespace}.wms.theme;
   themes = {
     "rose-pine" = {
       borderColor = "#" + config.colorScheme.palette.base04;

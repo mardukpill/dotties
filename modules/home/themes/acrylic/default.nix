@@ -7,7 +7,7 @@
   ...
 }:
 let
-  enabled = (config.${namespace}.wms.hyprland.theme == "acrylic");
+  enabled = (config.${namespace}.wms.theme == "acrylic");
 in
 {
   config = lib.mkIf enabled {
@@ -21,8 +21,8 @@ in
       };
 
       iconTheme = {
-        name = "Gruvbox-Plus-Dark";
-        package = pkgs.gruvbox-plus-icons;
+        name = "Zafiro-icons-light";
+        package = pkgs.zafiro-icons;
       };
 
       font = {

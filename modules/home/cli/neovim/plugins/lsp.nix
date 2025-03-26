@@ -39,13 +39,34 @@ in
           ];
         };
 
-        ccls = {
+        clangd = {
           enable = true;
-          filetypes = [
-            "c"
-            "cpp"
+
+          extraOptions = {
+            init_options = {
+              usePlaceholders = true;
+              completeUnimported = true;
+              clangdFileStatus = true;
+            };
+          };
+          cmd = [
+            "clangd"
+            "--background-index"
+            "--clang-tidy"
+            "--header-insertion=iwyu"
+            "--completion-style=detailed"
+            "--function-arg-placeholders"
+            "--fallback-style=llvm"
           ];
         };
+
+        # ccls = {
+        #   enable = true;
+        #   filetypes = [
+        #     "c"
+        #     "cpp"
+        #   ];
+        # };
 
         texlab = {
           enable = true;

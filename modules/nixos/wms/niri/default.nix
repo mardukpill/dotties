@@ -9,36 +9,36 @@ let
   inherit (lib) mkIf mkEnableOption;
   inherit (lib.${namespace}) enabled;
 
-  cfg = config.${namespace}.wms.hyprland;
+  cfg = config.${namespace}.wms.niri;
 in
 {
-  options.${namespace}.wms.hyprland = {
-    enable = mkEnableOption "hyprland.";
+  options.${namespace}.wms.niri = {
+    enable = mkEnableOption "niri.";
   };
 
   config = mkIf cfg.enable {
 
     environment.systemPackages = with pkgs; [
       wdisplays
-      hyprpaper
     ];
 
     hardware.brillo = enabled;
 
-    programs.hyprland.enable = true;
-    programs.hyprland.withUWSM = true;
-    programs.hyprland.portalPackage = pkgs.xdg-desktop-portal-gtk;
+    programs.niri.enable = true;
 
     services.displayManager = {
-      defaultSession = "hyprland-uwsm";
+      defaultSession = "niri";
+    };
+
+    dotties = {
+      system.security.polkit = enabled;
     };
 
     xdg.portal = {
       enable = true;
       xdgOpenUsePortal = false;
       extraPortals = with pkgs; [
-        xdg-desktop-portal-hyprland
-        xdg-desktop-portal-gtk
+        xdg-desktop-portal-gnome
       ];
     };
   };

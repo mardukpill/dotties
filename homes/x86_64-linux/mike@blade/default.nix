@@ -23,11 +23,14 @@ in
       kodi = enabled;
       spotify = enabled;
       alacritty = enabled;
+      minecraft = enabled;
     };
 
-    wms.hyprland = {
-      enable = true;
-      theme = "acrylic";
+    wms = {
+      theme = "rose-pine";
+      niri = {
+        enable = true;
+      };
     };
   };
 
@@ -35,6 +38,7 @@ in
     godot_4
     tetrio-desktop
     bitwig-studio
+    distrobox
   ];
 
   services.ssh-agent.enable = true;

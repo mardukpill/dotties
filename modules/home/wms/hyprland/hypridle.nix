@@ -22,7 +22,8 @@ in
 
     settings = {
       general = {
-        after_sleep_cmd = "${getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms on";
+        after_sleep_cmd = "niri action power-off-monitors";
+        before_sleep_cmd = "hyprlock --immediate";
         ignore_dbus_inhibit = false;
         lock_cmd = "${getExe config.programs.hyprlock.package}";
       };
@@ -34,8 +35,8 @@ in
         }
         {
           timeout = cfg.idleDelay;
-          on-timeout = "${getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms off";
-          on-resume = "${getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch dpms on";
+          on-timeout = "niri action power-off-monitors";
+          on-resume = "niri action power-on-monitors";
         }
       ];
     };

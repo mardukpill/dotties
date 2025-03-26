@@ -38,6 +38,6 @@ _: {
         end
       end
 
-      echo -n -s (level_string) " " (set_color $color_cwd) (prompt_pwd --full-length-dirs=2 --dir-length=3) (set_color grey)(fish_vcs_prompt) $normal " "$prompt_status " "$suffix " "
+      echo -n -s (level_string) " " (set_color $color_cwd) (prompt_pwd --full-length-dirs=1 --dir-length=2) (set_color grey)(fish_vcs_prompt) $normal " "$prompt_status " "$suffix " "
     '';
 }

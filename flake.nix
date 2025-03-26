@@ -1,15 +1,18 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-howdy.url = "github:fufexan/nixpkgs/howdy";
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-alien = {
       url = "github:thiagokokada/nix-alien";
-      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
     };
 
     # Home manager
@@ -52,11 +55,10 @@
 
     anyrun = {
       url = "github:anyrun-org/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hardware.url = "github:nixos/nixos-hardware";
-    razer-laptop-control.url = "github:mardukpill/razer-laptop-control-no-dkms";
+    razer-laptop-control.url = "github:Razer-Linux/razer-laptop-control-no-dkms";
 
     nixvim.url = "github:nix-community/nixvim";
     swww.url = "github:LGFae/swww";
@@ -92,9 +94,14 @@
         anyrun.homeManagerModules.default
       ];
 
-      overlays = with inputs; [ nix-alien.overlays.default ];
+      overlays = with inputs; [
+        niri.overlays.niri
+        nix-alien.overlays.default
+        # self.overlays.gruvbox-plus-icons
+      ];
 
       systems.modules.nixos = with inputs; [
+        niri.nixosModules.niri
         home-manager.nixosModules.home-manager
         razer-laptop-control.nixosModules.default
         nix-index-database.nixosModules.nix-index

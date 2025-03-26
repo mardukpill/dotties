@@ -7,6 +7,7 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf;
+  inherit (lib.${namespace}) enabled;
 
   cfg = config.${namespace}.system.networking;
 in
@@ -22,7 +23,11 @@ in
     ];
 
     networking = {
+      # wireless.iwd = enabled;
       networkmanager = {
+        # wifi = {
+        #   backend = "iwd";
+        # };
         enable = true;
         plugins = with pkgs; [
           networkmanager-openconnect

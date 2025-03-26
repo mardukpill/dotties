@@ -22,43 +22,45 @@
 let
   inherit (lib) mkIf mkEnableOption types;
   inherit (lib.${namespace}) mkOpt enabled;
-  inherit (inputs) hyprland;
+  inherit (inputs) niri;
 
-  hyprland-plugins = inputs.hyprland-plugins.packages.${pkgs.system};
-  cfg = config.${namespace}.wms.hyprland;
+  theme = import ./theme.nix { inherit config lib; };
+
+  cfg = config.${namespace}.wms.niri;
 in
 {
-  options.${namespace}.wms.hyprland = {
-    enable = mkEnableOption "hyprland.";
-    theme = mkOpt (types.enum [
-      "rose-pine"
-      "acrylic"
-    ]) "rose-pine" "The theme to use with Hyprland.";
-    idleDelay =
-      mkOpt types.ints.unsigned 300
-        "The delay blanking before the screen turns off due to idling. Setting to 0 will disable screen idle blanking.";
-    lockDelay =
-      mkOpt types.ints.unsigned 240
-        "The delay before the screen locks due to idling. Setting to 0 will disable idle locking.";
+
+  imports = [
+    ./binds/main.nix
+  ];
+
+  options.${namespace}.wms.niri = {
+    enable = mkEnableOption "niri.";
   };
 
-  imports = lib.snowfall.fs.get-non-default-nix-files-recursive ./.;
-
   config = mkIf cfg.enable {
+
+    programs.niri = {
+      settings = {
+        window-rules = theme.window-rules;
+        layout = theme.layout;
+        environment = {
+          "DISPLAY" = "0";
+        };
+      };
+    };
+
     dotties.utility.mako = enabled;
     dotties.utility.waybar = enabled;
     dotties.utility.wlogout = enabled;
     dotties.utility.swappy = enabled;
+    dotties.utility.anyrun = enabled;
+
+    dotties.services.xwayland-satellite = enabled;
 
     dotties.services.swww = {
       enable = true;
-      wallpaperPath =
-        {
-          "rose-pine" = "/media/shared/pictures/wallpapers/bay.JPG";
-          "acrylic" = "/media/shared/pictures/wallpapers/mountains.jpg";
-          # "/media/shared/pictures/wallpapers/vim.png";
-        }
-        ."${cfg.theme}";
+      wallpaperPath = "/media/shared/pictures/wallpapers/rose_pine_noiseline.png";
     };
 
     services.playerctld.enable = true;
@@ -67,12 +69,6 @@ in
       packages = with pkgs; [
         wl-mirror
         wl-clipboard
-        wlr-randr
-
-        hyprpicker
-
-        grimblast
-        dotties.hyprzoom
 
         gtk-engine-murrine # TODO: move to dedicated file
 
@@ -90,19 +86,8 @@ in
         MOZ_ENABLE_WAYLAND = 1;
         QT_QPA_PLATFORM = "wayland";
         NIXOS_OZONE_WL = 1;
+        DISPLAY = 0;
       };
-    };
-
-    wayland.windowManager.hyprland = {
-      enable = true;
-      systemd.enable = false;
-
-      xwayland.enable = true;
-
-      package = hyprland.packages.${system}.hyprland;
-
-      plugins = with hyprland-plugins; [
-      ];
     };
   };
 }

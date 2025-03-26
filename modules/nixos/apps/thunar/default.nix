@@ -29,6 +29,6 @@ in
     services.tumbler.enable = true;
     programs.xfconf.enable = true;
 
-    environment.systemPackages = with pkgs; [ ark ];
+    # environment.systemPackages = with pkgs; [ ];
   };
 }

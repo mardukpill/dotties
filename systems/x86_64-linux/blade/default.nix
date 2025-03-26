@@ -16,10 +16,18 @@ in
 {
   imports = [
     ./boot.nix
+    ./specialisations.nix
     ./disks.nix
     ./hardware-configuration.nix
     ./power.nix
   ];
+
+  environment.systemPackages = with pkgs; [
+    arduino-ide
+    arduino-core
+  ];
+
+  programs.file-roller = enabled;
 
   ${namespace} = {
     user = {
@@ -27,6 +35,8 @@ in
         "wheel"
         "video"
         "input"
+        "tty"
+        "dialout"
       ];
     };
 
@@ -36,6 +46,10 @@ in
         version = "default";
       };
       razer = enabled;
+    };
+
+    ai = {
+      ollama = enabled;
     };
 
     apps = {
@@ -68,7 +82,10 @@ in
       security.polkit = enabled;
 
       firewall = {
-        wireguard = enabled;
+        wireguard = {
+          enable = true;
+          ports = [ 49094 ];
+        };
       };
     };
 
@@ -77,7 +94,7 @@ in
     };
 
     wms = {
-      hyprland = enabled;
+      niri = enabled;
     };
 
   };
