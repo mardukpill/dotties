@@ -45,7 +45,14 @@ in
         window-rules = theme.window-rules;
         layout = theme.layout;
         environment = {
-          "DISPLAY" = "0";
+          CLUTTER_BACKEND = "wayland";
+          DISPLAY = null;
+          GDK_BACKEND = "wayland,x11";
+          MOZ_ENABLE_WAYLAND = "1";
+          NIXOS_OZONE_WL = "1";
+          QT_QPA_PLATFORM = "wayland;xcb";
+          QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+          SDL_VIDEODRIVER = "wayland";
         };
       };
     };
@@ -60,7 +67,7 @@ in
 
     dotties.services.swww = {
       enable = true;
-      wallpaperPath = "/media/shared/pictures/wallpapers/rose_pine_noiseline.png";
+      wallpaperPath = "/media/shared/pictures/wallpapers/mountains.jpg";
     };
 
     services.playerctld.enable = true;

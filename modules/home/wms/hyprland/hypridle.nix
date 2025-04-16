@@ -35,8 +35,8 @@ in
         }
         {
           timeout = cfg.idleDelay;
-          on-timeout = "niri action power-off-monitors";
-          on-resume = "niri action power-on-monitors";
+          on-timeout = "${getExe pkgs.niri} msg action power-off-monitors";
+          # on-resume = "niri msg action power-on-monitors";
         }
       ];
     };

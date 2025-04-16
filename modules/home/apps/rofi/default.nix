@@ -7,6 +7,7 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf mkOption;
+  inherit (lib.${namespace}) mkBoolOpt;
   cfg = config.${namespace}.apps.rofi;
 in
 {
@@ -17,6 +18,7 @@ in
       default = false;
       description = "whether to enable wayland support for rofi";
     };
+    useConfig = mkBoolOpt false "whether to set the config directory for rofi.";
   };
 
   config = mkIf cfg.enable {
@@ -35,7 +37,7 @@ in
       ];
     };
 
-    xdg.configFile = {
+    xdg.configFile = mkIf cfg.useConfig {
       rofi = {
         source = lib.cleanSourceWith { src = lib.cleanSource ./config/.; };
         recursive = true;

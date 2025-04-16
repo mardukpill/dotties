@@ -28,6 +28,12 @@ let
 in
 {
   config = mkIf cfg.enable {
+
+    dotties.apps.rofi = {
+      enable = true;
+      wayland = true;
+    };
+
     programs.niri.settings = {
       prefer-no-csd = true;
       input = {
@@ -60,6 +66,7 @@ in
             # "Mod+Print".action = screenshot-window;
 
             "Mod+Q".action = close-window;
+            "Mod+S".action = sh "rofi -show window";
 
             "Mod+D".action.spawn = "anyrun";
             "Mod+Return".action.spawn = "alacritty";

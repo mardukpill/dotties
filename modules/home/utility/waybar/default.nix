@@ -39,9 +39,9 @@ in
           output = [ "eDP-1" ];
           modules-left = [
             "tray"
-            "hyprland/workspaces"
+            "niri/workspaces"
           ];
-          modules-center = [ "hyprland/window" ];
+          modules-center = [ "niri/window" ];
           modules-right = [
             "network"
             "cpu"

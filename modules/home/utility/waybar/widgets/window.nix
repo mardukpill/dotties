@@ -11,5 +11,13 @@
         # FIXME: spotify resets its class.
       };
     };
+    "niri/window" = {
+      format = "{app_id}";
+      separate-outputs = true;
+      icon = true;
+      rewrite = {
+        " " = "  ";
+      };
+    };
   };
 }

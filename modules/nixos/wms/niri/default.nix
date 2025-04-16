@@ -22,6 +22,8 @@ in
       wdisplays
     ];
 
+    environment.variables.DISPLAY = 0;
+
     hardware.brillo = enabled;
 
     programs.niri.enable = true;

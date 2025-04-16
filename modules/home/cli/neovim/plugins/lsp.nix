@@ -6,13 +6,13 @@
 }:
 let
   inherit (lib) getExe;
-  inherit (lib.${namespace}) enabled;
+  inherit (lib.${namespace}) enabled disabled;
 in
 {
   programs.nixvim.plugins = {
     nix = enabled;
     otter = enabled;
-    lsp-format = enabled;
+    lsp-format = disabled;
     lsp = {
       enable = true;
       servers = {
@@ -38,6 +38,22 @@ in
             "typescriptreact"
           ];
         };
+        glslls = {
+          enable = true;
+          filetypes = [
+            "glsl"
+            "frag"
+          ];
+        };
+
+        # racket_langserver = {
+        #   enable = true;
+        #   package = pkgs.dotties.racket-langserver;
+        #   filetypes = [
+        #     "rkt"
+        #     "racket"
+        #   ];
+        # };
 
         clangd = {
           enable = true;

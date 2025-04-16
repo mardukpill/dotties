@@ -111,10 +111,7 @@
             lua = [ "stylua" ];
             markdown = [ "deno_fmt" ];
             nix = [ "nixfmt" ];
-            python = [
-              "isort"
-              "ruff"
-            ];
+            python = [ "ruff" ];
             rust = [ "rustfmt" ];
             sh = [
               "shellcheck"

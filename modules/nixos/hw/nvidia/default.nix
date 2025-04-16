@@ -30,26 +30,27 @@ in
       "nvidia.NVreg_RegistryDwords=RMErrorEnable=0x0"
       "nvidia.NVreg_EnablePCIeGen3=1"
       "nvidia-drm.modeset=1"
+      "nvidia-drm.fbdev=1"
     ];
 
-    # boot.extraModprobeConfig = ''
-    #   options nvidia NVreg_RegistryDwords="RmMsg=0x0" NVreg_DeviceFileUID=0 NVreg_DeviceFileGID=0 NVreg_DeviceFileMode=0666 NVreg_ResourceReserved=0x10000
-    #   options nvidia NVreg_TemporaryFilePath=/var/tmp
-    #   options nvidia-modeset modeset=1
-    #   options nvidia NVreg_ReqEudyptBreakdown=1
-    #   options nvidia NVreg_EnableStreamMemOPs=1
-    #   options nvidia NVreg_EnableBacklightHandler=1
-    #   options nvidia NVreg_InitializeSystemMemoryAllocations=1
-    #   options nvidia NVreg_UsePageAttributeTable=1
-    #   options nvidia NVreg_RegisterForACPIEvents=1
-    #   options nvidia NVreg_MapRegistersEarly=1
-    #   options nvidia NVreg_SurfaceWriteEviction=1
-    #   options nvidia NVreg_EnableS0ixPowerManagement=0
-    #   options nvidia NVreg_DynamicPowerManagement=0x02
-    #   options nvidia-drm modeset=1
-    # '';
+    boot.extraModprobeConfig = ''
+      options nvidia NVreg_RegistryDwords="RmMsg=0x0" NVreg_DeviceFileUID=0 NVreg_DeviceFileGID=0 NVreg_DeviceFileMode=0666 NVreg_ResourceReserved=0x10000
+      options nvidia NVreg_TemporaryFilePath=/var/tmp
+      options nvidia-modeset modeset=1
+      options nvidia NVreg_ReqEudyptBreakdown=1
+      options nvidia NVreg_EnableStreamMemOPs=1
+      options nvidia NVreg_EnableBacklightHandler=1
+      options nvidia NVreg_InitializeSystemMemoryAllocations=1
+      options nvidia NVreg_UsePageAttributeTable=1
+      options nvidia NVreg_RegisterForACPIEvents=1
+      options nvidia NVreg_MapRegistersEarly=1
+      options nvidia NVreg_SurfaceWriteEviction=1
+      options nvidia NVreg_EnableS0ixPowerManagement=0
+      options nvidia-drm modeset=1
+      options nvidia-drm fbdev=1
+    '';
 
-    boot.blacklistedKernelModules = [ "nouveau" ];
+    # options nvidia NVreg_DynamicPowerManagement=0x01
 
     boot.initrd.kernelModules = [
       "i915"
@@ -75,6 +76,7 @@ in
         ];
       };
       nvidia = {
+        dynamicBoost.enable = true;
         modesetting.enable = true;
         nvidiaSettings = true;
 
@@ -84,14 +86,13 @@ in
         powerManagement.finegrained = false;
 
         prime = {
-          sync.enable = true;
           intelBusId = "PCI:0:2:0";
           nvidiaBusId = "PCI:1:0:0";
 
-          # offload = {
-          #   enable = true;
-          #   enableOffloadCmd = true;
-          # };
+          offload = {
+            enable = true;
+            enableOffloadCmd = true;
+          };
         };
       };
     };

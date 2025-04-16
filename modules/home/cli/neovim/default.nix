@@ -23,7 +23,10 @@ in
     };
   };
 
-  imports = [ ./keymaps.nix ] ++ lib.snowfall.fs.get-non-default-nix-files ./plugins;
+  imports = [
+    ./keymaps.nix
+    ./usercommands/glsl.nix
+  ] ++ lib.snowfall.fs.get-non-default-nix-files ./plugins;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
