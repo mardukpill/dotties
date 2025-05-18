@@ -58,12 +58,10 @@ in
             "XF86MonBrightnessDown".action = sh "brillo -U 5 -u 10000";
 
             "XF86AudioNext".action = sh "playerctl next";
-            "XF86AudioPrev".action = sh "playerctl prev";
+            "XF86AudioPrev".action = sh "playerctl previous";
             "XF86AudioPlay".action = sh "playerctl play-pause";
 
-            # "Mod+Shift+S".action = screenshot;
-            # "Print".action = screenshot-screen;
-            # "Mod+Print".action = screenshot-window;
+            "Mod+Shift+S".action = screenshot;
 
             "Mod+Q".action = close-window;
             "Mod+S".action = sh "rofi -show window";
@@ -84,7 +82,7 @@ in
                 "swww kill"
 
                 "systemctl --user stop swww-daemon.service"
-                "rm /tmp/razercontrol-socket"
+                # "rm /tmp/razercontrol-socket"
                 "systemctl --user start swww-daemon.service"
               ]
             );
@@ -92,43 +90,6 @@ in
 
           movementBinds
         ];
-
-      outputs =
-        let
-          cfg = config.programs.niri.settings.outputs;
-        in
-        {
-          "eDP-1" = {
-            mode.width = 2560;
-            mode.height = 1440;
-            mode.refresh = 240.0;
-            scale = 1.0;
-            position.x = 0;
-            position.y = 0;
-          };
-          "DP-5" = {
-            enable = true;
-            mode.width = 1920;
-            mode.height = 1080;
-            mode.refresh = 60.0;
-            transform = {
-              rotation = 90;
-            };
-            position.x = cfg."eDP-1".mode.width;
-            position.y = 0;
-          };
-          "DP-4" = {
-            enable = true;
-            mode.width = 1920;
-            mode.height = 1080;
-            mode.refresh = 60.0;
-            transform = {
-              rotation = 90;
-            };
-            position.x = cfg."eDP-1".mode.width;
-            position.y = 0;
-          };
-        };
     };
   };
 }

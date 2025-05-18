@@ -15,6 +15,6 @@ in
     theme = mkOpt (types.enum [
       "rose-pine"
       "acrylic"
-    ]) "rose-pine" "The window manager theme to use.";
+    ]) "acrylic" "The window manager theme to use.";
   };
 }

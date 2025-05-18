@@ -25,6 +25,7 @@ let
   inherit (inputs) niri;
 
   theme = import ./theme.nix { inherit config lib; };
+  monitorConfig = import ./monitors.nix { inherit config lib; };
 
   cfg = config.${namespace}.wms.niri;
 in
@@ -44,15 +45,16 @@ in
       settings = {
         window-rules = theme.window-rules;
         layout = theme.layout;
+        outputs = monitorConfig;
         environment = {
           CLUTTER_BACKEND = "wayland";
-          DISPLAY = null;
+          DISPLAY = ":0";
           GDK_BACKEND = "wayland,x11";
           MOZ_ENABLE_WAYLAND = "1";
           NIXOS_OZONE_WL = "1";
           QT_QPA_PLATFORM = "wayland;xcb";
           QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-          SDL_VIDEODRIVER = "wayland";
+          SDL_VIDEODRIVER = "wayland,x11";
         };
       };
     };
