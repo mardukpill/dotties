@@ -2,11 +2,13 @@
   pkgs,
   lib,
   namespace,
+  config,
   ...
 }:
 let
-  inherit (lib) getExe;
+  inherit (lib) getExe mkIf;
   inherit (lib.${namespace}) enabled disabled;
+  envs = config.${namespace}.environments;
 in
 {
   programs.nixvim.plugins = {
@@ -21,6 +23,41 @@ in
           filetypes = [ "lua" ];
           settings = {
             telemetry.enable = false;
+          };
+        };
+        metals = mkIf envs.scala.enable {
+          enable = true;
+          filetypes = [
+            "scala"
+            "sc"
+          ];
+        };
+        rust_analyzer = {
+          enable = true;
+          installCargo = true;
+          installRustc = true;
+
+          settings = {
+            diagnostics = {
+              enable = true;
+              # experimental.enable = true;
+              styleLints.enable = true;
+            };
+
+            inlayHints = {
+              bindingModeHints.enable = true;
+              closureStyle = "rust_analyzer";
+              closureReturnTypeHints.enable = "always";
+              discriminantHints.enable = "always";
+              expressionAdjustmentHints.enable = "always";
+              implicitDrops.enable = true;
+              lifetimeElisionHints.enable = "always";
+              rangeExclusiveHints.enable = true;
+            };
+
+            procMacro = {
+              enable = true;
+            };
           };
         };
         phpactor = {
