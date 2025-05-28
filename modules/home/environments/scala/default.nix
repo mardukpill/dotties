@@ -15,10 +15,14 @@ in
     enable = mkBoolOpt false "scala dev environment. ";
   };
 
-  config = mkIf cfg.enabler {
-    environment.systemPackages = with pkgs; [
+  config = mkIf cfg.enable {
+    home.packages = with pkgs; [
       coursier
       metals
+      scala
+      scala-cli
+      sbt
+      sc
     ];
   };
 }

@@ -12,39 +12,19 @@ in
     environments = {
       scala = enabled;
     };
-    suites = {
-      office = enabled;
-      personal = enabled;
-      av = enabled;
-    };
     cli = {
       neovim = enabled;
       tools = enabled;
       fish = enabled;
     };
     apps = {
-      kodi = enabled;
       spotify = enabled;
       alacritty = enabled;
-      minecraft = enabled;
-    };
-
-    wms = {
-      theme = "acrylic";
-      niri = {
-        enable = true;
-      };
-      hyprland = {
-        # enable = true;
-      };
     };
   };
 
   home.packages = with pkgs; [
-    godot_4
     tetrio-desktop
-    bitwig-studio
-    distrobox
   ];
 
   services.ssh-agent.enable = true;

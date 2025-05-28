@@ -64,8 +64,8 @@ in
         # nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs; # nix2
 
         gc = {
-          automatic = true;
-          options = "--delete-older-than 7d";
+          automatic = false;
+          # options = "--delete-older-than 7d";
         };
       };
     nixpkgs = {

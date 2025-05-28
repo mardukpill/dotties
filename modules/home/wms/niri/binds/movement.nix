@@ -51,8 +51,9 @@ lib.attrsets.mergeAttrsList (
   with config.lib.niri.actions;
   [
     {
-      "${Mod}+Tab".action = focus-window-down-or-column-right;
-      "${Mod}+Shift+Tab".action = focus-window-up-or-column-left;
+      "${Mod}+Tab".action = toggle-overview;
+      # "${Mod}+Tab".action = focus-window-down-or-column-right;
+      # "${Mod}+Shift+Tab".action = focus-window-up-or-column-left;
 
       "${Mod}+space".action = toggle-column-tabbed-display;
 

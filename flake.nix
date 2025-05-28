@@ -26,6 +26,10 @@
       url = "github:snowfallorg/lib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    darwin = {
+      url = "github:nix-darwin/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # hyprland
     hyprland = {
@@ -52,10 +56,6 @@
     #   url = "github:the-argus/spicetify-nix";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-
-    anyrun = {
-      url = "github:anyrun-org/anyrun";
-    };
 
     hardware.url = "github:nixos/nixos-hardware";
     razer-laptop-control.url = "github:Razer-Linux/razer-laptop-control-no-dkms";
@@ -91,7 +91,6 @@
         nixvim.homeManagerModules.nixvim
         # spicetify-nix.homeManagerModules.default
         nix-colors.homeManagerModules.default
-        anyrun.homeManagerModules.default
       ];
 
       overlays = with inputs; [

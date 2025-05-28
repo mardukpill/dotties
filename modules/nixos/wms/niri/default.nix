@@ -26,7 +26,10 @@ in
 
     hardware.brillo = enabled;
 
-    programs.niri.enable = true;
+    programs.niri = {
+      enable = true;
+      package = pkgs.niri-unstable;
+    };
 
     services.displayManager = {
       defaultSession = "niri";
@@ -40,7 +43,7 @@ in
       enable = true;
       xdgOpenUsePortal = false;
       extraPortals = with pkgs; [
-        xdg-desktop-portal-gnome
+        xdg-desktop-portal-wlr
       ];
     };
   };

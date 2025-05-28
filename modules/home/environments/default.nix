@@ -10,7 +10,7 @@ let
   opt = options.${namespace}.environments;
 in
 {
-  opt = {
+  options.${namespace}.environments = {
     placeholder = mkBoolOpt true "placeholder";
   };
 }

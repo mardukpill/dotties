@@ -25,11 +25,10 @@ in
             telemetry.enable = false;
           };
         };
-        metals = mkIf envs.scala.enable {
+        metals = {
           enable = true;
           filetypes = [
             "scala"
-            "sc"
           ];
         };
         rust_analyzer = {

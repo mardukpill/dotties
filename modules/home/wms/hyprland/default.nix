@@ -50,6 +50,8 @@ in
     dotties.utility.wlogout = enabled;
     dotties.utility.swappy = enabled;
 
+    dotties.services.xwayland-satellite = enabled;
+
     dotties.services.swww = {
       enable = true;
       wallpaperPath =
@@ -96,8 +98,6 @@ in
     wayland.windowManager.hyprland = {
       enable = true;
       systemd.enable = false;
-
-      xwayland.enable = true;
 
       package = hyprland.packages.${system}.hyprland;
 

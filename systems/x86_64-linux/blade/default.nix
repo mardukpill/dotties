@@ -95,6 +95,7 @@ in
 
     wms = {
       niri = enabled;
+      # hyprland = enabled;
     };
 
   };
