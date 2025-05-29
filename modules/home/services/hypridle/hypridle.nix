@@ -12,11 +12,11 @@ let
 
   inherit (inputs) hypridle;
 
-  cfg = config.${namespace}.wms.hyprland;
-  enableModule = (cfg.idleDelay != 0 && cfg.lockDelay != 0);
+  cfg = config.${namespace}.utility.hypridle;
+  enableModule = (cfg.idleDelay != 0 && cfg.lockDelay != 0) && ;
 in
 {
-  services.hypridle = mkIf enableModule {
+  services.hypridle = mkIf cfg.enable {
     enable = true;
     package = hypridle.packages.${system}.hypridle;
 

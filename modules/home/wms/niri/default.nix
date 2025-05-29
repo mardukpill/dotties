@@ -24,7 +24,6 @@ let
   inherit (lib.${namespace}) mkOpt enabled;
   inherit (inputs) niri;
 
-
   cfg = config.${namespace}.wms.niri;
 in
 {
@@ -57,6 +56,7 @@ in
     dotties.utility.anyrun = enabled;
 
     dotties.services.xwayland-satellite = enabled;
+    dotties.services.hypridle = enabled;
 
     dotties.services.swww = {
       enable = true;

@@ -34,12 +34,6 @@ in
       "rose-pine"
       "acrylic"
     ]) "rose-pine" "The theme to use with Hyprland.";
-    idleDelay =
-      mkOpt types.ints.unsigned 300
-        "The delay blanking before the screen turns off due to idling. Setting to 0 will disable screen idle blanking.";
-    lockDelay =
-      mkOpt types.ints.unsigned 240
-        "The delay before the screen locks due to idling. Setting to 0 will disable idle locking.";
   };
 
   imports = lib.snowfall.fs.get-non-default-nix-files-recursive ./.;
@@ -51,6 +45,9 @@ in
     dotties.utility.swappy = enabled;
 
     dotties.services.xwayland-satellite = enabled;
+    dotties.services.hypridle = {
+      enable = true;
+    };
 
     dotties.services.swww = {
       enable = true;
