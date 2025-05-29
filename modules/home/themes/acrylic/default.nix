@@ -13,7 +13,7 @@ in
   config = lib.mkIf enabled {
     colorScheme = inputs.nix-colors.colorSchemes.gruvbox-light-medium;
 
-    gtk = {
+    gtk = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
       enable = true;
       theme = {
         name = "Gruvbox-Dark";
