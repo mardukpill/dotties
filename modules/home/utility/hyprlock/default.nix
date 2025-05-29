@@ -9,7 +9,7 @@
 }:
 let
   inherit (lib) mkIf;
-  inherit (lib.${namespace}) mkEnableOpt;
+  inherit (lib.${namespace}) mkBoolOpt;
   palette = config.colorScheme.palette;
 
   inherit (inputs) hyprlock;
@@ -18,7 +18,7 @@ let
 in
 {
   options.${namespace}.utility.hyprlock = {
-    enable = mkEnableOpt false "hyprlock.";
+    enable = mkBoolOpt false "hyprlock.";
   };
 
   config = mkIf cfg.enable {

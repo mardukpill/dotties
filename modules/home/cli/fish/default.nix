@@ -7,7 +7,11 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkEnableOption types;
+  inherit (lib)
+    mkIf
+    mkEnableOption
+    getExe
+    ;
   inherit (lib.${namespace}) mkOpt;
 
   cfg = config.${namespace}.cli.fish;
@@ -31,8 +35,6 @@ in
       shellInit = ''
         set -g fish_greeting
         set -gx EDITOR nvim
-        zoxide init fish | source
-
         set fish_greeting
       '';
       plugins = [
@@ -92,7 +94,8 @@ in
       interactiveShellInit = # fish
         ''
           fish_vi_key_bindings
-          nix-your-shell fish | source
+          ${getExe pkgs.nix-your-shell} fish | source
+          ${getExe pkgs.zoxide} init fish | source
         '';
     };
   };

@@ -10,11 +10,14 @@
 let
   inherit (lib)
     mkIf
-    mkOpt
     getExe
     types
     ;
-  inherit (lib.${namespace}) mkBoolOpt enabled;
+  inherit (lib.${namespace})
+    mkBoolOpt
+    enabled
+    mkOpt
+    ;
 
   inherit (inputs) hypridle;
 
@@ -58,6 +61,6 @@ in
         ];
       };
     };
+    systemd.user.services.hypridle.Install.WantedBy = mkIf cfg.enable [ "graphical-session.target" ];
   };
-  systemd.user.services.hypridle.Install.WantedBy = mkIf cfg.enable [ "graphical-session.target" ];
 }
