@@ -18,16 +18,13 @@ in
       fish = enabled;
     };
     apps = {
-      spotify = enabled;
       alacritty = enabled;
     };
   };
 
   home.packages = with pkgs; [
-    tetrio-desktop
   ];
 
-  services.ssh-agent.enable = true;
   programs.ssh = {
     matchBlocks = {
       "github.com-mardukpill" = {

@@ -76,8 +76,6 @@ in
         grimblast
         dotties.hyprzoom
 
-        gtk-engine-murrine # TODO: move to dedicated file
-
         playerctl
       ];
 

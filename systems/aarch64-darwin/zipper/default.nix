@@ -10,9 +10,6 @@ let
   cfg = config.${namespace}.user;
 in
 {
-  dotties = {
-
-  };
 
   environment.systemPath = [ "/opt/homebrew/bin" ];
 

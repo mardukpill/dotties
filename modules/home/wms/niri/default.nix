@@ -24,16 +24,10 @@ let
   inherit (lib.${namespace}) mkOpt enabled;
   inherit (inputs) niri;
 
-  theme = import ./theme.nix { inherit config lib; };
-  monitorConfig = import ./monitors.nix { inherit config lib; };
 
   cfg = config.${namespace}.wms.niri;
 in
 {
-
-  imports = [
-    ./binds/main.nix
-  ];
 
   options.${namespace}.wms.niri = {
     enable = mkEnableOption "niri.";
@@ -43,9 +37,6 @@ in
 
     programs.niri = {
       settings = {
-        window-rules = theme.window-rules;
-        layout = theme.layout;
-        outputs = monitorConfig;
         environment = {
           CLUTTER_BACKEND = "wayland";
           DISPLAY = ":0";
@@ -74,14 +65,8 @@ in
 
     services.playerctld.enable = true;
 
-    home = {
+    home = mkIf cfg.enable {
       packages = with pkgs; [
-        wl-mirror
-        wl-clipboard
-
-        gtk-engine-murrine # TODO: move to dedicated file
-
-        playerctl
       ];
 
       pointerCursor = {
