@@ -23,7 +23,7 @@ in
 
         general.live_config_reload = true;
 
-        window.decorations = "none";
+        window.decorations = mkIf pkgs.stdenv.hostPlatform.isLinux "none";
         window.dynamic_title = true;
         window.padding.x = 0;
         window.padding.y = 0;
