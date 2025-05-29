@@ -74,14 +74,6 @@ in
             "typescriptreact"
           ];
         };
-        glslls = {
-          enable = true;
-          filetypes = [
-            "glsl"
-            "frag"
-          ];
-        };
-
         # racket_langserver = {
         #   enable = true;
         #   package = pkgs.dotties.racket-langserver;
