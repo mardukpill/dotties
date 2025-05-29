@@ -23,6 +23,7 @@ in
       bat
       fzf
       zoxide
+      nix-your-shell
     ];
 
     programs.fish = {
@@ -91,6 +92,7 @@ in
       interactiveShellInit = # fish
         ''
           fish_vi_key_bindings
+          nix-your-shell fish | source
         '';
     };
   };

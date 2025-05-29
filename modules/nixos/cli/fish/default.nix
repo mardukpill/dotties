@@ -18,15 +18,11 @@ in
 
   config = mkIf cfg.enable {
     environment = {
-      systemPackages = with pkgs; [ nix-your-shell ];
       shells = [ pkgs.fish ];
     };
 
     programs.fish = {
       enable = true;
-      interactiveShellInit = ''
-        nix-your-shell fish | source
-      '';
     };
   };
 }
