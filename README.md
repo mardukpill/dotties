@@ -1,6 +1,6 @@
 <div align="center">
   <h1>
-   <img src="https://nixos.org/logo/nixos-logo-only-hires.png" height="25" /> My NixOS Configuration </a>
+   <img src="https://nixos.org/logo/nixos-logo-only-hires.png" height="25" /> dotties system configuration </a>
   </h1>
 </div>
 
@@ -83,7 +83,6 @@ nix run github:mardukpill/dotties#hi
         ├── blade
         └── stirps
 ```
-
 
 <h2 align="center">
   Planned
