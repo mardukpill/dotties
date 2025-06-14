@@ -22,6 +22,8 @@ in
     };
   };
 
+  services.syncthing = enabled;
+
   home.packages = with pkgs; [
   ];
 

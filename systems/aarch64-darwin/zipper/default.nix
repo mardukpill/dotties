@@ -1,36 +1,85 @@
 {
-  lib,
   config,
+  lib,
   namespace,
+  inputs,
+  pkgs,
   ...
 }:
 let
   inherit (lib.${namespace}) enabled;
-
-  cfg = config.${namespace}.user;
+  name = lib.snowfall.system.get-inferred-system-name ./.;
 in
 {
+  options = { };
 
-  environment.systemPath = [ "/opt/homebrew/bin" ];
+  config = {
+    homebrew = {
+      enable = true;
+      global.brewfile = true;
+      onActivation = {
+        cleanup = "zap";
+      };
+      brews = [
+        "docker-compose"
+      ];
+      casks = [
+        "firefox"
+        "keepassxc"
+        "docker"
+        "iina"
+      ];
+    };
 
-  networking = {
-    computerName = "Mike MacBook";
-    hostName = "zipper";
-    localHostName = "zipper";
+    dotties = {
+      wms = {
+        aerospace = {
+          enable = true;
+        };
+      };
+    };
 
-    knownNetworkServices = [
-      "Wi-Fi"
-      "Thunderbolt Bridge"
+    environment.systemPath = [ "/opt/homebrew/bin" ];
+    environment.pathsToLink = [
+      "/opt/homebrew/bin"
+      "$HOME/.nix-profile/bin"
+      "/run/current-system/sw/bin"
+      "/nix/var/nix/profiles/default/bin"
+      "/usr/local/bin"
     ];
-  };
 
-  nix.settings = {
-    cores = 16;
-    max-jobs = 8;
-  };
+    environment.systemPackages = with pkgs; [
+      tmux
+      firefox
+      rectangle
+      sbt
+      yarn
+      coursier
+      metals
+      scala
+      openconnect
+      scala-cli
+      sbt
+      sc
+      jdk17
+      zoom-us
+      jetbrains.datagrip
+    ];
 
-  system = {
-    primaryUser = "mike";
-    stateVersion = 5;
+    networking = {
+      computerName = "Mike MacBook";
+      hostName = name;
+      localHostName = name;
+    };
+
+    nix.settings = {
+      cores = 10;
+      max-jobs = 8;
+    };
+
+    system = {
+      primaryUser = "mike";
+      stateVersion = 5;
+    };
   };
 }
