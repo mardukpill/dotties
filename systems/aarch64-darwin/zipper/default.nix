@@ -33,10 +33,11 @@ in
 
     dotties = {
       wms = {
-        aerospace = {
-          enable = true;
-        };
+        aerospace = enabled;
       };
+      cli = {
+        fish = enabled;
+      }
     };
 
     environment.systemPath = [ "/opt/homebrew/bin" ];

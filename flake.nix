@@ -114,6 +114,7 @@
 
       systems.modules.darwin = with inputs; [
         nix-homebrew.darwinModules.nix-homebrew
+        home-manager.darwinModules.home-manager
       ];
 
       systems.modules.nixos = with inputs; [
