@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-howdy.url = "github:fufexan/nixpkgs/howdy";
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -9,6 +8,20 @@
 
     nix-alien = {
       url = "github:thiagokokada/nix-alien";
+    };
+
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+    homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
+      flake = false;
     };
 
     niri = {
@@ -23,7 +36,7 @@
 
     # snowfall
     snowfall-lib = {
-      url = "github:snowfallorg/lib";
+      url = "github:mardukpill/snowfall-lib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     darwin = {
@@ -76,7 +89,6 @@
         snowfall = {
           namespace = "dotties";
           meta = {
-            # for use with Frost
             name = "dotties";
             title = "dotties";
           };
@@ -91,13 +103,17 @@
         nixvim.homeManagerModules.nixvim
         # spicetify-nix.homeManagerModules.default
         nix-colors.homeManagerModules.default
-	niri.homeModules.niri
+        niri.homeModules.niri
       ];
 
       overlays = with inputs; [
         niri.overlays.niri
         nix-alien.overlays.default
         # self.overlays.gruvbox-plus-icons
+      ];
+
+      systems.modules.darwin = with inputs; [
+        nix-homebrew.darwinModules.nix-homebrew
       ];
 
       systems.modules.nixos = with inputs; [
