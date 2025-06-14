@@ -96,7 +96,13 @@ in
           fish_vi_key_bindings
           ${getExe pkgs.nix-your-shell} fish | source
           ${getExe pkgs.zoxide} init fish | source
-        '';
+        ''
+        + (
+          if !pkgs.stdenv.hostPlatform.isLinux then
+            ''export PATH=$HOME/.nix-profile/bin:/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin:/opt/homebrew/bin''
+          else
+            ''''
+        );
     };
   };
 }
