@@ -23,6 +23,7 @@ in
       scala-cli
       sbt
       sc
+      jdk17
     ];
   };
 }

@@ -11,176 +11,184 @@ let
   envs = config.${namespace}.environments;
 in
 {
-  programs.nixvim.plugins = {
-    nix = enabled;
-    otter = enabled;
-    lsp-format = disabled;
-    lsp = {
+  programs.nixvim = {
+    lsp.servers.metals = {
       enable = true;
-      servers = {
-        lua_ls = {
-          enable = true;
-          filetypes = [ "lua" ];
-          settings = {
-            telemetry.enable = false;
-          };
-        };
-        metals = {
-          enable = true;
-          filetypes = [
-            "scala"
-          ];
-        };
-        rust_analyzer = {
-          enable = true;
-          installCargo = true;
-          installRustc = true;
+      activate = true;
+    };
 
-          settings = {
-            diagnostics = {
-              enable = true;
-              # experimental.enable = true;
-              styleLints.enable = true;
-            };
-
-            inlayHints = {
-              bindingModeHints.enable = true;
-              closureStyle = "rust_analyzer";
-              closureReturnTypeHints.enable = "always";
-              discriminantHints.enable = "always";
-              expressionAdjustmentHints.enable = "always";
-              implicitDrops.enable = true;
-              lifetimeElisionHints.enable = "always";
-              rangeExclusiveHints.enable = true;
-            };
-
-            procMacro = {
-              enable = true;
+    plugins = {
+      nix = enabled;
+      otter = enabled;
+      lsp-format = disabled;
+      lsp = {
+        enable = true;
+        servers = {
+          lua_ls = {
+            enable = true;
+            filetypes = [ "lua" ];
+            settings = {
+              telemetry.enable = false;
             };
           };
-        };
-        phpactor = {
-          enable = true;
-          filetypes = [
-            "php"
-          ];
-        };
-        ts_ls = {
-          enable = true;
-          filetypes = [
-            "javascript"
-            "javascriptreact"
-            "typescript"
-            "typescriptreact"
-          ];
-        };
-        # racket_langserver = {
-        #   enable = true;
-        #   package = pkgs.dotties.racket-langserver;
-        #   filetypes = [
-        #     "rkt"
-        #     "racket"
-        #   ];
-        # };
+          metals = {
+            enable = true;
+            autostart = true;
+            filetypes = [
+              "scala"
+            ];
+          };
+          rust_analyzer = {
+            enable = true;
+            installCargo = true;
+            installRustc = true;
 
-        clangd = {
-          enable = true;
+            settings = {
+              diagnostics = {
+                enable = true;
+                # experimental.enable = true;
+                styleLints.enable = true;
+              };
 
-          extraOptions = {
-            init_options = {
-              usePlaceholders = true;
-              completeUnimported = true;
-              clangdFileStatus = true;
+              inlayHints = {
+                bindingModeHints.enable = true;
+                closureStyle = "rust_analyzer";
+                closureReturnTypeHints.enable = "always";
+                discriminantHints.enable = "always";
+                expressionAdjustmentHints.enable = "always";
+                implicitDrops.enable = true;
+                lifetimeElisionHints.enable = "always";
+                rangeExclusiveHints.enable = true;
+              };
+
+              procMacro = {
+                enable = true;
+              };
             };
           };
-          cmd = [
-            "clangd"
-            "--background-index"
-            "--clang-tidy"
-            "--header-insertion=iwyu"
-            "--completion-style=detailed"
-            "--function-arg-placeholders"
-            "--fallback-style=llvm"
-          ];
-        };
+          phpactor = {
+            enable = true;
+            filetypes = [
+              "php"
+            ];
+          };
+          ts_ls = {
+            enable = true;
+            filetypes = [
+              "javascript"
+              "javascriptreact"
+              "typescript"
+              "typescriptreact"
+            ];
+          };
+          # racket_langserver = {
+          #   enable = true;
+          #   package = pkgs.dotties.racket-langserver;
+          #   filetypes = [
+          #     "rkt"
+          #     "racket"
+          #   ];
+          # };
 
-        # ccls = {
-        #   enable = true;
-        #   filetypes = [
-        #     "c"
-        #     "cpp"
-        #   ];
-        # };
+          clangd = {
+            enable = true;
 
-        texlab = {
-          enable = true;
-          filetypes = [
-            "latex"
-            "tex"
-          ];
-        };
+            extraOptions = {
+              init_options = {
+                usePlaceholders = true;
+                completeUnimported = true;
+                clangdFileStatus = true;
+              };
+            };
+            cmd = [
+              "clangd"
+              "--background-index"
+              "--clang-tidy"
+              "--header-insertion=iwyu"
+              "--completion-style=detailed"
+              "--function-arg-placeholders"
+              "--fallback-style=llvm"
+            ];
+          };
 
-        # cssls = {
-        #   enable = true;
-        #   filetypes = [ "css" ];
-        # };
+          # ccls = {
+          #   enable = true;
+          #   filetypes = [
+          #     "c"
+          #     "cpp"
+          #   ];
+          # };
 
-        pyright = {
-          enable = true;
-          filetypes = [ "python" ];
-        };
+          texlab = {
+            enable = true;
+            filetypes = [
+              "latex"
+              "tex"
+            ];
+          };
 
-        nil_ls = {
-          enable = true;
-          filetypes = [ "nix" ];
-          settings = {
-            # formatting = {
-            #   command = [ "${getExe pkgs.nixfmt-rfc-style}" ];
-            # };
+          # cssls = {
+          #   enable = true;
+          #   filetypes = [ "css" ];
+          # };
+
+          pyright = {
+            enable = true;
+            filetypes = [ "python" ];
+          };
+
+          nil_ls = {
+            enable = true;
+            filetypes = [ "nix" ];
+            settings = {
+              # formatting = {
+              #   command = [ "${getExe pkgs.nixfmt-rfc-style}" ];
+              # };
+            };
+          };
+
+          ltex = {
+            enable = true;
+            filetypes = [
+              "latex"
+              "tex"
+            ];
+          };
+
+          bashls = {
+            enable = true;
+            filetypes = [
+              "sh"
+              "bash"
+            ];
+          };
+
+          marksman = {
+            enable = true;
+            filetypes = [ "markdown" ];
           };
         };
+        keymaps = {
+          silent = true;
+          diagnostic = {
+            "<leader>k" = "goto_prev";
+            "<leader>j" = "goto_next";
+          };
+          lspBuf = {
+            "gd" = "definition";
+            "gD" = "declaration";
+            "gi" = "implementation";
+            "gr" = "references";
+            "gt" = "type_definition";
+            "K" = "hover";
 
-        ltex = {
-          enable = true;
-          filetypes = [
-            "latex"
-            "tex"
-          ];
-        };
+            "<C-k>" = "signature_help";
 
-        bashls = {
-          enable = true;
-          filetypes = [
-            "sh"
-            "bash"
-          ];
-        };
-
-        marksman = {
-          enable = true;
-          filetypes = [ "markdown" ];
-        };
-      };
-      keymaps = {
-        silent = true;
-        diagnostic = {
-          "<leader>k" = "goto_prev";
-          "<leader>j" = "goto_next";
-        };
-        lspBuf = {
-          "gd" = "definition";
-          "gD" = "declaration";
-          "gi" = "implementation";
-          "gr" = "references";
-          "gt" = "type_definition";
-          "K" = "hover";
-
-          "<C-k>" = "signature_help";
-
-          "<leader>ca" = "code_action";
-          "<leader>rn" = "rename";
-          "<leader>wa" = "add_workspace_folder";
-          "<leader>wr" = "remove_workspace_folder";
+            "<leader>ca" = "code_action";
+            "<leader>rn" = "rename";
+            "<leader>wa" = "add_workspace_folder";
+            "<leader>wr" = "remove_workspace_folder";
+          };
         };
       };
     };

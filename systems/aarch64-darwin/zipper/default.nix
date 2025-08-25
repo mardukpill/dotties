@@ -14,22 +14,7 @@ in
   options = { };
 
   config = {
-    homebrew = {
-      enable = true;
-      global.brewfile = true;
-      onActivation = {
-        cleanup = "zap";
-      };
-      brews = [
-        "docker-compose"
-      ];
-      casks = [
-        "firefox"
-        "keepassxc"
-        "docker"
-        "iina"
-      ];
-    };
+    dotties.system.homebrew = enabled;
 
     dotties = {
       wms = {
@@ -37,10 +22,9 @@ in
       };
       cli = {
         fish = enabled;
-      }
+      };
     };
 
-    environment.systemPath = [ "/opt/homebrew/bin" ];
     environment.pathsToLink = [
       "/opt/homebrew/bin"
       "$HOME/.nix-profile/bin"
@@ -52,17 +36,8 @@ in
     environment.systemPackages = with pkgs; [
       tmux
       firefox
-      rectangle
-      sbt
       yarn
-      coursier
-      metals
-      scala
       openconnect
-      scala-cli
-      sbt
-      sc
-      jdk17
       zoom-us
       jetbrains.datagrip
     ];
