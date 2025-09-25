@@ -22,9 +22,8 @@ in
       jetbrains-mono
       nerd-fonts.jetbrains-mono
 
-      material-icons
-      material-design-icons
-      vimPlugins.nvim-web-devicons
+      # material-icons
+      # material-design-icons
 
       corefonts
       vistafonts

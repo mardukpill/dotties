@@ -53,10 +53,6 @@ in
             cmd-alt-h = [ ];
 
             alt-enter = ''exec-and-forget ${pkgs.alacritty}/bin/alacritty'';
-            alt-shift-enter = [
-              ''exec-and-forget ${pkgs.alacritty}/bin/alacritty''
-              "layout floating"
-            ];
             alt-e = ''exec-and-forget open -a Finder'';
             alt-shift-f = ''exec-and-forget ${pkgs.firefox}/bin/firefox'';
             alt-d = ''exec-and-forget open -a Raycast'';

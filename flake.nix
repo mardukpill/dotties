@@ -11,6 +11,9 @@
     };
 
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+
+    mac-app-util.url = "github:hraban/mac-app-util";
+
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;
@@ -99,8 +102,9 @@
       channels-config = {
         allowUnfree = true;
       };
+
       homes.modules = with inputs; [
-        nixvim.homeManagerModules.nixvim
+        nixvim.homeModules.nixvim
         # spicetify-nix.homeManagerModules.default
         nix-colors.homeManagerModules.default
         niri.homeModules.niri
@@ -115,6 +119,7 @@
       systems.modules.darwin = with inputs; [
         nix-homebrew.darwinModules.nix-homebrew
         home-manager.darwinModules.home-manager
+        mac-app-util.darwinModules.default
       ];
 
       systems.modules.nixos = with inputs; [

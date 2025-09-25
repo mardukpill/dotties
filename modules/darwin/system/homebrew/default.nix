@@ -33,8 +33,11 @@ in
         "firefox"
         "keepassxc"
         "docker"
+        "notion"
+        "docker-desktop"
         "iina"
         "hot"
+        "wireshark"
       ];
     };
 
@@ -52,4 +55,3 @@ in
     ];
   };
 }
-

@@ -39,6 +39,7 @@ in
       yarn
       openconnect
       zoom-us
+      docker
       jetbrains.datagrip
     ];
 

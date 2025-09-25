@@ -74,7 +74,7 @@ in
       };
 
       extraPlugins = with pkgs.vimPlugins; [
-        # add regular vim plugins here
+        nvim-web-devicons
       ];
 
       extraConfigLuaPre = # Lua
