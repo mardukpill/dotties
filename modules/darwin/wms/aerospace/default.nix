@@ -19,6 +19,11 @@ in
   };
 
   config = mkIf (cfg.enable && pkgs.stdenv.isDarwin) {
+
+    system.defaults = {
+      spaces.spans-displays = true;
+    };
+
     services.aerospace = {
       enable = true;
       settings = lib.mkMerge [
