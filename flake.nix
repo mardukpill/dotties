@@ -107,6 +107,7 @@
         nixvim.homeModules.nixvim
         # spicetify-nix.homeManagerModules.default
         nix-colors.homeManagerModules.default
+        niri.homeModules.niri
       ];
 
       overlays = with inputs; [
