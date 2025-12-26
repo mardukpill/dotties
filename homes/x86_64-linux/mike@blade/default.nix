@@ -41,9 +41,7 @@ in
   };
 
   home.packages = with pkgs; [
-    godot_4
     tetrio-desktop
-    bitwig-studio
     distrobox
   ];
 

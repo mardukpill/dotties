@@ -26,12 +26,10 @@ in
       # material-design-icons
 
       corefonts
-      vistafonts
+      vista-fonts
 
       noto-fonts
-      noto-fonts-extra
 
-      noto-fonts-emoji
       noto-fonts-color-emoji
       twemoji-color-font
 

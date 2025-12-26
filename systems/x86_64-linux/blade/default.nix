@@ -25,9 +25,8 @@ in
   environment.systemPackages = with pkgs; [
     arduino-ide
     arduino-core
+    file-roller
   ];
-
-  programs.file-roller = enabled;
 
   ${namespace} = {
     user = {
@@ -49,13 +48,13 @@ in
     };
 
     ai = {
-      ollama = enabled;
+      # ollama = enabled;
     };
 
     apps = {
       bottles = enabled;
       thunar = enabled;
-      thunderbird = enabled;
+      # thunderbird = enabled;
       wireshark = enabled;
       steam = enabled;
       obs = enabled;

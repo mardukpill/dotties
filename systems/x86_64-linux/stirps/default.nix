@@ -34,7 +34,7 @@ in
     hw = {
       nvidia = {
         enable = true;
-        version = "535";
+        version = "default";
       };
     };
 
